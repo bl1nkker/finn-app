@@ -1,15 +1,11 @@
 import React from 'react'
 
-function LargeField({value, onChangeFunc, type, labelValue}) {
+function LargeField({ fieldLabel, inputType }) {
     return (
-        <>
-            <label className="remainder accept__addit-remainder">{labelValue}</label>
-            <input 
-                className="accept__remainder accept__addit-input" 
-                value={value} 
-                onChange={(event) => onChangeFunc(event)}
-                type={type}/>
-        </>
+        <div className='modal_largefield'>
+                <label className="label">{fieldLabel}</label>
+                <input className="input" type={inputType}/>
+        </div>
     )
 }
 

@@ -1,14 +1,11 @@
 import React from 'react'
 
-function TextAreaField({value, onChangeFunc, type, labelValue}) {
+function TextAreaField({ fieldLabel }) {
     return (
-        <>
-            <label className="remainder accept__addit-remainder textarea-remainder">{labelValue}</label>
-                <textarea 
-                className="accept__addit-textarea" 
-                value={value} 
-                onChange={(event) => onChangeFunc(event)}/>
-        </>
+        <div className='modal_textareafield'>
+                <label className="label">{fieldLabel}</label>
+                <textarea className="textarea"/>
+        </div>
     )
 }
 

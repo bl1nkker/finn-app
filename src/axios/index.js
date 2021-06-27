@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 'http://localhost:5000' })
+const API = axios.create({ baseURL: 'http://127.0.0.1:8000/api/app' })
 
 // This adds a headers to each request. It happens before all functions below
 // API.interceptors.request.use( (req) => {
@@ -11,4 +11,5 @@ const API = axios.create({ baseURL: 'http://localhost:5000' })
 //     return req
 // } )
 
-export const getMemes = () => API.get('/api/memes')
+export const getInvoices = () => API.get('/invoice')
+export const postInvoice = (invoiceData) => API.post('/invoice', invoiceData)

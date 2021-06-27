@@ -1,5 +1,6 @@
 :root{
     --registry-header-blue:#3F40F0;
+    --registry-header-sky:#7ee0f8;
     --registry-header-green:#219653;
     --registry-header-red:#EB5757;
 
@@ -79,7 +80,10 @@
 .not_paid, .total{font-size: 17px; font-weight: 300;}
 .not_paid{color:var(--registry-header-red)}
 .total{color:var(--registry-header-green)}
-.file_icon{color:var(--registry-header-blue)}
+
+.registry_create{margin: 0; padding:0;}
+.registry_header__filters .download_button{margin: 0; padding: 0;}
+
 
 /* Filters */
 .registry_header__filters{
@@ -104,5 +108,7 @@
 .large{width: var(--registry-field-size-large);}
 
 .icon_unfold{font-size: 14px !important;}
-.icon_download{color:var(--registry-header-blue)}
-.registry_header__filters .download_button{margin: 0; padding: 0;}
+.file_icon, .icon_download{color:var(--registry-header-blue); transition: color .3s !important;}
+.file_icon:hover, .icon_download:hover{color:var(--registry-header-sky)}
+
+

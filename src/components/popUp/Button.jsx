@@ -2,9 +2,9 @@ import React from 'react'
 
 function Button({buttonName, onClickFunc, isBlue}) {
     return (
-        isBlue ? <button id='blue--btn' className="accept__button  inner-btns"  onClick={onClickFunc}>{buttonName}</button>
+        isBlue ? <button className="modal_action blue_button" onClick={onClickFunc}>{buttonName}</button>
         :
-                 <button className="accept__button  inner-btns"  onClick={onClickFunc}>{buttonName}</button>
+                 <button className="modal_action red_button"  onClick={onClickFunc}>{buttonName}</button>
     )
 }
 

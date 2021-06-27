@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import RegistrySubRow from './RegistrySubRow';
 
-function RegistryDataRow({row, selectAll, setSelectAll, handleShowPopUp}) {
+function RegistryDataRow({invoicesByDate, selectAll, setSelectAll, handleShowPopUp}) {
     const [selectRow, setSelectRow] = useState({date:false, companyName:false, status:false})
     const [childSelected, setChildSelected] = useState(0)
 
@@ -23,17 +23,18 @@ function RegistryDataRow({row, selectAll, setSelectAll, handleShowPopUp}) {
                     <input checked={selectAll.date ? selectAll.date : selectRow.date} type='checkbox' onChange={handleChangeCheckbox}/>
                 </section>
                 <section className='registry_row__item item small'>
-                    <span className="item-text">{row.date}</span>     
+                    <span className="item-text">{invoicesByDate.date}</span>     
                 </section>
             </div>
             <div className="registry_row__right">
 
             {/* Subrows */}
-            {row.subrows.map(subrow => (
+            {invoicesByDate.invoices.map((invoice, key) => (
             <RegistrySubRow 
-                rowDate={row.date} 
+                key={key}
+                rowDate={invoicesByDate.date} 
                 handleShowPopUp={handleShowPopUp} 
-                subrow={subrow}
+                invoice={invoice}
                 selectRow={selectRow}
                 setSelectRow={setSelectRow}
                 childSelected={childSelected}
