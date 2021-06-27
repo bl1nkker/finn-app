@@ -1,0 +1,1019 @@
+.salary {
+  width: 100%;
+  background: #F3F4F8;
+}
+
+.salary__container {
+  padding-top: 10px;
+}
+
+.salary__header {
+  background: #FFFFFF;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px 15px;
+  position: relative;
+  height: 80px;
+}
+
+.salary__header_title {
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #E0E0E0;
+  display: flex;
+}
+
+.header_title__text {
+  font-weight: 300;
+  font-size: .80em;
+  color: #3F40F0;
+  margin-right: 70px;
+  margin-top: 7px;
+  margin-left: 5px;
+}
+
+.header_title__btns {
+  display: flex;
+  margin-top: 7px;
+}
+
+.header_title__btn {
+  width: 96px;
+  height: 25px;
+  font-size: .45em;
+  border-radius: 5px;
+  border: 1px solid #E0E0E0;
+}
+
+.salary__header_title img {
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 19px;
+  margin-top: 9px;
+  cursor: pointer;
+}
+
+.activeBtn {
+  border: 1px solid #2F80ED;
+}
+
+.salary__header_categories {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  padding-top: 11px;
+}
+
+.salary__header_category {
+  font-weight: 500;
+  font-size: .45em;
+  display: block;
+  width: 100px;
+  text-align: center;
+  margin-left: 25px;
+}
+
+.salary__header_category:nth-child(1) {
+  width: 320px;
+  margin-left: 0;
+}
+
+.salary__header_category:nth-child(14) {
+  margin-top: -10px;
+}
+
+.salary__header_category:last-child {
+  width: 237px;
+}
+
+.salary__header_category img {
+  position: absolute;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.salary__cards {
+  width: 100%;
+  height: 800px;
+  padding-top: 10px;
+  position: relative;
+}
+
+.salary__cards_card {
+  width: 100%;
+  height: 50px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  display: flex;
+  padding-top: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.salary__cards_card:hover {
+  background: #ECECFE;
+}
+
+.cards_card__item {
+  font-weight: 400;
+  font-size: .45em;
+  text-align: center;
+  display: block;
+  columns: 97px;
+}
+
+.cards_card__item:nth-child(1) {
+  text-align: left;
+  columns: 224px;
+}
+
+.cards_card__item:nth-child(2) {
+  columns: 120px;
+}
+
+.cards_card__item:nth-child(16) {
+  columns: 167px;
+  float: right;
+}
+
+.cards_card__item:nth-child(3) {
+  color: #2F80ED;
+}
+
+.cards_card__item:nth-child(3):hover {
+  text-decoration: underline;
+}
+
+.cards_card__item:nth-child(6):hover {
+  text-decoration: underline;
+  color: #2F80ED;
+}
+
+.cards_card__item:nth-child(16) img {
+  position: absolute;
+  right: 0;
+  margin-right: 16px;
+  margin-top: -4px;
+}
+
+.salary__all {
+  width: 89.3%;
+  height: 40px;
+  display: flex;
+  bottom: 20px;
+  position: fixed;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  padding-top: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: .45em;
+}
+
+.salary__all_items {
+  display: flex;
+  width: 67%;
+}
+
+.salary__all_title {
+  font-weight: 400;
+  margin-right: 20px;
+}
+
+.salary__all_title_box {
+  display: flex;
+  width: 347px;
+}
+
+.salary__all_item {
+  font-weight: 400;
+  text-align: center;
+  columns: 171px;
+  font-size: .99em;
+}
+
+.salary__all_item:last-child {
+  columns: 167px;
+  color: #3F40F0;
+  font-size: 1em;
+  text-decoration: underline;
+}
+
+#item_zp {
+  margin-left: 116px;
+}
+
+#items__all {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.black_salary_bg {
+  width: 100%;
+  height: 1200px;
+  background: rgba(0, 0, 0, 60%);
+  position: absolute;
+  z-index: 999;
+  padding-top: 108px;
+  margin-top: -50px;
+}
+
+.salary__works_calendar {
+  background: #FFFFFF;
+  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  max-width: 1650px;
+  width: 99%;
+  height: 230px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.works_calendar__title_box {
+  width: 100%;
+  height: 53px;
+  border-bottom: 1px solid #E0E0E0;
+  display: flex;
+  padding-top: 15px;
+}
+
+.works_calendar__title_box > h3 {
+  font-weight: 400;
+  font-size: .85em;
+}
+
+.works_calendar__title_box > img {
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+}
+
+.works_calendar__calendar_box {
+  width: 100%;
+  height: 100px;
+  display: flex;
+}
+
+.works_calendar__calendar_card {
+  width: 50px;
+  height: 100%;
+}
+
+.calendar_card__date {
+  width: 100%;
+  height: 50%;
+  padding-top: 7px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.card__date_item {
+  display: block;
+  font-weight: 300;
+  text-align: center;
+  user-select: none;
+  font-size: .60em;
+}
+
+.calendar_card__date::before {
+  content: "";
+  display: block;
+  width: 1.3px;
+  margin-top: 12px;
+  height: 15px;
+  margin-left: 35px;
+  position: absolute;
+  background: #BDBDBD;
+}
+
+.calendar_card__date:nth-child(30)::before {
+  margin-left: 32px;
+}
+
+.calendar_card__input {
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.calendar_card__input:focus {
+  border: 1px solid #3F40F0;
+}
+
+.works_calendar__calendar_card:hover {
+  color: #3F40F0;
+}
+
+.calendar_card__input::placeholder {
+  color: #000;
+  user-select: none;
+}
+
+.works_calendar__calendar_all {
+  width: 50px;
+  height: 100%;
+  text-align: center;
+}
+
+.calendar_all__all_item {
+  width: 100%;
+  height: 50px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .60em;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.works_calendar__btn {
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  background: #3F40F0;
+  font-size: .70em;
+  font-weight: 400;
+  color: #fff;
+  margin-top: 20px;
+  float: right;
+  border: 1px solid #3F40F0;
+  line-height: 21px;
+}
+
+.works_calendar__btn:hover {
+  background: 0;
+  color: #3F40F0;
+}
+
+.salary__all_works_calendar {
+  width: 99%;
+  max-width: 1883px;
+  min-height: 480px;
+  background: #fff;
+  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.all_works_calendar__title_box {
+  display: flex;
+  width: 100%;
+  height: 67px;
+  font-size: .70em;
+  align-items: center;
+  border-bottom: 1px solid #E0E0E0;
+  position: relative;
+}
+
+.all_works_calendar__title_box > h3 {
+  font-weight: 300;
+}
+
+.all_works_calendar__title_box > img {
+  position: absolute;
+  right: 0;
+  margin-top: -4px;
+}
+
+.all_works_calendar__wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.all_works_calendar__dates {
+  width: 233px;
+  height: 50px;
+  display: flex;
+  position: relative;
+}
+
+.dates__coworkers {
+  width: 233px;
+  position: relative;
+  height: inherit;
+  text-align: center;
+  font-weight: 300;
+  padding-top: 14px;
+  font-size: .75em;
+}
+
+.dates__coworkers::before {
+  display: block;
+  content: "";
+  width: 0.5px;
+  position: absolute;
+  right: 0;
+  height: 20px;
+  background: #BDBDBD;
+}
+
+.dates__days_numbers {
+  width: 77%;
+  max-width: 1500px;
+  height: inherit;
+  display: flex;
+  position: relative;
+}
+
+.days_numbers__number {
+  width: 50px;
+  height: inherit;
+  padding-top: 6px;
+  user-select: none;
+  position: relative;
+}
+
+.days_numbers__number:hover {
+  color: #3F40F0;
+}
+
+.days_numbers__number::before {
+  content: "";
+  margin-top: 8px;
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 0.5px;
+  height: 20px;
+  background: #BDBDBD;
+}
+
+.days_numbers__number:last-child::before {
+  width: 0;
+}
+
+.dates__all_counter {
+  width: 86px;
+  height: inherit;
+  display: block;
+  padding-top: 14px;
+  font-weight: 300;
+  font-size: .75em;
+  text-align: center;
+}
+
+.dates__all_counter::before {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 0.5px;
+  height: 20px;
+  background: #BDBDBD;
+}
+
+.numbers__number_item {
+  display: block;
+  font-weight: 390;
+  font-size: .60em;
+  text-align: center;
+}
+
+.salary__eddit_worker {
+  width: 60%;
+  max-width: 720px;
+  height: 799px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin: 0 auto;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.eddit_worker__title_box {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.eddit_worker__title {
+  font-weight: 400;
+  font-size: .75em;
+}
+
+#title_box__del {
+  margin-top: 1px;
+  margin-right: 7px;
+  font-size: .70em;
+}
+
+.eddit_worker__rec {
+  overflow: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  height: 300px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.rec__cards {
+  width: 100%;
+  height: 3000px;
+  padding-top: 24px;
+}
+
+.rec__card {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.rec__card_box {
+  width: 200px;
+  height: inherit;
+  position: relative;
+  margin-right: 20px;
+}
+
+.rec__card_box:nth-child(3) {
+  margin-right: 24px;
+}
+
+.card__label {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 19px;
+  margin-top: -10px;
+  background: #fff;
+  margin-left: 10px;
+  font-size: .70em;
+}
+
+.card__label:nth-child(2) {
+  width: 150px;
+  font-size: .60em;
+}
+
+.card__input {
+  width: 100%;
+  height: inherit;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: 1px solid #2F80ED;
+}
+
+.card__type_select {
+  width: 100%;
+  height: inherit;
+  border-radius: 5px;
+  border: 1px solid #2F80ED;
+  cursor: pointer;
+  padding-top: 14px;
+  display: flex;
+  padding-left: 10px;
+}
+
+.card__type_select > h3 {
+  font-weight: 400;
+  font-size: .70em;
+}
+
+.card__type_select > img {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 0;
+  margin: 11px;
+  margin-top: 4px;
+}
+
+.label_type {
+  width: 150px;
+}
+
+.type_select__types {
+  position: absolute;
+  width: 200px;
+  height: 62px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: #fff;
+  z-index: 99;
+  border: 1px solid #2F80ED;
+  margin-top: -4px;
+  display: none;
+}
+
+.types_select__type {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  width: 100%;
+  height: 30px;
+  font-weight: 300;
+  font-size: .70em;
+  cursor: pointer;
+}
+
+.types_select__type:hover {
+  background: #2F80ED;
+  color: #fff;
+}
+
+.rec__card_delete {
+  position: absolute;
+  right: 0;
+  z-index: 9999;
+  display: block;
+}
+
+.rec__add {
+  user-select: none;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: 300;
+  color: #3F40F0;
+  font-size: .70em;
+  margin-bottom: 40px;
+}
+
+#tw {
+  margin-right: 10px;
+  margin-top: -25px;
+}
+
+.rec__commentary {
+  width: 100%;
+  height: 190px;
+  border: 1px solid #2F80ED;
+  border-radius: 5px;
+  padding-left: 5px;
+  word-wrap: wrap;
+  padding-top: 15px;
+}
+
+.comment__label {
+  width: 128px;
+}
+
+.rec__btns {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.rec__btn {
+  width: 50%;
+  height: inherit;
+  border-radius: 5px;
+  border: 1px solid #EB5757;
+  color: #EB5757;
+}
+
+.rec__btn:nth-child(1) {
+  margin-right: 20px;
+}
+
+.rec__btn:nth-child(1):hover {
+  background: #EB5757;
+  color: #fff;
+}
+
+.rec__btn:nth-child(2) {
+  background: #3F40F0;
+  color: #fff;
+  border: 1px solid #3F40F0;
+}
+
+.rec__btn:nth-child(2):hover {
+  background: 0;
+  color: #3F40F0;
+}
+
+.salary__add_coworker {
+  width: 40%;
+  max-width: 500px;
+  margin: 0 auto;
+  height: 600px;
+  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.add_coworker__header {
+  width: 100%;
+  height: 120px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.add_coworker__title_box {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.add_coworker__title_box > h3 {
+  font-weight: 400;
+  font-size: .80em;
+}
+
+.add_coworker__title_box > img {
+  width: 30px;
+  position: absolute;
+  right: 0;
+  height: 30px;
+}
+
+.add_coworker__search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.add_coworker__search > h3 {
+  font-weight: 400;
+  font-size: .70em;
+  margin-right: 20px;
+}
+
+.add_coworker__search > i {
+  position: absolute;
+  color: #BDBDBD;
+  font-size: .60em;
+  margin-left: 115px;
+}
+
+.add_coworker__search > input {
+  background: #F2F2F2;
+  width: 361px;
+  height: 25px;
+  border-radius: 12.5px;
+  display: flex;
+  padding-left: 35px;
+  align-items: center;
+}
+
+.add_coworker__search_input::placeholder {
+  color: #BDBDBD;
+}
+
+.add_coworker__accs {
+  width: 100%;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 480px;
+  overflow: hidden;
+  background: #F3F4F8;
+}
+
+.add_coworker__accs_wrap {
+  width: 100%;
+  height: 3000px;
+  padding-top: 10px;
+  overflow-y: scroll;
+}
+
+.add_coworker__acc_card {
+  margin-bottom: 15px;
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.add_coworker__acc_name {
+  font-weight: 300;
+  font-size: .70em;
+  line-height: 18px;
+  font-style: normal;
+}
+
+.add_coworker__acc_add {
+  float: right;
+  font-weight: 300;
+  color: #219653;
+  cursor: pointer;
+  margin-right: 11px;
+  font-size: .70em;
+  position: absolute;
+  right: 0;
+}
+
+.add_coworker__acc_add:hover {
+  text-decoration: underline;
+}
+
+#calendar {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  color: #3F40F0;
+  margin-right: 50px;
+  font-size: .80em;
+  margin-top: 8px;
+}
+
+.all_works_calendar__header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.all_works_calendar__main {
+  width: 100%;
+}
+
+.calendar_main__coworker_card {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.coworker_card__name {
+  width: 40%;
+  max-width: 233px;
+  text-align: center;
+  display: flex;
+  font-size: .70em;
+  font-weight: 300;
+  align-items: center;
+}
+
+.coworker_card__inputs {
+  width: 82%;
+  height: inherit;
+  display: flex;
+}
+
+.coworker_card__input {
+  width: 32px;
+  height: 50px;
+  text-align: center;
+  font-weight: 300;
+  display: block;
+  font-size: .60em;
+}
+
+.coworker_card__all {
+  width: 86px;
+  height: inherit;
+  font-weight: 400;
+  font-size: .75em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coworker_card__input:focus {
+  border: 1px solid #3F40F0;
+}
+
+.coworker__btn {
+  width: 200px;
+  height: 40px;
+  background: #3F40F0;
+  color: #fff;
+  float: right;
+  margin-top: 47px;
+  border-radius: 5px;
+  border: 1px solid #3F40F0;
+}
+
+.coworker__btn:hover {
+  background: 0;
+  color: #3F40F0;
+}
+
+
+
+@media only screen and (min-device-width: 1920px) {
+  .salary__header_category {
+    font-size: .50em;
+  }
+
+  .cards_card__item {
+    font-size: .50em;
+  }
+
+  .salary__all {
+    width: 90%;
+  }
+
+  .salary__all_title_box {
+    width: 518px;
+  }
+
+  #item_zp {
+    margin-left: 236px;
+  }
+
+  .salary__all_item {
+    columns: 168px;
+  }
+
+  .calendar_card__date::before {
+    margin-left: 50px;
+  }
+
+  .works_calendar__calendar_card {
+    width: 54px;
+  }
+
+  .card__date_item {
+    font-size: .65em;
+  }
+
+  .dates__days_numbers {
+    width: 85%;
+    max-width: 85%;
+  }
+
+  .coworker_card__inputs {
+    width: 86%;
+  }
+
+  .coworker_card__input {
+    width: 50px;
+  }
+}
+
+@media only screen and (min-device-width: 2500px) {
+  .salary__header_category {
+    font-size: .60em;
+  }
+
+  .cards_card__item {
+    font-size: .60em;
+    columns: 119px;
+  }
+
+  .cards_card__item:nth-child(1) {
+    columns: 319px;
+  }
+
+  .cards_card__item:nth-child(16) {
+    position: absolute;
+    right: 0;
+    margin-right: 40px;
+  }
+
+  .cards_card__item:nth-child(16) img {
+    margin-right: -20px;
+  }
+
+  .salary__all_item {
+    font-size: 1.40em;
+    columns: 124px;
+  }
+
+  #item_zp {
+    margin-left: 358px;
+  }
+
+  .salary__all_title_box {
+    width: 674px;
+  }
+
+  .coworker_card__name {
+    font-size: .80em;
+  }
+}
+
+@media only screen and (min-device-width: 2560px) {
+  .cards_card__item:nth-child(2) {
+    columns: 136px;
+  }
+
+  .cards_card__item {
+    columns: 121px;
+  }
+}
