@@ -1,56 +1,39 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+
+// Components
 import RegistryHeader from "../components/registry/RegistryHeader";
 import RegistryDataRow from "../components/registry/RegistryDataRow";
 import Backdrop from '../components/confirmationWindow/Backdrop';
+import Modal from '../components/popUp/Modal';
+// Styles
 import './pagesStyles/registryHeader.css'
 import './pagesStyles/registryRow.css'
-import RegistryModal from '../components/registry/RegistryModal';
-
-const tempData = [{
-  date:"09.10.2020",
-  subrows:[
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-]},
-{
-  date:"10.11.2020",
-  subrows:[
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text", status:true}
-  ]},
-{
-  date:"11.10.2020",
-  subrows:[
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-  ]},
-{
-  date:"12.10.2020",
-  subrows:[
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-      {companyName:'SomeCompany', number:"29945TD", type:"N", sum:112345, nds:1203, comment:"Some fish-text Abracadabra", status:true},
-  ]}
-]
-
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchInvoices } from './../redux/actions/invoicesActions'
 
 function Registry() {
+  const dispatch = useDispatch()
   // select, idle, deselect
   const [selectAll, setSelectAll] = useState({date:false, companyName:false, status:false})
-  const [openPopUp, setOpenPopUp] = useState(false)
+  
   const [rowToEdit, setRowToEdit] = useState(false)
 
-  const handleShowPopUp = (rowData, rowDate) =>{
+  const [openPopUp, setOpenPopUp] = useState(false)
+  const [modalMethod, setModalMethod] = useState('idle')
+
+  // Fetched data
+  const invoices = useSelector(state => state.invoices.data)
+
+  useEffect(() =>{
+    dispatch(fetchInvoices())
+  }, [dispatch])
+
+  const handleShowPopUp = (method, rowData, rowDate) =>{
+    // method: create, edit, idle
+    setModalMethod(method)
     setOpenPopUp(true);
-    setRowToEdit(rowData);
-    console.log(rowData, rowDate);
   }
 
   return (
@@ -58,11 +41,19 @@ function Registry() {
       {openPopUp && (
         <>
           <Backdrop />
-          <RegistryModal setOpenPopUp={setOpenPopUp}/>
+          <Modal setOpenPopUp={setOpenPopUp} modalMethod={modalMethod}/>
         </>
       )}
-      <RegistryHeader selectAll={selectAll} setSelectAll={setSelectAll}/>
-      {tempData.map(row => <RegistryDataRow handleShowPopUp={handleShowPopUp} row={row} selectAll={selectAll} setSelectAll={setSelectAll}/>)}
+      <RegistryHeader handleShowPopUp={handleShowPopUp} selectAll={selectAll} setSelectAll={setSelectAll}/>
+      {invoices.length !== 0 ? 
+      invoices.map((invoicesByDate, key) => 
+        <RegistryDataRow key={key} 
+            handleShowPopUp={handleShowPopUp} 
+            invoicesByDate={invoicesByDate} 
+            selectAll={selectAll} 
+            setSelectAll={setSelectAll}/>)
+          :
+          <h1>Loading...</h1>}
     </div>
   );
 }

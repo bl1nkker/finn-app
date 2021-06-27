@@ -4,7 +4,7 @@ import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 import SaveAltTwoToneIcon from '@material-ui/icons/SaveAltTwoTone';
 
 
-function RegistryHeader({ selectAll, setSelectAll }) {
+function RegistryHeader({ selectAll, setSelectAll, handleShowPopUp }) {
     const [dates, setDates] = useState({ date1:'1 января', date2:'2 января' })
     const [payment, setPayment] = useState({ paid:12345, total:1235 })
     
@@ -26,7 +26,8 @@ function RegistryHeader({ selectAll, setSelectAll }) {
                         <hr />
                         <span className="total">Итог: {payment.total}₽</span>
                     </div>
-                    <InsertDriveFileOutlinedIcon className='file_icon'/>
+                    <button className="registry_create" onClick={() => handleShowPopUp("create")}><InsertDriveFileOutlinedIcon className='file_icon'/></button>
+                    
                 </section>
             </div>
 
