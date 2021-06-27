@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
 
-function RegistrySubRow({invoice, rowDate, handleShowPopUp, selectRow, setSelectRow, childSelected, setChildSelected}) {
+function RegistrySubRow({invoice, handleShowPopUp, selectRow, setSelectRow, childSelected, setChildSelected}) {
     const [selectSubrow, setSelectSubrow] = useState({date:false, companyName:false, status:false})
     useEffect(() =>{
         if (selectRow.date) setSelectSubrow({...selectSubrow, companyName:true})
@@ -38,7 +38,7 @@ function RegistrySubRow({invoice, rowDate, handleShowPopUp, selectRow, setSelect
                         <input checked={invoice.is_confirmed} type='checkbox'/>
                     </section>
                     <section className='registry_row__item item extra_small'>
-                        <button onClick={() => handleShowPopUp("edit",invoice, rowDate)} className='download_button'><CreateTwoToneIcon className="icon_download"  fontSize="small"/></button>
+                        <button onClick={() => handleShowPopUp("edit", invoice)} className='download_button'><CreateTwoToneIcon className="icon_download"  fontSize="small"/></button>
                     </section>
                 </div>
     )

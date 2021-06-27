@@ -22,6 +22,7 @@ function Registry() {
 
   const [openPopUp, setOpenPopUp] = useState(false)
   const [modalMethod, setModalMethod] = useState('idle')
+  const [invoiceToEdit, setInvoiceToEdit] = useState({})
 
   // Fetched data
   const invoices = useSelector(state => state.invoices.data)
@@ -30,9 +31,11 @@ function Registry() {
     dispatch(fetchInvoices())
   }, [dispatch])
 
-  const handleShowPopUp = (method, rowData, rowDate) =>{
+  const handleShowPopUp = (method, invoiceData) =>{
     // method: create, edit, idle
+    // console.log(invoiceData);
     setModalMethod(method)
+    setInvoiceToEdit(invoiceData)
     setOpenPopUp(true);
   }
 
@@ -41,7 +44,7 @@ function Registry() {
       {openPopUp && (
         <>
           <Backdrop />
-          <Modal setOpenPopUp={setOpenPopUp} modalMethod={modalMethod}/>
+          <Modal setOpenPopUp={setOpenPopUp} modalMethod={modalMethod} invoiceToEdit={invoiceToEdit}/>
         </>
       )}
       <RegistryHeader handleShowPopUp={handleShowPopUp} selectAll={selectAll} setSelectAll={setSelectAll}/>

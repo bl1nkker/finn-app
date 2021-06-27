@@ -1,9 +1,9 @@
 import React from 'react'
 
-function ToggleSwitch() {
+function ToggleSwitch({ value, setValue }) {
     return (
         <label className="modal_switch">
-           <input className="switch_input" type="checkbox" />
+           <input className="switch_input" type="checkbox" checked={value} onChange={setValue}/>
            <span className="switch_slider"/> 
         </label>
     )

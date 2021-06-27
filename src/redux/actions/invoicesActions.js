@@ -1,5 +1,5 @@
-import { FETCH_INVOICES, FETCH_INVOICES_ERROR } from '../types'
-import { getInvoices } from './../../axios/index'
+import { CREATE_INVOICE, CREATE_INVOICE_ERROR, FETCH_INVOICES, FETCH_INVOICES_ERROR, UPDATE_INVOICE, UPDATE_INVOICE_ERROR } from '../types'
+import { getInvoices, postInvoice, putInvoice } from './../../axios/index'
 
 export const fetchInvoices = () => async(dispatch) => {
     try {
@@ -21,5 +21,24 @@ export const fetchInvoices = () => async(dispatch) => {
         console.log(error)
         dispatch({ type:FETCH_INVOICES_ERROR, payload:{error} })
     }
+}
 
+export const createInvoice = (formData) => async(dispatch) => {
+    try {
+        await postInvoice(formData)
+        dispatch({ type:CREATE_INVOICE, payload:{ created:true } })
+    } catch (error) {
+        dispatch({ type:CREATE_INVOICE_ERROR, payload:{error} })
+    }
+}
+
+export const updateInvoice = (invoiceData, invoiceId) => async(dispatch) =>{
+    try {
+        await putInvoice(invoiceData, invoiceId)
+        dispatch({ type: UPDATE_INVOICE, payload:{updated:true} })
+    } catch (error) {
+        console.log(error)
+        dispatch({ type: UPDATE_INVOICE_ERROR, payload:{error} })
+    }
+    
 }
