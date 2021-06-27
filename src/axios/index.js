@@ -12,4 +12,5 @@ const API = axios.create({ baseURL: 'http://127.0.0.1:8000/api/app' })
 // } )
 
 export const getInvoices = () => API.get('/invoice')
-export const postInvoice = (invoiceData) => API.post('/invoice', invoiceData)
+export const postInvoice = (invoiceData) => API.post('/invoice/', invoiceData)
+export const putInvoice = (invoiceData, invoiceId) => API.put(`/invoice/${invoiceId}`, invoiceData)
