@@ -9,7 +9,7 @@ import ToggleSwitch from './ToggleSwitch'
 
 // Redux
 import { useDispatch } from 'react-redux'
-import { createInvoice, updateInvoice } from './../../redux/actions/invoicesActions'
+import { createInvoice, removeInvoice, updateInvoice } from './../../redux/actions/invoicesActions'
 
 function Modal({setOpenPopUp, modalMethod, invoiceToEdit}) {
     const dispatch = useDispatch()
@@ -47,14 +47,22 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit}) {
         window.location.reload()
         setOpenPopUp(false)
     }
+
+    const handleDelete = () =>{
+        dispatch(removeInvoice(formData.id))
+        // window.location.reload()
+    }
     
     const handleClose = () =>{
         setOpenPopUp(false)
     }
     return (
         <div className='modal_container'>
-            <section className='modal_title'>
-                <span>Some Title</span>
+            <section className='modal_header'>
+                <div className='modal_title'>
+                    <span>{modalMethod === 'edit' ? invoiceToEdit.importer : "Добавление накладной/счета"}</span>
+                    {modalMethod === 'edit' && <button onClick={handleDelete} className='delete'>Удалить</button>}
+                </div>
                 <hr />
             </section>
 
@@ -103,14 +111,15 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit}) {
                     fieldLabel="Комментарий"/>
             </section>
             <section className='modal_field switch_field'>
+                {/* Send request to update is_confirmed prop of the invoice */}
                 <ToggleSwitch 
                     value={formData.is_confirmed} 
                     setValue={() => setFormData({...formData, is_confirmed:!formData.is_confirmed})}/>
-                <p className='switch_title'>Сразу подтвердить</p>
+                <p className='switch_title'>{modalMethod === 'edit' ? "Подтверждено" : "Сразу подтвердить"}</p>
             </section>
             <section className='modal_actions'>
                 <Button onClickFunc={handleClose} buttonName="Закрыть" isBlue={false}/>
-                <Button onClickFunc={handleSubmit} buttonName="Добавить" isBlue={true}/>
+                <Button onClickFunc={handleSubmit} buttonName={modalMethod === 'edit' ? "Сохранить" : "Добавить"} isBlue={true}/>
             </section>
         </div>
     )

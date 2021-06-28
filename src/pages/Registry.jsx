@@ -7,7 +7,7 @@ import RegistryDataRow from "../components/registry/RegistryDataRow";
 import Backdrop from '../components/confirmationWindow/Backdrop';
 import Modal from '../components/popUp/Modal';
 // Styles
-import './pagesStyles/registryHeader.css'
+import './pagesStyles/tableHeader.css'
 import './pagesStyles/registryRow.css'
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
@@ -40,7 +40,7 @@ function Registry() {
   }
 
   return (
-    <div className='registry_container'>
+    <div className='table_container'>
       {openPopUp && (
         <>
           <Backdrop />
