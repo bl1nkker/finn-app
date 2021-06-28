@@ -10,7 +10,7 @@ function SalaryDataRow({employee}) {
                         <span className="item-text">{employee.position}/DD</span>
                     </section>
                     <section className='registry_row__item item extra_small'>
-                        <span className="item-text hours">{employee.hours}</span>
+                        <span className="item-text"><button className='hours'>{employee.hours}</button></span>
                     </section>
                     <section className='registry_row__item item semismall'>
                         <span className="item-text">{employee.bet}</span>

@@ -133,8 +133,13 @@ const tempData = [
     retention:958, penalty:undefined, total: 40652
   },
 ]
+// Get the day of the week
+// Here we will define out day of the week
+console.log(new Date(2021, 5, 28).getDay());
 
-
+// Get the total days of the month (!)
+// Here we will make for loop for current month (starts with 0)
+console.log(33 - new Date(2021, 5, 33).getDate());
 function Registry() {
   return (
     <div className='table_container'>
