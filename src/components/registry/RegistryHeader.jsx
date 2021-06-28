@@ -2,16 +2,20 @@ import React, {useState} from 'react'
 import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 import SaveAltTwoToneIcon from '@material-ui/icons/SaveAltTwoTone';
+import { useSelector } from 'react-redux'
 
 
 function RegistryHeader({ selectAll, setSelectAll, handleShowPopUp }) {
     const [dates, setDates] = useState({ date1:'1 января', date2:'2 января' })
-    const [payment, setPayment] = useState({ paid:12345, total:1235 })
+    const [payment, setPayment] = useState({ not_paid:12345, total:1235 })
+    const total = useSelector(state => state.invoices.total)
+    const not_paid = useSelector(state => state.invoices.not_paid)
+    const companiesList = useSelector(state => state.invoices.companiesList)
     
     return (
-        <div className='registry_header'>
+        <div className='table_header'>
             {/* Navigarion + Info */}
-            <div className='registry_header__nav'>
+            <div className='table_header__nav'>
                 <section className='left'>
                     <p  className='title'>Реестр накладных</p>
                     <div className='buttons_container'>
@@ -22,11 +26,11 @@ function RegistryHeader({ selectAll, setSelectAll, handleShowPopUp }) {
                 
                 <section className='right'>
                     <div className="payment_info">
-                        <span className="not_paid">Не оплачено: {payment.paid}₽</span>
+                        <span className="not_paid">Не оплачено: {not_paid}₽</span>
                         <hr />
-                        <span className="total">Итог: {payment.total}₽</span>
+                        <span className="total">Итог: {total}₽</span>
                     </div>
-                    <button className="registry_create" onClick={() => handleShowPopUp("create")}><InsertDriveFileOutlinedIcon className='file_icon'/></button>
+                    <button className="table_create" onClick={() => handleShowPopUp("create")}><InsertDriveFileOutlinedIcon className='file_icon'/></button>
                     
                 </section>
             </div>
@@ -34,56 +38,62 @@ function RegistryHeader({ selectAll, setSelectAll, handleShowPopUp }) {
             <hr />
 
             {/* Filters */}
-            <div className='registry_header__filters'>
-                <section className='registry_header__filters item extra_small'>
+            <div className='table_header__filters'>
+                <section className='table_header__filters item extra_small'>
                     <input checked={selectAll.date} type='checkbox' onClick={() => setSelectAll({...selectAll, date:!selectAll.date})}/>
                 </section>
                 <hr />
-                <section className='registry_header__filters item small'>
-                    <span className="item-text">Дата ТН </span>          
+                <section className='table_header__filters item small'>
+                    <span className="item-text bold_text">Дата ТН </span>          
                     <UnfoldMoreSharpIcon className="icon_unfold"/>      
                 </section>
                 <hr />
-                <section className='registry_header__filters item extra_small'>
+                <section className='table_header__filters item extra_small'>
                     <input checked={selectAll.companyName} type='checkbox' onClick={() => setSelectAll({...selectAll, companyName:!selectAll.companyName})}/>
                 </section>
                 <hr />
-                <section className='registry_header__filters item medium'>
-                    <span className="item-text">Название А</span>
+                <section className='table_header__filters item medium'>
+                    {/* <span className="item-text bold_text">Название А</span> */}
+                    <div className="item-text bold_text">
+                        <select>
+                            <option value='ALL'>Название А</option>
+                            {companiesList?.map(companyName => <option value={companyName}>{companyName}</option>) }
+                        </select>
+                    </div>
+                    {/* <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                 */}
+                </section>
+                <hr />
+                <section className='table_header__filters item small'>
+                    <span className="item-text bold_text">Номер ТН</span>
                     <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
                 </section>
                 <hr />
-                <section className='registry_header__filters item small'>
-                    <span className="item-text">Номер ТН</span>
+                <section className='table_header__filters item small'>
+                    <span className="item-text bold_text">Тип</span>
                     <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
                 </section>
                 <hr />
-                <section className='registry_header__filters item small'>
-                    <span className="item-text">Тип</span>
+                <section className='table_header__filters item small'>
+                    <span className="item-text bold_text">Сумма ТН</span>
                     <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
                 </section>
                 <hr />
-                <section className='registry_header__filters item small'>
-                    <span className="item-text">Сумма ТН</span>
+                <section className='table_header__filters item small'>
+                    <span className="item-text bold_text">НДС</span>
                     <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
                 </section>
                 <hr />
-                <section className='registry_header__filters item small'>
-                    <span className="item-text">НДС</span>
+                <section className='table_header__filters item large'>
+                    <span className="item-text bold_text">Комментарий</span>
                     <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
                 </section>
                 <hr />
-                <section className='registry_header__filters item large'>
-                    <span className="item-text">Комментарий</span>
-                    <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
-                </section>
-                <hr />
-                <section className='registry_header__filters item small'>
+                <section className='table_header__filters item small'>
                     <input checked={selectAll.status} type='checkbox' onClick={() => setSelectAll({...selectAll, status:!selectAll.status})}/>
-                    <span className="item-text">Статус</span>
+                    <span className="item-text bold_text">Статус</span>
                 </section>
                 <hr />
-                <section className='registry_header__filters item extra_small'>
+                <section className='table_header__filters item extra_small'>
                     <button className='download_button'><SaveAltTwoToneIcon className="icon_download"  fontSize="small"/></button>
                 </section>
             </div>

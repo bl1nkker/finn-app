@@ -11,8 +11,8 @@ function DropDownList({ value, setValue,fieldLabel, options }) {
             <select className="input select"
             value={value} 
             onChange={(event) => setValue(event.target.value)}>
-                {options.map( option => (
-                    <option value={option} className='option' >{option}</option>
+                {options.map( (option, key) => (
+                    <option key={key} value={option} className='option' >{option}</option>
                 ))}
             </select>
         </div>

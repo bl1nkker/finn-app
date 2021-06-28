@@ -23,7 +23,7 @@ function RegistryDataRow({invoicesByDate, selectAll, setSelectAll, handleShowPop
                     <input checked={selectAll.date ? selectAll.date : selectRow.date} type='checkbox' onChange={handleChangeCheckbox}/>
                 </section>
                 <section className='registry_row__item item small'>
-                    <span className="item-text">{invoicesByDate.date}</span>     
+                    <span className="item-text bold_text">{invoicesByDate.date}</span>     
                 </section>
             </div>
             <div className="registry_row__right">
