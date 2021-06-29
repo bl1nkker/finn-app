@@ -6,6 +6,8 @@ import SalaryHeader from '../components/salary/SalaryHeader';
 import './pagesStyles/tableHeader.css'
 import './pagesStyles/registryRow.css'
 import './pagesStyles/calendar.css'
+import './pagesStyles/addEmployee.css'
+import './pagesStyles/salaryInfo.css'
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchInvoices } from './../redux/actions/invoicesActions'
@@ -14,6 +16,8 @@ import SalaryTotalRow from '../components/salary/SalaryTotalRow';
 import Backdrop from '../components/confirmationWindow/Backdrop'
 import CalendarPersonal from '../components/salary/calendar/CalendarPersonal';
 import CalendarShared from '../components/salary/calendar/CalendarShared';
+import AddEmployeeModal from '../components/salary/addEmployee/AddEmployeeModal';
+import EmployeeSalaryInfoModal from '../components/salary/salaryInfo/EmployeeSalaryInfoModal';
 
 const tempData = [
   {
@@ -141,40 +145,105 @@ const tempData = [
 function Registry() {
   const [showPersonalCalendar, setShowPersonalCalendar] = useState(false)
   const [showSharedCalendar, setShowSharedCalendar] = useState(false)
+  const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false)
+  const [showEmployeeSalaryInfo, setShowEmployeeSalaryInfo] = useState(false)
+
   const [selectedEmployee, setSelectedEmployee] = useState({})
 
+  // Personal Calendar
   const handleOpenPersonalCalendar = (employee) => {
     setSelectedEmployee(employee)
     setShowPersonalCalendar(true)
   }
-  
   const handleClosePersonalCalendar = () =>{
     setSelectedEmployee({})
     setShowPersonalCalendar(false)
   }
+  const handleSavePersonalHours = (data) =>{
+    // Request to backend
+    console.log("Personal hours saved!", data);
+  }
 
+  // Shared Calendar
   const handleOpenSharedCalendar = () =>{
     setShowSharedCalendar(true)
   }
   const handleCloseSharedCalendar = () =>{
     setShowSharedCalendar(false)
   }
+  const handleSaveSharedHours = (data) =>{
+    // Request to backend
+    console.log("Shared hours saved!", data);
+  }
+
+  // Add employee
+  const handleOpenAddEmployeeModal = () =>{
+    setShowAddEmployeeModal(true)
+  }
+  const handleCloseAddEmployeeModal = () =>{
+    setShowAddEmployeeModal(false)
+  }
+  const handleAddEmployee = (employee) =>{
+    // Request to backend
+    console.log('Employee added!', employee);
+  }
+
+  
+  // Employee Salary Info
+  const handleOpenEmployeeSalaryInfo = (employee) =>{
+    setShowEmployeeSalaryInfo(true)
+    setSelectedEmployee(employee)
+  }
+  const handleCloseEmployeeSalaryInfo = () =>{
+    setShowEmployeeSalaryInfo(false)
+    setSelectedEmployee({})
+  }
+  const handleSaveEmployeeSalaryInfo = (data) =>{
+    setShowEmployeeSalaryInfo(false)
+    console.log('Employee salary info saved!', data);
+  }
+  const handlePrintEmployeeSalaryInfo = (data) =>{
+    console.log("*print print*");
+  }
+  
 
   return (
     <div className='table_container'>
+      {/* Add employee modal */}
+      {showAddEmployeeModal && <>
+        <Backdrop />
+        <AddEmployeeModal handleAddEmployee={handleAddEmployee} selectedEmployee={selectedEmployee} handleCloseAddEmployeeModal={handleCloseAddEmployeeModal}/>
+      </>}
+
+      {/* Add employee modal */}
+      {showEmployeeSalaryInfo && <>
+        <Backdrop />
+        <EmployeeSalaryInfoModal 
+          handleSaveEmployeeSalaryInfo={handleSaveEmployeeSalaryInfo} 
+          handleCloseEmployeeSalaryInfoModal={handleCloseEmployeeSalaryInfo} 
+          selectedEmployee={selectedEmployee}
+          handlePrintEmployeeSalaryInfo={handlePrintEmployeeSalaryInfo}/>
+      </>}
+
       {/* Personal Calendar */}
       {showPersonalCalendar && <>
         <Backdrop />
-        <CalendarPersonal selectedEmployee={selectedEmployee} handleCloseCalendar={handleClosePersonalCalendar}/>
+        <CalendarPersonal handleSavePersonalHours={handleSavePersonalHours} selectedEmployee={selectedEmployee} handleCloseCalendar={handleClosePersonalCalendar}/>
       </>}
 
       {/* Shared Calendar */}
       {showSharedCalendar && <>
         <Backdrop />
-        <CalendarShared employeesList={tempData} handleCloseCalendar={handleCloseSharedCalendar}/>
+        <CalendarShared handleSaveSharedHours={handleSaveSharedHours} employeesList={tempData} handleCloseCalendar={handleCloseSharedCalendar}/>
       </>}
-      <SalaryHeader />
-      {tempData.map(employee => <SalaryDataRow handleOpenCalendar={handleOpenPersonalCalendar} employee={employee}/>)}
+
+      {/* Header */}
+      <SalaryHeader handleOpenAddEmployeeModal={handleOpenAddEmployeeModal}/>
+
+      {/* Main content */}
+      {tempData.map(employee => <SalaryDataRow handleOpenEmployeeSalaryInfo={handleOpenEmployeeSalaryInfo} handleOpenCalendar={handleOpenPersonalCalendar} employee={employee}/>)}
+
+      {/* Bottom Row */}
       <SalaryTotalRow handleOpenCalendar={handleOpenSharedCalendar}/>
     </div>
   );

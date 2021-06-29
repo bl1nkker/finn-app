@@ -4,7 +4,7 @@ import Button from '../../popUp/Button';
 
 const daysOfTheWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
 
-function CalendarShared({handleCloseCalendar, employeesList}) {
+function CalendarShared({handleCloseCalendar, employeesList, handleSaveSharedHours}) {
     const daysInTheMonth = []
     const selectedMonth = 5
 
@@ -65,7 +65,7 @@ function CalendarShared({handleCloseCalendar, employeesList}) {
 
             <hr />
             <section className='calendar_footer'>
-                <Button buttonName="Сохранить" isBlue={true}/>
+                <Button onClickFunc={() => handleSaveSharedHours("Some data")} buttonName="Сохранить" isBlue={true}/>
             </section>
         </div>
     )
