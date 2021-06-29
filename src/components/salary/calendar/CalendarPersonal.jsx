@@ -4,7 +4,7 @@ import Button from '../../popUp/Button';
 
 const daysOfTheWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
 
-function CalendarPersonal({handleCloseCalendar, selectedEmployee}) {
+function CalendarPersonal({handleCloseCalendar, selectedEmployee, handleSavePersonalHours}) {
     const daysInTheMonth = []
     const selectedMonth = 5
 
@@ -54,7 +54,7 @@ function CalendarPersonal({handleCloseCalendar, selectedEmployee}) {
 
             <hr />
             <section className='calendar_footer'>
-                <Button buttonName="Сохранить" isBlue={true}/>
+                <Button onClickFunc={() => handleSavePersonalHours("Some data")} buttonName="Сохранить" isBlue={true}/>
             </section>
         </div>
     )

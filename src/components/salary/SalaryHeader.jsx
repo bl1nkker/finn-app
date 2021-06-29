@@ -5,7 +5,7 @@ import SaveAltTwoToneIcon from '@material-ui/icons/SaveAltTwoTone';
 import { useSelector } from 'react-redux'
 
 
-function SalaryHeader({ handleShowPopUp }) {
+function SalaryHeader({ handleOpenAddEmployeeModal }) {
     const [dates, setDates] = useState({ date1:'1 января', date2:'2 января' })
     
     return (
@@ -21,8 +21,7 @@ function SalaryHeader({ handleShowPopUp }) {
                 </section>
                 
                 <section className='right'>
-                    <button className="table_create" onClick={() => handleShowPopUp("create")}><PersonAddIcon className='file_icon'/></button>
-                    
+                    <button className="table_create" onClick={handleOpenAddEmployeeModal}><PersonAddIcon className='file_icon'/></button>           
                 </section>
             </div>
 
