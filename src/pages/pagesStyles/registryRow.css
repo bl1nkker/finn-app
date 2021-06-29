@@ -50,3 +50,5 @@
 .left_align{
     justify-content: flex-start;
 }
+
+.hours{text-decoration: underline; color: blue;}

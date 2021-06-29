@@ -1,9 +1,9 @@
 .dashboard-rc-backdrop{
     display:table-cell;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     margin-top: -64px;
-    height: 200vh;
+    height: 9999vh;
     z-index: 10;
     background: rgba(0, 0, 0, 40%);
 }

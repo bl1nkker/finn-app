@@ -1,5 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+:root{
+  --registry-header-blue:#3F40F0;
+  --registry-header-sky:#7ee0f8;
+  --registry-header-green:#219653;
+  --registry-header-red:#EB5757;
+
+  --modal-bg-color: rgb(255, 255, 255);
+  --modal-primary-color: #065ac7;;
+  --modal-secondary-color:#EB5757;
+
+
+  --table-field-size-mini:20px;
+  --table-field-size-extra_small:50px;
+  --table-field-size-semismall:70px;
+  --table-field-size-small:100px;
+  --table-field-size-medium:180px;
+  --table-field-size-semimedium:180px;
+  --table-field-size-large:390px;
+
+  --table-field-font-size-small:8px;
+  --table-field-font-size-medium:10px;
+  --table-field-font-size-semimedium:12px;
+  --table-field-font-size-large:17px;
+  --table-field-font-size-big:22px;
+
+  --horizontal-rule-color: rgba(177, 177, 177, 0.726);
+
+}
+
 html, input, textarea, select, option, button{
     font-family: 'Roboto' !important;
 }
@@ -19,3 +48,6 @@ input[type=number],
 input[type=date] {
   -moz-appearance: textfield;
 }
+
+/* Common */
+.bold_text{font-weight: 500 !important;}

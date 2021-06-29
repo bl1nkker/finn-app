@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 
-function SalaryTotalRow({}) {
+function SalaryTotalRow({handleOpenCalendar}) {
     return (
         <div className={`registry_row salary_total`}>
                     <section className='registry_row__item left_align item semimedium'>
@@ -11,7 +11,7 @@ function SalaryTotalRow({}) {
                         <span className="item-text"></span>
                     </section>
                     <section className='registry_row__item item extra_small'>
-                        <span className="item-text bold_text">2000</span>
+                    <span className="item-text"><button onClick={handleOpenCalendar} className='hours'>2000</button></span>
                     </section>
                     <section className='registry_row__item item semismall'>
                         <span className="item-text"></span>
