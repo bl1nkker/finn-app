@@ -1,8 +1,3 @@
-:root{
-    --modal-bg-color: rgb(255, 255, 255);
-    --modal-primary-color: #2F80ED;;
-    --modal-secondary-color:#EB5757;
-}
 
 .modal_container{
     position: absolute;
