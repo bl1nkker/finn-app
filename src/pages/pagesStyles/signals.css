@@ -137,7 +137,7 @@
   margin-top: 1em;
   padding: 5px 10px;
   border-radius: 10px;
-  width: 95%;
+  width: 98%;
   box-shadow: 0px 2px 5px 1px rgba(168, 168, 168, 0.329);
 }
 
@@ -158,7 +158,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 95%;
+  width: 98%;
   margin-top: 1em;
 }
 
@@ -177,7 +177,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 95%;
+  width: 98%;
   margin-top: 1em;
 }
 
@@ -189,8 +189,8 @@
   align-items: center;
 }
 
-.signal_type_header .left, .signal_card_title .title_text{width: 80%;}
-.signal_type_header .right, .signal_card_title .title_button{width: 10%;}
+.signal_type_header .left, .signal_card_title .title_left_button{width: 80%;}
+.signal_type_header .right, .signal_card_title .title_right_button{width: 10%;}
 .signal_type_header .left .left_text, 
 .signal_type_header .right .right_text{font-weight: 300;}
 .signal_card_title .title_button{text-align: right;}
@@ -212,7 +212,7 @@
   align-items: center;
 }
 
-.signal_card_title .title_text{color: var(--modal-secondary-color); font-weight: 300;}
+.signal_card_title .title_text{color: var(--modal-secondary-color); font-weight: 300; text-align: left; font-size: 16px;}
 .signal_card_content{
   padding: 0 12px;
 }

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -17,6 +17,11 @@ import { withStyles } from "@material-ui/core/styles";
 import OtpInput from "react-otp-input";
 
 import { makeStyles } from "@material-ui/core/styles";
+
+// Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { loginAction } from './../redux/actions/authActions'
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -106,7 +111,13 @@ const DialogContent = withStyles((theme) => ({
 }))(MuiDialogContent);
 
 export default function Login() {
+  const history = useHistory()
   const classes = useStyles();
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.auth.user)
+  const authError = useSelector(state => state.auth.error)
+
+  
 
   const [login, setLogin] = React.useState("");
   const [loginError, setLoginError] = React.useState(false);
@@ -118,6 +129,10 @@ export default function Login() {
   const [currentScreen, setCurrentScreen] = React.useState(0);
   const [resetPassword, setResetPassword] = React.useState("");
   const [resetPassword2, setResetPassword2] = React.useState("");
+
+  useEffect(() =>{
+    if (authError) setLoginError(true)
+  }, [authError])
 
   const handleClickOpenSendCode = () => {
     setCurrentScreen(0);
@@ -132,32 +147,8 @@ export default function Login() {
     setResetEmail(e.target.value);
   };
 
-  const handleLogin = async (e) => {
-    let req = await fetch(
-      "http://localhost:8000/api/accounts/auth/loginaccount",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email: login,
-          password: password,
-        }),
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-    );
-    let res = await req.json();
-    console.log(res);
-    if (req.status === 200) {
-      localStorage.setItem("token", res.token);
-      // Store user in localStorage
-      localStorage.setItem("username", res.user.full_name);
-      localStorage.setItem("userEmail", res.user.email);
-      console.log(localStorage.getItem("token"));
-      window.location.href = "/home";
-    } else {
-      setLoginError(true);
-    }
+  const handleLogin = () => {
+    dispatch(loginAction(login, password, history))
   };
 
   return (
