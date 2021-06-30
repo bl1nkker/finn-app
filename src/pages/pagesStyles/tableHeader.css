@@ -103,6 +103,8 @@
 .semismall{width: var(--table-field-size-semismall);}
 .medium{width: var(--table-field-size-medium);}
 .semimedium{width: var(--table-field-size-semimedium);}
+.overmedium{width: var(--table-field-size-overmedium);}
+.underlarge{width: var(--table-field-size-underlarge);}
 .large{width: var(--table-field-size-large);}
 
 

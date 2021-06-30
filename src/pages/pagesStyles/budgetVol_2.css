@@ -1,0 +1,78 @@
+.table_header__nav .right .budget_text{
+    font-weight: 100;
+    color:var(--modal-primary-color);
+    font-size: var(--table-field-font-size-big);
+}
+
+.budget_table_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+}
+
+.header_income,
+.header_expense{
+    background-color: var(--modal-bg-color);
+    width: 48%;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0px rgba(180, 180, 180, 0.329);
+}
+
+.header_income .top,
+.header_expense .top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_income .top .left .income_add,
+.header_expense .top .left .expense_add{
+    display: flex;
+    align-items: center;
+}
+
+.income_add .icon_add{color:var(--registry-header-green)}
+.expense_add .icon_add{color:var(--registry-header-red)}
+.header_income .top .left .header_title,
+.header_income .top .right .income_amount{color: var(--registry-header-green);}
+
+.header_expense .top .left .header_title,
+.header_expense .top .right .expense_amount{color: var(--registry-header-red);}
+
+.header_income .top .left .header_title,
+.header_income .top .right .income_amount,
+.header_expense .top .left .header_title,
+.header_expense .top .right .expense_amount
+{
+    font-size: var(--table-field-font-size-large);
+    font-weight: 300;
+    margin:0;
+}
+
+
+/* Content */
+.budget_row{
+    background-color: var(--modal-bg-color);
+    width: 98%;
+    padding: 5px;
+    margin-top: 1em;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0px rgba(180, 180, 180, 0.329);
+}
+
+.budget_main_container{
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+}
+.budget_expense_container{
+    width: 100%;
+}
+
+.budget_row{justify-content: space-between;}
+.budget_left{width: 48%;}
+.budget_right{width: 48%;}
+.budget_subrow hr{border:none; background-color: var(--modal-bg-color); margin: 0; width: 2px;}
+

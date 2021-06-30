@@ -18,6 +18,7 @@ import Coworkers from "./pages/Coworkers";
 import Scans from "./pages/Scans";
 import Revenue from "./pages/Revenue";
 import Budget from "./pages/Budget";
+import Budget_vol2 from "./pages/Budget_vol2";
 import Registry from "./pages/Registry";
 import Salary from "./pages/Salary";
 import Settings from "./pages/Settings";
@@ -64,7 +65,7 @@ function App() {
               <PrivateRoute path="/imports" component={Imports} />
               <PrivateRoute path="/revenue" component={Revenue} />
               <PrivateRoute path="/coworkers" component={Coworkers} />
-              <PrivateRoute path="/budget" component={Budget} />
+              <PrivateRoute path="/budget" component={Budget_vol2} />
               <PrivateRoute path="/registry" component={Registry} />
               <PrivateRoute path="/salary" component={Salary} />
               <PrivateRoute path="/settings" component={Settings} />
