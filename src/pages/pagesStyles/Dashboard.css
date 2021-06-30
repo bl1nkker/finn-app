@@ -65,7 +65,7 @@
   color: #EB5757;
   line-height: 16px;
 }
-.warning__card-title a {
+.warning__card-title .more_button {
   float: right;
   font-size: .70em;
   padding-top: 1px;

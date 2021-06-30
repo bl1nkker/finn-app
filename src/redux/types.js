@@ -1,3 +1,7 @@
+// Types
+export const LOGIN_USER = "LOGIN_USER" 
+export const LOGIN_USER_ERROR = "LOGIN_USER_ERROR" 
+
 // Invoices
 export const FETCH_INVOICES = 'FETCH_INVOICES'
 export const FETCH_INVOICES_ERROR = 'FETCH_INVOICES_ERROR'

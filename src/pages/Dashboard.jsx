@@ -1,11 +1,14 @@
 import RemainderConfirmation from "../components/confirmationWindow/RemainderConfirmation";
 import {useState} from 'react'
 import { Bar } from 'react-chartjs-2'
+import SignalModal from "../components/signals/SignalModal";
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchSignals } from './../redux/actions/signalsActions'
 import { useEffect } from "react";
+import Backdrop from "../components/confirmationWindow/Backdrop";
+
 
 const tempData = [
   {title:'Внимание!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
@@ -26,11 +29,23 @@ function Dashboard() {
   useEffect(() =>{
     dispatch(fetchSignals())
   },[dispatch])
+
+  const [showSignalModal, setShowSignalModal] = useState(false)
+  const [selectedSignal, setSelectedModal] = useState({ type:'', nutshell:"", content:"" })
+
+  const handleOpenSignalModal = (signal) =>{
+    setShowSignalModal(true)
+    setSelectedModal(signal)
+  }
   
   return (
     <div style={{ textAlign: "center"}}>
       {/* Confirmation Window (perm) */}
       {!isConfirmed && <RemainderConfirmation setIsConfirmed={setIsConfirmed}/>}
+      {showSignalModal && <>
+        <Backdrop />
+        <SignalModal setShowSignalModal={setShowSignalModal} selectedSignal={selectedSignal}/>
+      </>}
 
       <main className="container home__container">
         {/* Signals */}
@@ -39,7 +54,7 @@ function Dashboard() {
             <div className="home__warning-cards">
               {signals.map((signal, id) =>
                 <div key={id} className="home__warning-card">
-                  <div className="warning__card-title">Внимание!<a href="#">Подробнее</a></div>
+                  <div className="warning__card-title">Внимание!<button onClick={() => handleOpenSignalModal(signal)} className='more_button'>Подробнее</button></div>
                   <div className="warning__card-content">{signal.nutshell}</div>
                 </div>)}
             </div>
