@@ -121,6 +121,106 @@
   font-weight: 300;
 }
 
+/* Signals component */
+.signals_container{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+.signals_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--modal-bg-color);
+
+  margin-top: 1em;
+  padding: 5px 10px;
+  border-radius: 10px;
+  width: 95%;
+  box-shadow: 0px 2px 5px 1px rgba(168, 168, 168, 0.329);
+}
+
+.signals_header .left .left_text{
+  color: var(--registry-header-blue);
+  font-weight: 100;
+  font-size: var(--table-field-font-size-big);
+}
+
+.signals_header .right hr{border:none; width: 1px; margin: 0 10px; height: 25px;}
+.signals_header .right .right_text{
+  color: var(--registry-header-blue);
+  font-weight: 100;
+  font-size: var(--table-field-font-size-large);
+}
+
+.signals_types{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin-top: 1em;
+}
+
+.signal_type_header{
+  display: flex;
+  justify-content: space-evenly;
+  width: 32%;
+  align-items: center;
+  background-color: var(--modal-bg-color);
+  border-radius: 10px;
+  padding: 10px 0;
+  box-shadow: 0px 2px 5px 1px rgba(168, 168, 168, 0.329);
+}
+
+.signals_list_container{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 95%;
+  margin-top: 1em;
+}
+
+.signal_list_section{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 32%;
+  align-items: center;
+}
+
+.signal_type_header .left, .signal_card_title .title_text{width: 80%;}
+.signal_type_header .right, .signal_card_title .title_button{width: 10%;}
+.signal_type_header .left .left_text, 
+.signal_type_header .right .right_text{font-weight: 300;}
+.signal_card_title .title_button{text-align: right;}
+
+.signal_card_container{
+  background-color: var(--modal-bg-color);
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px 1px rgba(168, 168, 168, 0.329);
+  margin-bottom: 1em;
+  padding: 10px 0;
+}
+.signal_card_container hr{margin: 5px 0 10px 0;}
+
+
+.signal_card_title{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.signal_card_title .title_text{color: var(--modal-secondary-color); font-weight: 300;}
+.signal_card_content{
+  padding: 0 12px;
+}
+
+.signal_card_content .content_text{
+  font-weight: 300;
+}
+
 @media only screen and (min-device-width: 1920px) {
   .signals__card {
     height: 150px;

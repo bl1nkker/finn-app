@@ -2,6 +2,11 @@ import RemainderConfirmation from "../components/confirmationWindow/RemainderCon
 import {useState} from 'react'
 import { Bar } from 'react-chartjs-2'
 
+// Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchSignals } from './../redux/actions/signalsActions'
+import { useEffect } from "react";
+
 const tempData = [
   {title:'Внимание!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
   {title:'Не внимание!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
@@ -15,6 +20,12 @@ const tempData = [
 
 function Dashboard() {
   const [isConfirmed, setIsConfirmed] = useState(false)
+  const signals = useSelector(state => state.signals.data)
+  const dispatch = useDispatch()
+
+  useEffect(() =>{
+    dispatch(fetchSignals())
+  },[dispatch])
   
   return (
     <div style={{ textAlign: "center"}}>
@@ -24,12 +35,12 @@ function Dashboard() {
       <main className="container home__container">
         {/* Signals */}
         <div className="home__signals">
-          <div className="signals__box">Сигналы <span>{tempData.length}</span></div>
+          <div className="signals__box">Сигналы <span>{signals.length}</span></div>
             <div className="home__warning-cards">
-              {tempData.map((card, id) =>
+              {signals.map((signal, id) =>
                 <div key={id} className="home__warning-card">
-                  <div className="warning__card-title">{card.title} <a href="#">Подробнее</a></div>
-                  <div className="warning__card-content">{card.description}</div>
+                  <div className="warning__card-title">Внимание!<a href="#">Подробнее</a></div>
+                  <div className="warning__card-content">{signal.nutshell}</div>
                 </div>)}
             </div>
         </div>
