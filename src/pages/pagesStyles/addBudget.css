@@ -1,0 +1,38 @@
+/* Modal */
+.add_budget_container{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    background-color: var(--modal-bg-color);
+    z-index: 100;
+    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.add_budget_header{
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px 1em 10px 1em;
+}
+
+.add_budget_header .header_top .header_text{
+    font-weight: 300;
+}
+
+.add_budget_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 1em;
+}
+
+.add_budget_form .modal_actions,
+.add_budget_form .modal_field{width:100%}

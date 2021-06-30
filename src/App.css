@@ -16,8 +16,12 @@
   --table-field-size-extra_small:50px;
   --table-field-size-semismall:70px;
   --table-field-size-small:100px;
+  --table-field-size-oversmall:150px;
   --table-field-size-medium:180px;
   --table-field-size-semimedium:180px;
+  --table-field-size-overmedium:200px;
+  --table-field-size-underlarge:220px;
+  
   --table-field-size-large:390px;
 
   --table-field-font-size-small:8px;
