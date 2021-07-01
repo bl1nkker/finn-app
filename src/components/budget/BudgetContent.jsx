@@ -1,7 +1,7 @@
 import React from 'react'
 import BudgetDataRow from './BudgetDataRow'
 
-function BudgetContent({ budgets }) {
+function BudgetContent({ budgets, handleOpenBudgetModal }) {
     const expenses = {
         amount: 0,
         description: "string",
@@ -14,7 +14,7 @@ function BudgetContent({ budgets }) {
       }
     return (
         <>
-            {budgets.map(budget => <BudgetDataRow budget={budget}/>)}
+            {budgets.map((budget, key) => <BudgetDataRow key={key} handleOpenBudgetModal={handleOpenBudgetModal} budget={budget}/>)}
         </>
     )
 }

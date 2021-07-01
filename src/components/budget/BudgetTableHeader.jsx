@@ -10,7 +10,7 @@ function BudgetTableHeader({ handleOpenBudgetModal }) {
                 <div className='top'>
                     <div className='left'>
                         <span className='header_title'>Доход</span>
-                        <button onClick={() => handleOpenBudgetModal("income")} className='income_add'><AddCircleOutlineIcon className='icon_add' fontSize='small'/></button>
+                        <button onClick={() => handleOpenBudgetModal("income", 'create', {})} className='income_add'><AddCircleOutlineIcon className='icon_add' fontSize='small'/></button>
                     </div>
                     <div className='right'>
                         <span className='income_amount'>43543.00$</span>
@@ -45,6 +45,7 @@ function BudgetTableHeader({ handleOpenBudgetModal }) {
                     </section>
                     <hr />
                     <section className='table_header__filters item small'>
+                        <input type='checkbox' />
                         <span className="item-text bold_text">Статус</span>
                         <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
                     </section>
@@ -56,7 +57,7 @@ function BudgetTableHeader({ handleOpenBudgetModal }) {
                 <div className='top'>
                     <div className='left'>
                         <span className='header_title'>Расход</span>
-                        <button onClick={() => handleOpenBudgetModal("expense")} className='expense_add'><AddCircleOutlineIcon className='icon_add' fontSize='small'/></button>
+                        <button onClick={() => handleOpenBudgetModal("expense", 'create', {})} className='expense_add'><AddCircleOutlineIcon className='icon_add' fontSize='small'/></button>
                     </div>
                     <div className='right'>
                         <span className='expense_amount'>43543.00$</span>
@@ -75,7 +76,7 @@ function BudgetTableHeader({ handleOpenBudgetModal }) {
                     </section>
                     
                     <hr />
-                    <section className='table_header__filters item underlarge'>
+                    <section className='table_header__filters item semimedium'>
                         <span className="item-text bold_text">Описание</span>
                         <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
                     </section>
@@ -86,6 +87,7 @@ function BudgetTableHeader({ handleOpenBudgetModal }) {
                     </section>
                     <hr />
                     <section className='table_header__filters item small'>
+                        <input type='checkbox' />
                         <span className="item-text bold_text">Статус</span>
                         <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
                     </section>

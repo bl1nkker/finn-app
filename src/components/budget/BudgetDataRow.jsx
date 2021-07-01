@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BudgetExprenseSubRow from './BudgetExpenseSubRow';
 import BudgetIncomeSubRow from './BudgetIncomeSubRow';
 
-function BudgetDataRow({budget}) {
+function BudgetDataRow({budget, handleOpenBudgetModal}) {
 
     return (
             <div className={`registry_row budget_row`}>
@@ -12,12 +12,12 @@ function BudgetDataRow({budget}) {
                 </section>
 
                 <section className='budget_income_container'>
-                    {budget.incomes.map(income => <BudgetIncomeSubRow income={income}/>)}
+                    {budget.incomes.map(income => <BudgetIncomeSubRow key={income.id} handleOpenBudgetModal={handleOpenBudgetModal} income={income}/>)}
                 </section>
             </div>
             <div className="registry_row__right budget_right">
                 <section className='budget_expense_container'>
-                    {budget.expenses.map(expense => <BudgetExprenseSubRow expense={expense}/>)}
+                    {budget.expenses.map(expense => <BudgetExprenseSubRow key={expense.id} handleOpenBudgetModal={handleOpenBudgetModal} expense={expense}/>)}
                 </section>
             </div>
             
