@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
 
-function BudgetExpenseSubRow({expense}) {
+function BudgetExpenseSubRow({expense, handleOpenBudgetModal}) {
     return (
         <div className='registry_subrow budget_subrow'>
                     <section className='registry_row__item item small'>
@@ -12,7 +12,7 @@ function BudgetExpenseSubRow({expense}) {
                         <span className="item-text">{expense.amount}</span>
                     </section>
                     <hr />
-                    <section className='registry_row__item item underlarge'>
+                    <section className='registry_row__item item semimedium'>
                         <span className="item-text">{expense.description}</span>
                     </section>
                     <hr />
@@ -23,9 +23,10 @@ function BudgetExpenseSubRow({expense}) {
                     <section className='registry_row__item item small'>
                         <input checked={expense.is_verified} type='checkbox'/>
                     </section>
-                    {/* <section className='registry_row__item item extra_small'>
-                        <button className='download_button'><CreateTwoToneIcon className="icon_download"  fontSize="small"/></button>
-                    </section> */}
+                    <hr />
+                    <section className='registry_row__item item mini'>
+                        <button onClick={() => handleOpenBudgetModal("expense", "edit", expense)} className='download_button'><CreateTwoToneIcon className="icon_download"  fontSize="small"/></button>
+                    </section>
                 </div>
     )
 }

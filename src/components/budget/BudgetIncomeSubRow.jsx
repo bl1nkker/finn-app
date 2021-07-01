@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
 
-function BudgetIncomeSubRow({income}) {
+function BudgetIncomeSubRow({income, handleOpenBudgetModal}) {
     return (
+        <>
         <div className={`registry_subrow budget_subrow`}>
                     <section className='registry_row__item item small'>
                         <span className="item-text">{income.contragent}</span>
@@ -24,10 +25,11 @@ function BudgetIncomeSubRow({income}) {
                         <input checked={income.is_verified} type='checkbox'/>
                     </section>
                     <hr />
-                    {/* <section className='registry_row__item item extra_small'>
-                        <button className='download_button'><CreateTwoToneIcon className="icon_download"  fontSize="small"/></button>
-                    </section> */}
+                    <section className='registry_row__item item mini'>
+                        <button onClick={() => handleOpenBudgetModal("income", "edit", income)} className='download_button'><CreateTwoToneIcon className="icon_download"  fontSize="small"/></button>
+                    </section>
                 </div>
+        </>
     )
 }
 

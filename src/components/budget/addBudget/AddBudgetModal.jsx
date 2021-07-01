@@ -7,23 +7,23 @@ import ToggleSwitch from '../../popUp/ToggleSwitch'
 import Button from '../../popUp/Button'
 import TextAreaField from '../../popUp/TextAreaField'
 
-function AddBudgetModal({handleAddBudget, handleCloseBudgetModal, budgetType}) {
-    const [formData, setFormData] = useState(
-        { date:0, amount:0, category:'', description:'', is_confirmed:false })
-    const categories = ['Хозтовары', "Машины", "Овощи"]
+function AddBudgetModal({selectedBudget, modalMethod, handleAddBudget, handleCloseBudgetModal, budgetType}) {
+    const [formData, setFormData] = useState(selectedBudget ? selectedBudget : 
+        {id: undefined,amount: 0, description: "", is_verified: false, contragent: "", added_at: "", added_by: "",category: "",facility: 0})
+    const categories = ["Машины", "Овощи",'Хозтовары']
     return (
         <div className='modal_container'>
-            <AddBudgetHeader budgetType={budgetType} handleCloseBudgetModal={handleCloseBudgetModal} />
+            <AddBudgetHeader modalMethod={modalMethod} budgetType={budgetType} handleCloseBudgetModal={handleCloseBudgetModal} />
             <div className='add_budget_form'>
                 <section className='modal_field'>
                     <DoubleField 
-                        value_1={formData.date} 
+                        value_1={formData.added_at} 
                         value_2={formData.amount} 
                         fieldLabel_1="Дата" 
                         fieldLabel_2="Сумма" 
                         inputType_1="date" 
                         inputType_2="number"
-                        setValue_1={(value) => setFormData({...formData, date: value})}
+                        setValue_1={(value) => setFormData({...formData, added_at: value})}
                         setValue_2={(value) => setFormData({...formData, amount: value})}/>
                 </section>
                 <section className='modal_field'>
@@ -41,10 +41,10 @@ function AddBudgetModal({handleAddBudget, handleCloseBudgetModal, budgetType}) {
                     setValue={(value) => setFormData({...formData, description:value})}/>
                 </section>
                 <section className='modal_field switch_field'>
-                    {/* Send request to update is_confirmed prop of the invoice */}
+                    {/* Send request to update is_verified prop of the invoice */}
                     <ToggleSwitch 
-                        value={formData.is_confirmed} 
-                        setValue={() => setFormData({...formData, is_confirmed:!formData.is_confirmed})} />
+                        value={formData.is_verified} 
+                        setValue={() => setFormData({...formData, is_verified:!formData.is_verified})} />
                     <p className='switch_title'>Сразу подтвердить</p>
                 </section>
                 <section className='modal_actions'>
