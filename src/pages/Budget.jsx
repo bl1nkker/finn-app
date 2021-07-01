@@ -10,6 +10,7 @@ import './pagesStyles/addBudget.css'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { createBudget, updateBudget } from './../redux/actions/budgetActions'
+import TableCalendar from '../components/tableCalendar/TableCalendar'
 
 const tempBudgets = [
     {
@@ -66,6 +67,7 @@ function Budget() {
     const [modalMethod, setModalMethod] = useState('idle')
     const [selectedBudget, setSelectedBudget] = useState(null)
     
+    
     const handleOpenBudgetModal = (type, method, budget) =>{
         setSelectedBudget(budget)
         setModalMethod(method)
@@ -93,8 +95,12 @@ function Budget() {
         setShowAddBudgetModal(false);
         setBudgetType('')
     }
+
+    
+
     return (
         <div className='table_container'>
+            
             {showAddBudgetModal && <>
                 <Backdrop />
                 <AddBudgetModal selectedBudget={selectedBudget} modalMethod={modalMethod} budgetType={budgetType} handleAddBudget={handleAddBudget} handleCloseBudgetModal={handleCloseBudgetModal}/>
