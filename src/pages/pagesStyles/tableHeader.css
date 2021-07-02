@@ -108,6 +108,7 @@
 .underlarge{width: var(--table-field-size-underlarge);}
 .semilarge{width: var(--table-field-size-semilarge);}
 .large{width: var(--table-field-size-large);}
+.big{width: var(--table-field-size-big);}
 
 
 .icon_unfold{font-size: var(--table-field-font-size-semimedium) !important;}
