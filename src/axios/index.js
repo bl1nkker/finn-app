@@ -21,6 +21,11 @@ export const postRevenue = (revenueData) => API.post('/app/revenue/', revenueDat
 export const putRevenue = (revenueData, revenueId) => API.put(`/app/revenue/${revenueId}`, revenueData)
 export const deleteRevenue = (revenueId) => API.delete(`/app/revenue/${revenueId}`)
 
+export const getScans = () => API.get('/app/scan')
+export const postScan = (scanData) => API.post('/app/scan/', scanData)
+export const putScan = (scanData, scanId) => API.put(`/app/scan/${scanId}`, scanData)
+export const deleteScan = (scanId) => API.delete(`/app/scan/${scanId}`)
+
 export const getBudgets = (budgetType) => API.get(`/app/budget/${budgetType}/`)
 export const postBudget = (budgetType, budgetData) => API.post(`/app/budget/${budgetType}/`, budgetData)
 export const putBudget = (budgetType, budgetData, budgetId) => API.put(`/app/budget/${budgetType}/${budgetId}`, budgetData)

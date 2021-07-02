@@ -5,12 +5,14 @@ import signalsReducer from './signalsReducer'
 import authReducer from './authReducer'
 import budgetReducer from './budgetReducer'
 import revenueReducer from './revenueReducer'
+import scansReducer from './scansReducer'
 
 const rootReducer = combineReducers({
     invoices:invoicesReducer,
     signals:signalsReducer,
     budgets:budgetReducer,
     revenues:revenueReducer,
+    scans:scansReducer,
     
     auth:authReducer,
 })

@@ -155,3 +155,9 @@
 
 .switch_input:checked + .switch_slider{border: 1px solid var(--modal-primary-color);}
 .switch_input:checked + .switch_slider:before{transform: translate(29px); background-color: var(--modal-primary-color);}
+
+.modal_field .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
