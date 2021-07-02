@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import RevenueSubRow from './RevenueSubRow';
 
-function RevenueDataRow({ revenuesByDate }) {
+function RevenueDataRow({ revenuesByDate, handleOpenRevenueModal }) {
     return (
             <div className={`registry_row`}>
             <div className="registry_row__left">
@@ -12,7 +12,7 @@ function RevenueDataRow({ revenuesByDate }) {
             <div className="registry_row__right">
 
             {/* Subrows */}
-            {revenuesByDate.revenues.map(revenue => <RevenueSubRow key={revenue.id} revenue={revenue} /> )}
+            {revenuesByDate.revenues.map(revenue => <RevenueSubRow handleOpenRevenueModal={handleOpenRevenueModal} key={revenue.id} revenue={revenue} /> )}
             </div>
         </div>
     )
