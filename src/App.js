@@ -13,7 +13,7 @@ import Nav from "./components/Nav";
 import PrivateRoute from "./components/PrivateRoute";
 
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import Imports from "./pages/Imports";
+import Importers from "./pages/Importers";
 import Coworkers from "./pages/Coworkers";
 import Scans from "./pages/Scans";
 import Revenue from "./pages/Revenue";
@@ -61,7 +61,7 @@ function App() {
               </Route>
               <PrivateRoute path="/home" component={Dashboard} />
               <PrivateRoute path="/scans" component={Scans} />
-              <PrivateRoute path="/imports" component={Imports} />
+              <PrivateRoute path="/imports" component={Importers} />
               <PrivateRoute path="/revenue" component={Revenue} />
               <PrivateRoute path="/coworkers" component={Coworkers} />
               <PrivateRoute path="/budget" component={Budget} />

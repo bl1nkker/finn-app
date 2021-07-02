@@ -10,7 +10,7 @@ import Backdrop from '../components/confirmationWindow/Backdrop'
 import ScanModal from '../components/scans/scanModal/ScanModal'
 
 
-function Revenue() {
+function Scans() {
   const dispatch = useDispatch()
   const scans = useSelector(state => state.scans.data)
 
@@ -80,4 +80,4 @@ function Revenue() {
   )
 }
 
-export default Revenue
+export default Scans
