@@ -1,0 +1,14 @@
+.hover_text_container{
+    position: absolute;
+    border-radius: 10px;
+    left: 20vw;
+    margin-top: 1.5em;
+    padding: 5px 10px;
+    background-color: var(--modal-bg-color);
+    box-shadow: 0 0 3px 1px rgba(204, 204, 204, 0.644);
+}
+
+.hover_text_container .text{
+    font-weight: 300;
+    font-size: 12px;
+}

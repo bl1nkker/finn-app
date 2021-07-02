@@ -1,7 +1,9 @@
 import { CREATE_REVENUE, CREATE_REVENUE_ERROR, DELETE_REVENUE, DELETE_REVENUE_ERROR, FETCH_REVENUES, FETCH_REVENUES_ERROR, UPDATE_REVENUE, UPDATE_REVENUE_ERROR } from './../types'
+import { deleteRevenue, getRevenues, postRevenue, putRevenue } from './../../axios/index'
 
 export const fetchRevenues = () => async(dispatch) =>{
     try {
+        // const { data } = await getRevenues()
         // Temp Data
         const tempRevenues = [
                 { id: 11, cash_income: 1276, cash_free_income: 5435, np: 457, tables: 30, guests: 150, added_at: "2020-03-30", added_by: 0, facility: 0},
@@ -42,6 +44,7 @@ export const fetchRevenues = () => async(dispatch) =>{
 
 export const removeRevenue = (revenueId) => async(dispatch) =>{
     try {
+        await deleteRevenue(revenueId)
         dispatch({ type:DELETE_REVENUE, payload:{deleted:true} })
     } catch (error) {
         console.log(error)
@@ -51,6 +54,7 @@ export const removeRevenue = (revenueId) => async(dispatch) =>{
 
 export const updateRevenue = (formData, revenueId) => async(dispatch) =>{
     try {
+        await putRevenue(formData, revenueId)
         dispatch({ type:UPDATE_REVENUE, payload:{updated:true} })
     } catch (error) {
         console.log(error)
@@ -60,6 +64,7 @@ export const updateRevenue = (formData, revenueId) => async(dispatch) =>{
 
 export const createRevenue = (formData) => async(dispatch) =>{
     try {
+        await postRevenue(formData)
         dispatch({ type:CREATE_REVENUE, payload:{created:true} })
     } catch (error) {
         console.log(error)

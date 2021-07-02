@@ -16,6 +16,11 @@ export const postInvoice = (invoiceData) => API.post('/app/invoice/', invoiceDat
 export const putInvoice = (invoiceData, invoiceId) => API.put(`/app/invoice/${invoiceId}`, invoiceData)
 export const deleteInvoice = (invoiceId) => API.delete(`/app/invoice/${invoiceId}`)
 
+export const getRevenues = () => API.get('/app/revenue')
+export const postRevenue = (revenueData) => API.post('/app/revenue/', revenueData)
+export const putRevenue = (revenueData, revenueId) => API.put(`/app/revenue/${revenueId}`, revenueData)
+export const deleteRevenue = (revenueId) => API.delete(`/app/revenue/${revenueId}`)
+
 export const getBudgets = (budgetType) => API.get(`/app/budget/${budgetType}/`)
 export const postBudget = (budgetType, budgetData) => API.post(`/app/budget/${budgetType}/`, budgetData)
 export const putBudget = (budgetType, budgetData, budgetId) => API.put(`/app/budget/${budgetType}/${budgetId}`, budgetData)
