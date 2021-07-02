@@ -1,183 +1,83 @@
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
-import addScanIcon from '../img/imports/add_scan_icon.svg'
-import Checkbox from '@material-ui/core/Checkbox';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import './pagesStyles/revenueModal.css'
+import ScansHeader from '../components/scans/ScansHeader'
+import ScansDataRow from '../components/scans/ScansDataRow'
+
+// Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { createScan, fetchScans, removeScan, updateScan } from './../redux/actions/scansActions'
+import Backdrop from '../components/confirmationWindow/Backdrop'
+import ScanModal from '../components/scans/scanModal/ScanModal'
 
 
-const useStyles = makeStyles((theme) => ({
-  hideLastBorder: {
-    '&:last-child td, &:last-child th': {
-      border: 0,
-    },
-  },
-  paper: {
-    margin: 20
-  },
-  tableHead: {
-    marginBottom: 10
-  },
-  titleBlock: {
-    marginBottom: 10,
-  },
-  titleText: {
-    color: theme.palette.secondary.main
-  },
-  tableHeaderFirstStyle: {
-    textAlign: "left !important"
-  },
-  tableHeaderStyle: {
-    textAlign: "center",
-    fontWeight: 400,
-    fontStyle: "normal",
+function Revenue() {
+  const dispatch = useDispatch()
+  const scans = useSelector(state => state.scans.data)
 
-  },
-  tableHeader: {
-    padding: 10,
-    paddingLeft: 30
+  const [showScanModal, setShowScanModal] = useState(false)
+  const [selectedScan, setSelectedScan] = useState(null)
+  // create/edit/idle
+  const [modalMethod, setModalMethod] = useState('idle')
+
+  const handleCloseScanModal = () =>{
+    setSelectedScan(null)
+    setModalMethod('idle')
+    setShowScanModal(false);
   }
-}));
 
-function createData(date, files) {
-  return { date, files };
-}
+  const handleOpenScanModal = (method, revenue) =>{
+    setSelectedScan(revenue)
+    setModalMethod(method)
+    setShowScanModal(true);
+  }
 
-export default function Scans() {
-  const classes = useStyles();
-  const [data, setData] = useState([
-    createData('26.01.2021', [
-      { type: 'Накладная', name: 'Джиэфси27.12.2020.jpg', id: 0, checked: false },
-      { type: 'Накладная', name: 'Джиэфси27.12.2020.jpg', id: 0, checked: false },
-      { type: 'Накладная', name: 'Джиэфси27.12.2020.jpg', id: 0, checked: false },
-      { type: 'Накладная', name: 'Джиэфси27.12.2020.jpg', id: 0, checked: false },
-    ]),
-    createData('25.01.2021', [
-      { type: 'Накладная', name: 'Джиэфси27.12.2020.jpg', id: 0, checked: false },
-      { type: 'Накладная', name: 'Джиэфси27.12.2020.jpg', id: 0, checked: false },
-    ]),
-  ])
+  const handleSendScan = (formData) =>{
+    if (modalMethod === "edit") {
+        dispatch(updateScan(formData, formData.id))
+        console.log(`Editing scan...:`, formData);
+    }
+    else if (modalMethod === "create") {
+        dispatch(createScan(formData))
+        console.log(`Adding scan...:`, formData);
+    }
+    setSelectedScan(null)
+    setModalMethod('idle')
+    setShowScanModal(false);
+    window.location.reload()
+  }
 
+  const handleDeleteScan = (formData) =>{
+    dispatch(removeScan(formData.id))
+    console.log('Deleting scan...:', formData);
+    setSelectedScan(null)
+    setModalMethod('idle')
+    setShowScanModal(false);
+    window.location.reload()
+  }
+
+  const handleAddScan = (scan) =>{
+    console.log('*new scan*', scan);
+  }
+
+  useEffect(() =>{
+    dispatch(fetchScans())
+  }, [dispatch])
   return (
-    <div className={classes.paper}>
-      <Container maxWidth="xl" >
-        <Paper className={classes.titleBlock}>
-          <Toolbar>
-            <Grid
-              container
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Typography className={classes.titleText} variant="h5" component="div">
-                Сканы
-              </Typography>
-              <img src={addScanIcon} />
-            </Grid>
-          </Toolbar>
-          <Divider />
-          <div className={classes.tableHeader}>
-            <Grid
-              container
-              direction="row"
-              alignItems="center"
-            >
-              <Grid item xs={2} className={`${classes.tableHeaderStyle}`}>
-                <Typography>
-                  Дата
-                </Typography>
-              </Grid>
-              <Grid item xs={10}>
-                <Grid
-                  container
-                  direction="row"
-                  justifyContent="space-between"
-                  alignItems="center"
-                >
-                  <Grid item xs={5} className={classes.tableHeaderStyle}>
-                    <Typography>
-                      Тип Документа
-                </Typography>
-                  </Grid>
-                  <Grid item xs={6} className={`${classes.tableHeaderStyle} `}>
-                    <Typography>
-                      Файл
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={1} className={`${classes.tableHeaderStyle} `}>
-                    <Typography>
-                      <Checkbox
-                        checked={false}
-                        onChange={(e) => console.log(e)}
-                        inputProps={{ 'aria-label': 'primary checkbox' }}
-                      />
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-          </div>
-        </Paper>
-        {data.map(date => (
-          <Paper className={classes.titleBlock}>
-            <div className={classes.tableHeader}>
-              <Grid
-                container
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-              >
-                <Grid item xs={2} className={`${classes.tableHeaderStyle}`}>
-                  <Typography variant="body2">
-                    {date.date}
-                  </Typography>
-                </Grid>
-                <Grid item xs={10} className={`${classes.tableHeaderStyle}`}>
-                  {date.files.map(d => (
-                    <div>
-                      <Grid
-                        container
-                        direction="row"
-                        justifyContent="space-between"
-                        alignItems="center"
-                      >
-                        <Grid item xs={5} className={classes.tableHeaderStyle}>
-                          <Typography variant="body2">
-                            {d.type}
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={6} className={`${classes.tableHeaderStyle} `}>
-                          <Typography variant="body2">
-                            <Link>
-                              {d.name}
-                            </Link>
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={1} className={`${classes.tableHeaderStyle} `}>
-                          <Checkbox
-                            checked={d.checked}
-                            onChange={(e) => console.log(e)}
-                            inputProps={{ 'aria-label': 'primary checkbox' }}
-                          />
-                        </Grid>
-                      </Grid>
-                      {date.files.indexOf(d) !== date.files.length - 1 &&
-                        <Divider />
-                      }
-                    </div>
-                  ))}
-                </Grid>
-              </Grid>
-            </div>
-          </Paper>
-        ))}
-
-      </Container>
-    </div >
-  );
+    <div className='table_container'>
+      {showScanModal && <>
+                <Backdrop />
+                <ScanModal 
+                handleAddScan={handleAddScan}
+                handleDeleteScan={handleDeleteScan} 
+                modalMethod={modalMethod} 
+                handleSendScan={handleSendScan} 
+                handleCloseScanModal={handleCloseScanModal} 
+                selectedScan={selectedScan}/>
+            </>}
+      <ScansHeader handleOpenScanModal={handleOpenScanModal}/>
+      {scans.map((scansByDate, key) => <ScansDataRow handleOpenRevenueModal={handleOpenScanModal} key={key} scansByDate={scansByDate}/>)}
+    </div>
+  )
 }
+
+export default Revenue

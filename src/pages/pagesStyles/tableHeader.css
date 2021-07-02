@@ -106,6 +106,7 @@
 .semimedium{width: var(--table-field-size-semimedium);}
 .overmedium{width: var(--table-field-size-overmedium);}
 .underlarge{width: var(--table-field-size-underlarge);}
+.semilarge{width: var(--table-field-size-semilarge);}
 .large{width: var(--table-field-size-large);}
 
 
@@ -113,10 +114,13 @@
 .file_icon, .icon_download{color:var(--registry-header-blue); transition: color .3s !important;}
 .file_icon:hover, .icon_download:hover{color:var(--registry-header-sky)}
 
-.icon_blue{color:var(--registry-header-blue); transition: 1s !important;}
+.icon_blue, .text_blue{color:var(--registry-header-blue); transition: 1s !important;}
 .icon_green{color:var(--registry-header-green); transition: 1s !important;}
 
 .icon_blue:hover,
 .icon_green:hover{filter: brightness(2)}
 
 
+
+/* Add */
+.scans{margin-top: 1em;}

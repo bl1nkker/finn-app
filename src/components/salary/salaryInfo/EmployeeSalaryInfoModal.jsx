@@ -34,7 +34,7 @@ function EmployeeSalaryInfoModal({ handleCloseEmployeeSalaryInfoModal, selectedE
                 <button onClick={handlePrintEmployeeSalaryInfo} className='button'>
                     <LocalPrintshopOutlinedIcon className='icon_print'/>
                     <span className='print_text'>Распечатать зарплатный лист</span>
-                    </button>
+                </button>
                 
             </section>
 
