@@ -36,4 +36,9 @@ export const postImporter = (importerData) => API.post('/app/importers/', import
 export const putImporter = (importerData, importerId) => API.put(`/app/importers/${importerId}`, importerData)
 export const deleteImporter = (importerId) => API.delete(`/app/importers/${importerId}`)
 
+export const getCoworkers = () => API.get('/app/employees')
+export const postCoworker = (coworkerData) => API.post('/app/employees/', coworkerData)
+export const putCoworker = (coworkerData, coworkerId) => API.put(`/app/employees/${coworkerId}`, coworkerData)
+export const deleteCoworker = (coworkerId) => API.delete(`/app/employees/${coworkerId}`)
+
 export const loginUser = (email, password) => API.post('/accounts/auth/loginaccount', {email, password})

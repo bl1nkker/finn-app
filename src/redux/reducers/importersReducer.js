@@ -2,6 +2,9 @@ import { CREATE_IMPORTER, CREATE_IMPORTER_ERROR, DELETE_IMPORTER, DELETE_IMPORTE
 
 const initialState = {
     data: [],
+    total:0,
+    not_paid:0,
+    companiesList:[],
     error: ''
 }
 const importersReducer = (state=initialState, action) =>{
