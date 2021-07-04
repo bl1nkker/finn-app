@@ -12,6 +12,7 @@ const authReducer = (state=initState, action) =>{
             localStorage.setItem("token", action.payload.token);
             localStorage.setItem("username", action.payload.user.full_name);
             localStorage.setItem("userEmail", action.payload.user.email);
+            localStorage.setItem("isStaff", action.payload.user.is_staff);
             return {...state, user:action.payload.user, token:action.payload.token}
         case LOGIN_USER_ERROR:
             return {...state, error:action.payload.error}

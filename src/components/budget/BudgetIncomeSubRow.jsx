@@ -2,27 +2,28 @@ import React, { useState, useEffect } from 'react'
 import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
 
 function BudgetIncomeSubRow({income, handleOpenBudgetModal}) {
+    const [currentIncome, setCurrentIncome] = useState(income)
     return (
         <>
         <div className={`registry_subrow budget_subrow`}>
                     <section className='registry_row__item item small'>
-                        <span className="item-text">{income.contragent}</span>
+                        <span className="item-text">{currentIncome.contragent}</span>
                     </section>
                     <hr />
                     <section className='registry_row__item item small'>
-                        <span className="item-text">{income.amount}</span>
+                        <span className="item-text">{currentIncome.amount}</span>
                     </section>
                     <hr />
                     <section className='registry_row__item item small'>
-                        <span className="item-text">{income.description}</span>
+                        <span className="item-text">{currentIncome.description}</span>
                     </section>
                     <hr />
                     <section className='registry_row__item item small'>
-                        <span className="item-text">{income.added_by}</span>
+                        <span className="item-text">{currentIncome.added_by}</span>
                     </section>
                     <hr />
                     <section className='registry_row__item item small'>
-                        <input checked={income.is_verified} type='checkbox'/>
+                        <input checked={currentIncome.is_verified} type='checkbox'/>
                     </section>
                     <hr />
                     <section className='registry_row__item item mini'>

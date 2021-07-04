@@ -58,6 +58,7 @@ const tempBudgets = [
 
 function Budget() {
     const dispatch = useDispatch()
+    // Change this to ID
     // When API will be ready, connect this to all components
     const budgets = useSelector(state => state.budgets.data)
     const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
@@ -82,12 +83,14 @@ function Budget() {
     }
 
     const handleAddBudget = (formData) =>{
+        const currentUser = localStorage.getItem("username")
+        formData = {...formData, added_by: currentUser}
         if (modalMethod === "edit") {
-            dispatch(updateBudget(budgetType, formData, formData.id))
+            // dispatch(updateBudget(budgetType, formData, formData.id))
             console.log(`Editing budget with type ${budgetType}...`, formData);
         }
         else if (modalMethod === "create") {
-            dispatch(createBudget(budgetType, formData))
+            // dispatch(createBudget(budgetType, formData))
             console.log(`Adding budget with type ${budgetType}...`, formData);
         }
         setSelectedBudget(null)

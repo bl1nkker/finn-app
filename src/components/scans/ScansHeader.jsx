@@ -4,9 +4,10 @@ import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
 import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 import SaveAltTwoToneIcon from '@material-ui/icons/SaveAltTwoTone';
 
-function ScansHeader({ handleOpenScanModal }) {
+function ScansHeader({ handleOpenScanModal, handleDownloadScans, handleCheckAllScans }) {
     const docTypes = ["Накладные", "Учет"]
     const [showTableCalendar, setShowTableCalendar] = useState(false)
+    const [checkAllFiles, setCheckAllFiles] = useState(false)
     // start, end
     const [selectedDayPoint, setSelectedDayPoint] = useState('')
     // Select current month (first day and last day)
@@ -33,6 +34,10 @@ function ScansHeader({ handleOpenScanModal }) {
         }
     }
 
+    const handleCheckBox = () =>{
+        setCheckAllFiles(!checkAllFiles)
+        handleCheckAllScans(checkAllFiles)
+    }
     return (
         <section className='table_header'>
             {/* Navigarion + Info */}
@@ -73,8 +78,7 @@ function ScansHeader({ handleOpenScanModal }) {
                 </section>
                 <hr />
                 <section className='table_header__filters item semilarge'>
-                    <input type='checkbox'/>
-                    <SaveAltTwoToneIcon className="icon_download" fontSize="small"/>                
+                    <button onClick={handleDownloadScans}><SaveAltTwoToneIcon className="icon_download" fontSize="small"/></button>
                 </section>
             </div>
         </section>

@@ -77,7 +77,7 @@ function RegistryHeader({ selectAll, setSelectAll, handleShowPopUp }) {
                 </section>
                 <hr />
                 <section className='table_header__filters item extra_small'>
-                    <input checked={selectAll.companyName} type='checkbox' onClick={() => setSelectAll({...selectAll, companyName:!selectAll.companyName})}/>
+                    <input checked={selectAll.date} type='checkbox' onClick={() => setSelectAll({...selectAll, date:!selectAll.date})}/>
                 </section>
                 <hr />
                 <section className='table_header__filters item medium'>
@@ -117,7 +117,6 @@ function RegistryHeader({ selectAll, setSelectAll, handleShowPopUp }) {
                 </section>
                 <hr />
                 <section className='table_header__filters item small'>
-                    <input checked={selectAll.status} type='checkbox' onClick={() => setSelectAll({...selectAll, status:!selectAll.status})}/>
                     <span className="item-text bold_text">Статус</span>
                 </section>
                 <hr />

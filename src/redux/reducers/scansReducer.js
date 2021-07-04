@@ -2,13 +2,14 @@ import { CREATE_SCAN, CREATE_SCAN_ERROR, DELETE_SCAN, DELETE_SCAN_ERROR, FETCH_S
 
 const initState = {
     data: [],
+    rawData:[],
     error:null
 }
 
 const scansReducer = (state=initState, action) =>{
     switch (action.type) {
         case FETCH_SCANS:
-            return {...state, data: action.payload.data}
+            return {...state, data: action.payload.data, rawData:action.payload.rawData}
         case FETCH_SCANS_ERROR:
             return {...state, error: action.payload.error}
 

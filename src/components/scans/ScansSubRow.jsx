@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react'
 
-function ScansSubRow({ scan, handleOpenRevenueModal }) {
+function ScansSubRow({ setScansToDownload, scansToDownload, scan, handleOpenRevenueModal }) {
     const [isHover, setIsHover] = useState(false)
+    const addScanToList = () =>{
+        console.log();
+        if (scansToDownload.indexOf(scan) === -1) {
+            scansToDownload.push(scan)
+        }else{
+            // setScansToDownload(scansToDownload.push(scan))
+            setScansToDownload(scansToDownload.filter(scn => scn.id !== scan.id))
+        }
+    }
     return (
         <div onClick={() => handleOpenRevenueModal('edit', scan)} onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)} className={`registry_subrow budget_subrow ${isHover && 'subrow_checked'}`}>
             <section className='registry_row__item item semilarge'>
@@ -9,11 +18,12 @@ function ScansSubRow({ scan, handleOpenRevenueModal }) {
             </section>
             <hr />
             <section className='registry_row__item item large'>
-                <span className="item-text">{scan.name}</span>
+                <span className="item-text">{scan.file}</span>
             </section>
             <hr />
             <section className='registry_row__item item semilarge'>
-                <input type='checkbox'/>
+            <input value={scan.checked} type='checkbox' 
+                onChange={addScanToList}/>
             </section>
         </div>
     )

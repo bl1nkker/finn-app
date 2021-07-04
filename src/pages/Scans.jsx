@@ -13,9 +13,11 @@ import ScanModal from '../components/scans/scanModal/ScanModal'
 function Scans() {
   const dispatch = useDispatch()
   const scans = useSelector(state => state.scans.data)
+  const rawScans = useSelector(state => state.scans.rawData)
 
   const [showScanModal, setShowScanModal] = useState(false)
   const [selectedScan, setSelectedScan] = useState(null)
+  const [scansToDownload, setScansToDownload] = useState([])
   // create/edit/idle
   const [modalMethod, setModalMethod] = useState('idle')
 
@@ -32,6 +34,8 @@ function Scans() {
   }
 
   const handleSendScan = (formData) =>{
+    const currentUser = localStorage.getItem("username")
+    formData = {...formData, added_by: currentUser}
     if (modalMethod === "edit") {
         dispatch(updateScan(formData, formData.id))
         console.log(`Editing scan...:`, formData);
@@ -59,6 +63,18 @@ function Scans() {
     console.log('*new scan*', scan);
   }
 
+  const handleCheckAllScans = (unChecked) =>{
+    if (unChecked){
+      setScansToDownload([])
+    } else{
+      setScansToDownload(rawScans)
+    }
+  }
+
+  const handleDownloadScans = () =>{
+    console.log("Downloading", scansToDownload);
+  }
+
   useEffect(() =>{
     dispatch(fetchScans())
   }, [dispatch])
@@ -74,8 +90,8 @@ function Scans() {
                 handleCloseScanModal={handleCloseScanModal} 
                 selectedScan={selectedScan}/>
             </>}
-      <ScansHeader handleOpenScanModal={handleOpenScanModal}/>
-      {scans.map((scansByDate, key) => <ScansDataRow handleOpenRevenueModal={handleOpenScanModal} key={key} scansByDate={scansByDate}/>)}
+      <ScansHeader handleCheckAllScans={handleCheckAllScans} handleDownloadScans={handleDownloadScans} handleOpenScanModal={handleOpenScanModal}/>
+      {scans.map((scansByDate, key) => <ScansDataRow setScansToDownload={setScansToDownload} scansToDownload={scansToDownload} handleOpenRevenueModal={handleOpenScanModal} key={key} scansByDate={scansByDate}/>)}
     </div>
   )
 }
