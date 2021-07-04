@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ScansSubRow from './ScansSubRow';
 
-function ScansDataRow({ scansByDate, handleOpenRevenueModal }) {
+function ScansDataRow({ setScansToDownload, scansToDownload, scansByDate, handleOpenRevenueModal }) {
     return (
             <div className={`registry_row`}>
             <div className="registry_row__left">
@@ -12,7 +12,8 @@ function ScansDataRow({ scansByDate, handleOpenRevenueModal }) {
             <div className="registry_row__right">
 
             {/* Subrows */}
-            {scansByDate.scans.map((scan) => <ScansSubRow handleOpenRevenueModal={handleOpenRevenueModal} key={scan.id} scan={scan} /> )}
+            {scansByDate.scans.map((scan) => <ScansSubRow setScansToDownload={setScansToDownload} scansToDownload={scansToDownload}
+            handleOpenRevenueModal={handleOpenRevenueModal} key={scan.id} scan={scan} /> )}
             </div>
         </div>
     )

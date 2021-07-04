@@ -45,7 +45,8 @@ function BudgetTableHeader({ handleOpenBudgetModal }) {
                     </section>
                     <hr />
                     <section className='table_header__filters item small'>
-                        <input type='checkbox' />
+                        {/* This is neccessary */}
+                        {/* <input type='checkbox' /> */}
                         <span className="item-text bold_text">Статус</span>
                         <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
                     </section>
@@ -87,7 +88,7 @@ function BudgetTableHeader({ handleOpenBudgetModal }) {
                     </section>
                     <hr />
                     <section className='table_header__filters item small'>
-                        <input type='checkbox' />
+                        {/* <input type='checkbox' /> */}
                         <span className="item-text bold_text">Статус</span>
                         <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
                     </section>

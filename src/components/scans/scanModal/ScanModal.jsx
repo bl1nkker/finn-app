@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import LargeField from './../../popUp/LargeField'
 import Button from '../../popUp/Button'
 import ScanModalHeader from './ScanModalHeader'
-import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
-
+import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 function ScanModal({ selectedScan, handleCloseScanModal, handleSendScan, handleDeleteScan, modalMethod, handleAddScan }) {
 
     const [formData, setFormData] = useState(selectedScan ? selectedScan : 
         {id: undefined, type_scan: "1", name: "", file: "", added_at: "",facility: 0})
 
+    const handleSubmitScan = (file) =>{
+        handleAddScan(file)
+        setFormData({...formData, name: file.name})
+    }
     return (
         <div className='revenue_modal_container'>
             <ScanModalHeader handleDeleteScan={handleDeleteScan} modalMethod={modalMethod} scan={formData}/>
@@ -21,10 +24,11 @@ function ScanModal({ selectedScan, handleCloseScanModal, handleSendScan, handleD
                 
                 <section className='modal_field'>
                     {/* Add input field here! */}
-                    <button onClick={() => handleAddScan(formData)} className='button'>
-                        <InsertDriveFileIcon className='icon_blue'/>
-                        <span className='text_blue'>{formData.name}</span>
-                    </button>
+                    <input onChange={(event) => handleSubmitScan(event.target.files[0])} type="file" name="file" id="file" className="inputfile" />
+                    <label htmlFor="file">
+                        <InsertDriveFileOutlinedIcon fontSize='small'/>
+                        <span>{formData.name}</span>
+                    </label>
                 </section>
 
                 <section className='modal_actions scans'>

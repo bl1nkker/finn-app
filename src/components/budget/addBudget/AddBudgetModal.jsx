@@ -11,6 +11,7 @@ function AddBudgetModal({selectedBudget, modalMethod, handleAddBudget, handleClo
     const [formData, setFormData] = useState(selectedBudget ? selectedBudget : 
         {id: undefined,amount: 0, description: "", is_verified: false, contragent: "", added_at: "", added_by: "",category: "",facility: 0})
     const categories = ["Машины", "Овощи",'Хозтовары']
+    const userIsStaff = JSON.parse(localStorage.getItem("isStaff"))
     return (
         <div className='modal_container'>
             <AddBudgetHeader modalMethod={modalMethod} budgetType={budgetType} handleCloseBudgetModal={handleCloseBudgetModal} />
@@ -40,13 +41,15 @@ function AddBudgetModal({selectedBudget, modalMethod, handleAddBudget, handleClo
                     fieldLabel="Описание"
                     setValue={(value) => setFormData({...formData, description:value})}/>
                 </section>
+                {userIsStaff && 
                 <section className='modal_field switch_field'>
                     {/* Send request to update is_verified prop of the invoice */}
                     <ToggleSwitch 
                         value={formData.is_verified} 
                         setValue={() => setFormData({...formData, is_verified:!formData.is_verified})} />
                     <p className='switch_title'>Сразу подтвердить</p>
-                </section>
+                </section>}
+                
                 <section className='modal_actions'>
                     <Button onClickFunc={handleCloseBudgetModal} buttonName="Закрыть" isBlue={false}/>
                     <Button onClickFunc={() => handleAddBudget(formData)} buttonName="Добавить" isBlue={true}/>

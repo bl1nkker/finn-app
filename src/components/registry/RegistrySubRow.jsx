@@ -4,13 +4,10 @@ import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
 function RegistrySubRow({invoice, handleShowPopUp, selectRow, setSelectRow, childSelected, setChildSelected}) {
     const [selectSubrow, setSelectSubrow] = useState({date:false, companyName:false, status:false})
     useEffect(() =>{
-        if (selectRow.date) setSelectSubrow({...selectSubrow, companyName:true})
+        setSelectSubrow({...selectSubrow, companyName:selectRow.date})
+        console.log(selectRow);
     },[selectRow])
 
-    const checkboxHandler = () =>{
-        
-    }
-    console.log();
     return (
         <div className={`registry_subrow ${selectSubrow.companyName && "subrow_checked"}`}>
                     <section className='registry_row__item item extra_small'>

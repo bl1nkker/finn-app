@@ -6,7 +6,7 @@ export const fetchScans = () => async(dispatch) => {
         // const { data } = await getScans()
 
         // Temp Data
-        const tempRevenues = [
+        let tempRevenues = [
             {id: 1, type_scan: "1", added_at: "2021-06-16", name: "File Name", file: "/media/arrow-down-red.svg", facility: 1},
             {id: 2, type_scan: "1", added_at: "2020-02-19", name: "Creative File Name", file: "/media/arrow-down-red.svg", facility: 1},
             {id: 3, type_scan: "1", added_at: "2020-02-19", name: "Great File Name", file: "/media/arrow-down-red.svg", facility: 1},
@@ -25,7 +25,7 @@ export const fetchScans = () => async(dispatch) => {
             let dateRelatedData = tempRevenues.filter(invoice => invoice.added_at === date)
             return {date:date, scans:dateRelatedData}})
 
-        dispatch({ type: FETCH_SCANS, payload:{ data: editedData } })
+        dispatch({ type: FETCH_SCANS, payload:{ data: editedData, rawData:tempRevenues } })
     } catch (error) {
         console.log(error)
         dispatch({ type: FETCH_SCANS_ERROR, payload: { error } })
