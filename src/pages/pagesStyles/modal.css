@@ -162,3 +162,63 @@
     justify-content: center;
     align-items: center;
 }
+
+.modal_docsfield{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal_docsfield .docsfield_title{
+    position: absolute;
+    margin-top: -10px;
+    margin-left: 9em;
+    padding: 0 10px;
+
+    font-size: 16px;
+    text-align: left;
+    
+    background: var(--modal-bg-color);
+
+}
+.modal_docsfield .docsfield_inputs{
+    width: 100%;
+    margin: 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.docsfield_input{
+    width: 150px;
+    
+}
+
+.docsfield_inputs .inputfile{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.docsfield_inputs .inputfile + label {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--registry-header-blue);
+    display: inline-block;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+.modal_docsfield hr{
+    margin: 0; 
+    height: 1px; 
+    width: 100%;
+    border:none; 
+    background-color: var(--registry-header-blue);
+}

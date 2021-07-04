@@ -24,6 +24,7 @@ import Settings from "./pages/Settings";
 import Signals from "./pages/Signals";
 
 import DateFnsUtils from '@date-io/date-fns'; // choose your lib
+import "./pages/pagesStyles/main.css";
 
 import {
   MuiPickersUtilsProvider,
