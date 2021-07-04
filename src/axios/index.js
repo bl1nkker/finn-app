@@ -41,4 +41,15 @@ export const postCoworker = (coworkerData) => API.post('/app/employees/', cowork
 export const putCoworker = (coworkerData, coworkerId) => API.put(`/app/employees/${coworkerId}`, coworkerData)
 export const deleteCoworker = (coworkerId) => API.delete(`/app/employees/${coworkerId}`)
 
+export const getAccounts = () => API.get('/accounts/users/')
+export const postAccount = (accountData) => API.post('/accounts/users/', accountData)
+export const putAccount = (accountData, accountId) => API.put(`/accounts/users/${accountId}`, accountData)
+// No
+export const deleteAccount = (accountId) => API.delete(`/accounts/users/${accountId}`)
+
+export const getFacilities = () => API.get('/app/facilities/')
+export const postFacility = (facilityData) => API.post('/app/facilities/', facilityData)
+export const putFacility = (facilityData, facilityId) => API.put(`/app/facilities/${facilityId}`, facilityData)
+export const deleteFacility = (facilityId) => API.delete(`/app/facilities/${facilityId}`)
+
 export const loginUser = (email, password) => API.post('/accounts/auth/loginaccount', {email, password})
