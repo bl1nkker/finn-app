@@ -15,7 +15,7 @@ function SettingsCompanySubRow({company, handleOpenCompanyModal}) {
                     </section>
                     <hr />
                     <section className='registry_row__item item oversmall'>
-                        <span className="item-text">{company.is_active ? "Активен" : "Не активен"}</span>
+                        <span className={`item-text ${company.is_active ? "add" : "delete"}`}>{company.is_active ? "Активен" : "Не активен"}</span>
                     </section>
                     <hr />
         </div>

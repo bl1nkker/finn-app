@@ -1,0 +1,75 @@
+.settings_modal_container{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    background-color: var(--modal-bg-color);
+    z-index: 100;
+    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 20px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.settings_modal_content{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.accounts_left{width:30%;}
+.accounts_right{width: 60%;}
+
+.companies_left{
+    width: 45%; 
+}
+
+.companies_right{width: 50%;}
+
+.list_rows{
+    max-height: 250px;
+    overflow: auto;
+}
+
+.companies_right .list_rows{
+    max-height: 350px;
+    overflow: auto;
+}
+
+.list_rows .right_row{
+    display: flex;
+    justify-content: space-evenly;
+}
+.right_row_actions{
+    display: flex;
+    justify-content: flex-end;
+}
+.list_rows .right_row .row_column_left{width: 50%;}
+.list_rows .right_row .row_column_right{width: 35%;}
+.add_row{
+    color: var(--modal-primary-color);
+    margin-left:1.5em;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.delete_row{
+    color: var(--modal-secondary-color);
+    font-size: 14px;
+    font-weight: 300;
+    text-align: right;
+    margin-left: 0;
+}
+
+.row_actions{
+    display: flex;
+    justify-content: flex-end;
+    width: 95%;
+}
+
+.row_column_left .modal_largefield .input,
+.row_column_right .modal_largefield .input
+{margin: 0px !important;}

@@ -23,7 +23,7 @@ function SettingsAccountsSubRow({account, handleOpenAccountModal}) {
                     </section>
                     <hr />
                     <section className='subrow_item item oversmall'>
-                        <span className="item-text">{account.is_active ? "Активен": "Не активен"}</span>
+                        <span className={`item-text ${account.is_active ? "add" : "delete"}`}>{account.is_active ? "Активен": "Не активен"}</span>
                     </section>
                 </div>
         </>
