@@ -56,6 +56,10 @@ function Revenue() {
     // window.location.reload()
   }
 
+  const handleDownloadInExcel = () =>{
+    console.log('Downloading excel file...');
+  }
+
   useEffect(() =>{
     dispatch(fetchRevenues())
   }, [dispatch])
@@ -70,7 +74,7 @@ function Revenue() {
                 handleCloseRevenueModal={handleCloseRevenueModal} 
                 selectedRevenue={selectedRevenue}/>
             </>}
-      <RevenueHeader handleOpenRevenueModal={handleOpenRevenueModal}/>
+      <RevenueHeader handleDownloadInExcel={handleDownloadInExcel} handleOpenRevenueModal={handleOpenRevenueModal}/>
       {revenues.map((revenuesByDate, key) => <RevenueDataRow handleOpenRevenueModal={handleOpenRevenueModal} key={key} revenuesByDate={revenuesByDate}/>)}
     </div>
   )

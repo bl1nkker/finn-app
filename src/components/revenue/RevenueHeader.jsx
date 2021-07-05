@@ -4,7 +4,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 
-function RevenueHeader({ handleOpenRevenueModal }) {
+function RevenueHeader({ handleOpenRevenueModal, handleDownloadInExcel }) {
     const [showTableCalendar, setShowTableCalendar] = useState(false)
     // start, end
     const [selectedDayPoint, setSelectedDayPoint] = useState('')
@@ -47,7 +47,7 @@ function RevenueHeader({ handleOpenRevenueModal }) {
                 
                 <section className='right'>
                     <button onClick={() => handleOpenRevenueModal('create', null)}><AddCircleOutlineIcon className='icon_green'/></button>
-                    <button><DescriptionOutlinedIcon className='icon_blue'/></button>
+                    <button onClick={handleDownloadInExcel}><DescriptionOutlinedIcon className='icon_blue'/></button>
                 </section>
             </div>
             <hr />

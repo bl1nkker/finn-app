@@ -6,28 +6,19 @@ import SignalModal from "../components/signals/SignalModal";
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchSignals } from './../redux/actions/signalsActions'
+import { fetchRevenues } from './../redux/actions/revenueActions'
 import { useEffect } from "react";
 import Backdrop from "../components/confirmationWindow/Backdrop";
-
-
-const tempData = [
-  {title:'Внимание!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
-  {title:'Не внимание!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
-  {title:'Стой!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
-  {title:'Внимание!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
-  {title:'Внимание!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
-  {title:'Внимание!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
-  {title:'Внимание!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
-  {title:'Внимание!', description:'В ведомости за декабрь 2020  сотруднику Иванову И.И. перевыдано денежных средств в размере 1 500 руб.'},
-]
 
 function Dashboard() {
   const [isConfirmed, setIsConfirmed] = useState(false)
   const signals = useSelector(state => state.signals.data)
+  const revenues = useSelector(state => state.revenues.rawData)
   const dispatch = useDispatch()
 
   useEffect(() =>{
     dispatch(fetchSignals())
+    dispatch(fetchRevenues())
   },[dispatch])
 
   const [showSignalModal, setShowSignalModal] = useState(false)
@@ -37,7 +28,22 @@ function Dashboard() {
     setShowSignalModal(true)
     setSelectedModal(signal)
   }
+
   
+  const today = new Date()
+
+  // Get revenues for 5 days
+  const revenueListForFiveDays = revenues.filter(revenue => 
+    (new Date(revenue.added_at).getTime() > new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7).getTime())
+    && (new Date(revenue.added_at).getTime() < today.getTime()))
+  const revenueForFiveDays = revenueListForFiveDays.reduce((accumulator, current) => accumulator + current.cash_income + current.cash_free_income , 0);
+  
+  // Get revenues for today
+  const revenuesForToday = revenues.filter(revenue => 
+    (new Date(revenue.added_at).getTime() > new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1).getTime())
+    && (new Date(revenue.added_at).getTime() < today.getTime()))
+  const revenueForToday = revenuesForToday.reduce((accumulator, current) => accumulator + current.cash_income + current.cash_free_income , 0);
+
   return (
     <div style={{ textAlign: "center"}}>
       {/* Confirmation Window (perm) */}
@@ -93,11 +99,11 @@ function Dashboard() {
           <div className="info__cards">
             <div className="info__card">
               <div className="info__card-title">Выручка за последние 5 дней</div>
-              <h3 className="info__title">110 000,00 ₽</h3>
+              <h3 className="info__title">{revenueForFiveDays.toFixed(2)} ₽</h3>
             </div>
             <div className="info__card">
               <div className="info__card-title">Выручка за день</div>
-              <h3 className="info__title">110 000,00 ₽</h3>
+              <h3 className="info__title">{revenueForToday.toFixed(2)} ₽</h3>
             </div>
           </div>
         </div>

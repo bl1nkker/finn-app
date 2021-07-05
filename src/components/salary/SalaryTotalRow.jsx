@@ -53,7 +53,7 @@ function SalaryTotalRow({handleOpenCalendar}) {
                         <span className="item-text bold_text">40652</span>             
                     </section>
                     <section className='registry_row__item item extra_small'>
-                        <button><DescriptionOutlinedIcon className="icon_download"  fontSize="small"/></button>
+                        
                     </section>
                 </div>
     )

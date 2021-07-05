@@ -2,13 +2,14 @@ import { CREATE_REVENUE, CREATE_REVENUE_ERROR, DELETE_REVENUE, DELETE_REVENUE_ER
 
 const initState = {
     data: [],
+    rawData:[],
     error:null
 }
 
 const revenueReducer = (state=initState, action) =>{
     switch (action.type) {
         case FETCH_REVENUES:
-            return {...state, data: action.payload.data}
+            return {...state, data: action.payload.data, rawData:action.payload.rawData}
         case FETCH_REVENUES_ERROR:
             return {...state, error: action.payload.error}
 

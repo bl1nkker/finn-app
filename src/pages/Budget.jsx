@@ -14,43 +14,43 @@ import TableCalendar from '../components/tableCalendar/TableCalendar'
 
 const tempBudgets = [
     {
-        date: '2020-10-10',
+        added_at: '2020-10-10',
         expenses:[
-            {id: 1, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 2, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 3, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 4, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 5, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 1, amount: 21305, description: "Default expense", is_verified: false, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 2, amount: 21305, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 3, amount: 21305, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 4, amount: 21305, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 5, amount: 21305, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
         ],
         incomes:[
-            {id: 6, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 7, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 8, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 6, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 7, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 8, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
         ]
   
     },
     {
-        date: '2020-01-30',
+        added_at: '2020-01-30',
         expenses:[
-            {id: 9, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 9, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-01-30", added_by: "Washington DC",category: 1,facility: 0},
         ],
         incomes:[
-            {id: 10, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 11, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 10, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-01-30", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 11, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-01-30", added_by: "Washington DC",category: 1,facility: 0},
         ]
   
     },
     {
-        date: '2020-11-29',
+        added_at: '2020-11-29',
         expenses:[
-            {id: 101, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 12, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 13, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 101, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 12, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 13, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
         ],
         incomes:[
-            {id: 14, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 15, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 16, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "12-10-2020", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 14, amount: 1, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 15, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
+            {id: 16, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
         ]
   
     },
@@ -67,7 +67,11 @@ function Budget() {
     // create/edit/idle
     const [modalMethod, setModalMethod] = useState('idle')
     const [selectedBudget, setSelectedBudget] = useState(null)
-    
+
+    let incomeAmount = 0
+    let expenseAmount = 0
+    tempBudgets.map( budget => budget.incomes.map(income => incomeAmount += income.amount) )
+    tempBudgets.map( budget => budget.expenses.map(expense => expenseAmount += expense.amount) )
     
     const handleOpenBudgetModal = (type, method, budget) =>{
         setSelectedBudget(budget)
@@ -97,19 +101,26 @@ function Budget() {
         setModalMethod("idle")
         setShowAddBudgetModal(false);
         setBudgetType('')
+        // window.location.reload()
     }
 
-    
+    const handleDeleteBudget = (budget) =>{
+        console.log('Deleting', budget);
+        setSelectedBudget(null)
+        setModalMethod("idle")
+        setShowAddBudgetModal(false);
+        setBudgetType('')
+    }
 
     return (
         <div className='table_container'>
             
             {showAddBudgetModal && <>
                 <Backdrop />
-                <AddBudgetModal selectedBudget={selectedBudget} modalMethod={modalMethod} budgetType={budgetType} handleAddBudget={handleAddBudget} handleCloseBudgetModal={handleCloseBudgetModal}/>
+                <AddBudgetModal handleDeleteBudget={handleDeleteBudget} selectedBudget={selectedBudget} modalMethod={modalMethod} budgetType={budgetType} handleAddBudget={handleAddBudget} handleCloseBudgetModal={handleCloseBudgetModal}/>
             </>}
-            <BudgetHeader />
-            <BudgetTableHeader handleOpenBudgetModal={handleOpenBudgetModal}/>
+            <BudgetHeader incomeAmount={incomeAmount} expenseAmount={expenseAmount}/>
+            <BudgetTableHeader incomeAmount={incomeAmount} expenseAmount={expenseAmount} handleOpenBudgetModal={handleOpenBudgetModal}/>
             <BudgetContent handleOpenBudgetModal={handleOpenBudgetModal} budgets={tempBudgets}/>
         </div>
     )

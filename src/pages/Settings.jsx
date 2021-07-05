@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import AddBudgetModal from '../components/budget/addBudget/AddBudgetModal'
 import Backdrop from '../components/confirmationWindow/Backdrop'
 import './pagesStyles/settings.css'
 import './pagesStyles/settingsModal.css'

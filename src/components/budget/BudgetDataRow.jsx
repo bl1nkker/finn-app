@@ -8,7 +8,7 @@ function BudgetDataRow({budget, handleOpenBudgetModal}) {
             <div className={`registry_row budget_row`}>
             <div className="registry_row__left budget_left">
                 <section className='registry_row__item item small'>
-                    <span className="item-text bold_text">{budget.date}</span>     
+                    <span className="item-text bold_text">{budget.added_at}</span>     
                 </section>
 
                 <section className='budget_income_container'>

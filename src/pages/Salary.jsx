@@ -241,7 +241,7 @@ function Registry() {
       <SalaryHeader handleOpenAddEmployeeModal={handleOpenAddEmployeeModal}/>
 
       {/* Main content */}
-      {tempData.map(employee => <SalaryDataRow handleOpenEmployeeSalaryInfo={handleOpenEmployeeSalaryInfo} handleOpenCalendar={handleOpenPersonalCalendar} employee={employee}/>)}
+      {tempData.map((employee, key) => <SalaryDataRow handlePrintEmployeeSalaryInfo={handlePrintEmployeeSalaryInfo} handleOpenEmployeeSalaryInfo={handleOpenEmployeeSalaryInfo} key={key} handleOpenCalendar={handleOpenPersonalCalendar} employee={employee}/>)}
 
       {/* Bottom Row */}
       <SalaryTotalRow handleOpenCalendar={handleOpenSharedCalendar}/>

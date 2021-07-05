@@ -60,5 +60,7 @@ input[type=date] {
   -moz-appearance: textfield;
 }
 
+input[type=checkbox]:checked{filter: hue-rotate(240deg);}
+
 /* Common */
 .bold_text{font-weight: 500 !important;}

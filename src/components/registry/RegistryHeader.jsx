@@ -6,8 +6,7 @@ import { useSelector } from 'react-redux'
 import TableCalendar from '../tableCalendar/TableCalendar';
 
 
-function RegistryHeader({ selectAll, setSelectAll, handleShowPopUp }) {
-    const [payment, setPayment] = useState({ not_paid:12345, total:1235 })
+function RegistryHeader({ handleDownloadFile, selectAll, setSelectAll, handleShowPopUp }) {
     const total = useSelector(state => state.invoices.total)
     const not_paid = useSelector(state => state.invoices.not_paid)
     const companiesList = useSelector(state => state.invoices.companiesList)
@@ -121,7 +120,7 @@ function RegistryHeader({ selectAll, setSelectAll, handleShowPopUp }) {
                 </section>
                 <hr />
                 <section className='table_header__filters item extra_small'>
-                    <button className='download_button'><SaveAltTwoToneIcon className="icon_download"  fontSize="small"/></button>
+                    <button onClick={handleDownloadFile} className='download_button'><SaveAltTwoToneIcon className="icon_download"  fontSize="small"/></button>
                 </section>
             </div>
         </div>

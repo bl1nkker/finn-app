@@ -15,7 +15,6 @@ function PrivateRoute({ component: Component, ...rest }) {
       },
     })
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           setIsLoggedIn(true);
         } else {
