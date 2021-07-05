@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AddBudgetModal from '../components/budget/addBudget/AddBudgetModal'
 import Backdrop from '../components/confirmationWindow/Backdrop'
 import './pagesStyles/settings.css'
+import './pagesStyles/settingsModal.css'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -43,8 +44,8 @@ function Settings() {
         setShowAddAccountModal(false);
     }
 
-    const handleOpenCompanyModal = ( method, account) =>{
-        setSelectedCompany(account)
+    const handleOpenCompanyModal = ( method, company) =>{
+        setSelectedCompany(company)
         setModalMethod(method)
         setShowAddCompanyModal(true);
     }
@@ -56,11 +57,9 @@ function Settings() {
 
     const handleAddAccount = (formData) =>{
         if (modalMethod === "edit") {
-            // dispatch(updateBudget(budgetType, formData, formData.id))
             console.log(`Editing account`, formData);
         }
         else if (modalMethod === "create") {
-            // dispatch(createBudget(budgetType, formData))
             console.log(`Adding account`, formData);
         }
         setSelectedAccount(null)
