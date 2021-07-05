@@ -37,26 +37,26 @@ function Scans() {
     const currentUser = localStorage.getItem("username")
     formData = {...formData, added_by: currentUser}
     if (modalMethod === "edit") {
-        dispatch(updateScan(formData, formData.id))
+        // dispatch(updateScan(formData, formData.id))
         console.log(`Editing scan...:`, formData);
     }
     else if (modalMethod === "create") {
-        dispatch(createScan(formData))
+        // dispatch(createScan(formData))
         console.log(`Adding scan...:`, formData);
     }
     setSelectedScan(null)
     setModalMethod('idle')
     setShowScanModal(false);
-    window.location.reload()
+    // window.location.reload()
   }
 
   const handleDeleteScan = (formData) =>{
-    dispatch(removeScan(formData.id))
+    // dispatch(removeScan(formData.id))
     console.log('Deleting scan...:', formData);
     setSelectedScan(null)
     setModalMethod('idle')
     setShowScanModal(false);
-    window.location.reload()
+    // window.location.reload()
   }
 
   const handleAddScan = (scan) =>{

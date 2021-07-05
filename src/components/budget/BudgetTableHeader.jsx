@@ -2,7 +2,7 @@ import React from 'react'
 import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
-function BudgetTableHeader({ handleOpenBudgetModal }) {
+function BudgetTableHeader({ handleOpenBudgetModal, expenseAmount, incomeAmount }) {
     return (
         <section className='budget_table_header'>
             {/* Income */}
@@ -13,7 +13,7 @@ function BudgetTableHeader({ handleOpenBudgetModal }) {
                         <button onClick={() => handleOpenBudgetModal("income", 'create', {})} className='income_add'><AddCircleOutlineIcon className='icon_add' fontSize='small'/></button>
                     </div>
                     <div className='right'>
-                        <span className='income_amount'>43543.00$</span>
+                        <span className='income_amount'>{incomeAmount.toFixed(2)} ₽</span>
                     </div>
                 </div>
                 <hr />
@@ -61,7 +61,7 @@ function BudgetTableHeader({ handleOpenBudgetModal }) {
                         <button onClick={() => handleOpenBudgetModal("expense", 'create', {})} className='expense_add'><AddCircleOutlineIcon className='icon_add' fontSize='small'/></button>
                     </div>
                     <div className='right'>
-                        <span className='expense_amount'>43543.00$</span>
+                        <span className='expense_amount'>{expenseAmount.toFixed(2)} ₽</span>
                     </div>
                 </div>
                 <hr />

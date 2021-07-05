@@ -7,14 +7,14 @@ import ToggleSwitch from '../../popUp/ToggleSwitch'
 import Button from '../../popUp/Button'
 import TextAreaField from '../../popUp/TextAreaField'
 
-function AddBudgetModal({selectedBudget, modalMethod, handleAddBudget, handleCloseBudgetModal, budgetType}) {
+function AddBudgetModal({handleDeleteBudget, selectedBudget, modalMethod, handleAddBudget, handleCloseBudgetModal, budgetType}) {
     const [formData, setFormData] = useState(selectedBudget ? selectedBudget : 
         {id: undefined,amount: 0, description: "", is_verified: false, contragent: "", added_at: "", added_by: "",category: "",facility: 0})
     const categories = ["Машины", "Овощи",'Хозтовары']
     const userIsStaff = JSON.parse(localStorage.getItem("isStaff"))
     return (
         <div className='modal_container'>
-            <AddBudgetHeader modalMethod={modalMethod} budgetType={budgetType} handleCloseBudgetModal={handleCloseBudgetModal} />
+            <AddBudgetHeader handleDeleteBudget={() => handleDeleteBudget(formData)} modalMethod={modalMethod} budgetType={budgetType} handleCloseBudgetModal={handleCloseBudgetModal} />
             <div className='add_budget_form'>
                 <section className='modal_field'>
                     <DoubleField 

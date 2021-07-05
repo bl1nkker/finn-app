@@ -17,8 +17,6 @@ function Registry() {
   const dispatch = useDispatch()
   // select, idle, deselect
   const [selectAll, setSelectAll] = useState({date:false, companyName:false, status:false})
-  
-  const [rowToEdit, setRowToEdit] = useState(false)
 
   const [openPopUp, setOpenPopUp] = useState(false)
   const [modalMethod, setModalMethod] = useState('idle')
@@ -39,6 +37,10 @@ function Registry() {
     setOpenPopUp(true);
   }
 
+  const handleDownloadFile = () =>{
+    console.log('Downloading file...');
+  }
+
   return (
     <div className='table_container'>
       {openPopUp && (
@@ -47,7 +49,7 @@ function Registry() {
           <Modal setOpenPopUp={setOpenPopUp} modalMethod={modalMethod} invoiceToEdit={invoiceToEdit}/>
         </>
       )}
-      <RegistryHeader handleShowPopUp={handleShowPopUp} selectAll={selectAll} setSelectAll={setSelectAll}/>
+      <RegistryHeader handleDownloadFile={handleDownloadFile} handleShowPopUp={handleShowPopUp} selectAll={selectAll} setSelectAll={setSelectAll}/>
       {invoices.length !== 0 ? 
       invoices.map((invoicesByDate, key) => 
         <RegistryDataRow key={key} 

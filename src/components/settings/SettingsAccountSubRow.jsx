@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
+import React, { useState } from 'react'
 
 function SettingsAccountsSubRow({account, handleOpenAccountModal}) {
     const [showCreator, setShowCreator] = useState(false)

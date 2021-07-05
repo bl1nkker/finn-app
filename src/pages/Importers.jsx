@@ -36,13 +36,13 @@ function Imports() {
         console.log(`Editing Importer...:`, formData);
     }
     else if (modalMethod === "create") {
-        dispatch(createImporter(formData))
+        // dispatch(createImporter(formData))
         console.log(`Adding Importer...:`, formData);
     }
     setSelectedImporter(null)
     setModalMethod('idle')
     setShowImporterModal(false);
-    window.location.reload()
+    // window.location.reload()
   }
 
   const handleDeleteImporter = (formData) =>{

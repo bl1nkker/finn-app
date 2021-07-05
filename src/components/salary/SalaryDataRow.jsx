@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
-function SalaryDataRow({employee, handleOpenCalendar, handleOpenEmployeeSalaryInfo}) {
+function SalaryDataRow({handlePrintEmployeeSalaryInfo, employee, handleOpenCalendar, handleOpenEmployeeSalaryInfo}) {
     return (
         <div className={`registry_row`}>
                     <section onClick={() => handleOpenEmployeeSalaryInfo(employee)} className='registry_row__item left_align item semimedium employee_info'>
@@ -52,7 +52,7 @@ function SalaryDataRow({employee, handleOpenCalendar, handleOpenEmployeeSalaryIn
                         <span className="item-text">{employee.total}</span>             
                     </section>
                     <section className='registry_row__item item extra_small'>
-                        <button><DescriptionOutlinedIcon className="icon_download"  fontSize="small"/></button>
+                        <button onClick={handlePrintEmployeeSalaryInfo}><DescriptionOutlinedIcon className="icon_download"  fontSize="small"/></button>
                     </section>
                 </div>
     )

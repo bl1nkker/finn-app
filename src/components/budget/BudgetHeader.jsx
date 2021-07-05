@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TableCalendar from '../tableCalendar/TableCalendar'
 
-function BudgetHeader() {
+function BudgetHeader({ incomeAmount, expenseAmount }) {
     const [showTableCalendar, setShowTableCalendar] = useState(false)
     // start, end
     const [selectedDayPoint, setSelectedDayPoint] = useState('')
@@ -43,7 +43,7 @@ function BudgetHeader() {
                 </section>
                 
                 <section className='right'>
-                    <span className='budget_text'>12356. 00 RUB</span>
+                    <span className='budget_text'>{(incomeAmount - expenseAmount).toFixed(2)} ₽</span>
                 </section>
             </div>
         </section>

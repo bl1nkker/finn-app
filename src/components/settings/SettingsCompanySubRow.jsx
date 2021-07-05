@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
+import React, { useState } from 'react'
 
 function SettingsCompanySubRow({company, handleOpenCompanyModal}) {
     const [showCreator, setShowCreator] = useState(false)

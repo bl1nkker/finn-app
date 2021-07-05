@@ -17,7 +17,12 @@ export const fetchRevenues = () => async(dispatch) =>{
                 { id: 31, cash_income: 1276, cash_free_income: 5435, np: 457, tables: 30, guests: 150, added_at: "2020-07-08", added_by: 0, facility: 0},
                 { id: 32, cash_income: 4324, cash_free_income: 435, np: 4212, tables: 40, guests: 120, added_at: "2020-07-08", added_by: 0, facility: 0},
                 { id: 33, cash_income: 23456, cash_free_income: 12356, np: 656, tables: 50, guests: 200, added_at: "2020-07-08", added_by: 0, facility: 0},
-                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2020-07-08", added_by: 0, facility: 0},
+                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-12-05", added_by: 0, facility: 0},
+                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-05", added_by: 0, facility: 0},
+                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-04", added_by: 0, facility: 0},
+                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-03", added_by: 0, facility: 0},
+                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-02", added_by: 0, facility: 0},
+                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-01", added_by: 0, facility: 0},
           ]
         // Get dates (unic)
         const tmp = tempRevenues.map(invoice => invoice.added_at)
@@ -35,7 +40,7 @@ export const fetchRevenues = () => async(dispatch) =>{
           }))
           return {date:date, revenues:dateRelatedRevenues}
         })
-        dispatch({ type: FETCH_REVENUES, payload:{ data:editedData } })
+        dispatch({ type: FETCH_REVENUES, payload:{ data:editedData, rawData: tempRevenues } })
     } catch (error) {
         console.log(error)
         dispatch({ type: FETCH_REVENUES_ERROR, payload:{ error } })
