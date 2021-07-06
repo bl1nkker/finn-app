@@ -32,11 +32,11 @@ function Imports() {
 
   const handleSendImporter = (formData) =>{
     if (modalMethod === "edit") {
-        // dispatch(updateImporter(formData, formData.id))
+        dispatch(updateImporter(formData, formData.id))
         console.log(`Editing Importer...:`, formData);
     }
     else if (modalMethod === "create") {
-        // dispatch(createImporter(formData))
+        dispatch(createImporter(formData))
         console.log(`Adding Importer...:`, formData);
     }
     setSelectedImporter(null)
