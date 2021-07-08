@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useReducer } from 'react'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 import validator from 'validator'
 
@@ -7,6 +7,27 @@ function ForgotPasswordModal({ codeValidationError, handleCompareCode, handleSen
     const [codeIsSend, setCodeIsSend] = useState(false)
     const [inputCode, setInputCode] = useState({first:'', second:'', third:'', fourth:'', fifth:'', sixth:''})
     const [emailValidationError, setEmailValidationError] = useState(false)
+
+    // Timer
+    const [timer, setTimer] = useState(0)
+    const [seconds, setSeconds] = useState(120)
+    const [timerOnCoolDown, settimerOnCoolDown] = useState(false)
+    useEffect(() => {
+        if (seconds <= 0){
+            clearInterval(timer)
+            setTimer(0)
+            settimerOnCoolDown(false)
+            setSeconds(120)
+        }
+    }, [seconds])
+
+    const startTimer = () =>{
+        if (timer === 0 && seconds !== 0) {
+            setTimer(setInterval(() => setSeconds(secs => secs - 1), 1000))
+            settimerOnCoolDown(true)
+        }
+    }
+
 
     const firstSymbol = useRef()
     const secondSymbol = useRef()
@@ -17,6 +38,10 @@ function ForgotPasswordModal({ codeValidationError, handleCompareCode, handleSen
     const button = useRef()
 
     const handleSendCodeButton = () =>{
+        if (codeIsSend){
+            startTimer()
+        }
+        
         if (validator.isEmail(email)){
             handleSendCode(email)
             setCodeIsSend(true)
@@ -24,7 +49,6 @@ function ForgotPasswordModal({ codeValidationError, handleCompareCode, handleSen
         }else{
             setEmailValidationError(true)
         }
-        
     }
 
     const switchToNext = (current, next) =>{
@@ -95,7 +119,11 @@ function ForgotPasswordModal({ codeValidationError, handleCompareCode, handleSen
                     </section>
                     <section className='login_actions'>
                         <button ref={button} onClick={() => handleCompareCode(Object.values(inputCode).reduce((acc, value) => value + acc, ''))}>Подтвердить код</button>
-                        <span onClick={handleSendCodeButton}>Отправить код повторно</span>
+                        {timerOnCoolDown ? 
+                        <span className='button_cooldown'>Отправить код повторно через: {Math.floor(seconds / 60)}:{Math.ceil(seconds % 60)}</span> : 
+                        <span className='button_send' onClick={handleSendCodeButton}>Отправить код повторно</span>}
+                        
+                        
                     </section>
                 </>
             )}

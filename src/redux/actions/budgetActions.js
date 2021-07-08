@@ -1,5 +1,5 @@
 import { CREATE_BUDGET, CREATE_BUDGET_ERROR, DELETE_BUDGET, DELETE_BUDGET_ERROR, FETCH_BUDGETS, FETCH_BUDGETS_ERROR, UPDATE_BUDGET, UPDATE_BUDGET_ERROR } from './../types'
-import { deleteBudget, getBudgets, putBudget } from './../../axios/index'
+import { deleteBudget, getBudgets, postBudget, putBudget } from './../../axios/index'
 
 export const fetchBudgets = (budgetType) => async(dispatch) =>{
     try {
@@ -13,7 +13,7 @@ export const fetchBudgets = (budgetType) => async(dispatch) =>{
 
 export const createBudget = (budgetType, formData) => async(dispatch) =>{
     try {
-        await createBudget(budgetType, formData)
+        await postBudget(budgetType, formData)
         // After query, the page will be refreshed
         dispatch({ type:CREATE_BUDGET, payload:{created: true} })
     } catch (error) {

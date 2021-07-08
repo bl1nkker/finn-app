@@ -32,28 +32,28 @@ function Revenue() {
 
   const handleSendRevenue = (formData) =>{
     const currentUser = localStorage.getItem("username")
-    formData = {...formData, added_by: currentUser}
+    formData = {...formData, added_by: 1}
     if (modalMethod === "edit") {
-        // dispatch(updateRevenue(formData, formData.id))
+        dispatch(updateRevenue(formData, formData.id))
         console.log(`Editing revenue...:`, formData);
     }
     else if (modalMethod === "create") {
-        // dispatch(createRevenue(formData))
+        dispatch(createRevenue(formData))
         console.log(`Adding revenue...:`, formData);
     }
     setSelectedRevenue(null)
     setModalMethod('idle')
     setShowRevenueModal(false);
-    // window.location.reload()
+    window.location.reload()
   }
 
   const handleDeleteRevenue = (formData) =>{
-    // dispatch(removeRevenue(formData.id))
+    dispatch(removeRevenue(formData.id))
     console.log('Deleting revenue...:', formData);
     setSelectedRevenue(null)
     setModalMethod('idle')
     setShowRevenueModal(false);
-    // window.location.reload()
+    window.location.reload()
   }
 
   const handleDownloadInExcel = () =>{

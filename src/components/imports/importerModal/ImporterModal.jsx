@@ -11,7 +11,7 @@ function ImporterModal({ selectedImporter, handleCloseImporterModal, handleSendI
     const [formData, setFormData] = useState(selectedImporter ? selectedImporter : 
         { company_name: "", bank_name: "", correspondent_account: "", 
         inn: "", bik: "", expense_account: "", production_type: "", 
-        custom_production_type: "", comment: "", is_deleted: true, 
+        custom_production_type: "empty", comment: "", is_deleted: true, 
         facility: 1})
     return (
         <div className='importer_modal_container'>

@@ -52,7 +52,7 @@ function LoginModal({setAuthError, authError, setAuthState, handleLogin }) {
             </section>
             <section className='login_actions'>
                 <button onClick={handleLoginButton}>Войти</button>
-                <span onClick={() => setAuthState("forgot")}>Забыли пароль?</span>
+                <span className='button_send' onClick={() => setAuthState("forgot")}>Забыли пароль?</span>
             </section>
         </div>
     )

@@ -124,14 +124,25 @@
     background-color: var(--modal-primary-color);
 }
 
-.login_actions span{
+.login_actions .button_send,
+.login_actions .button_cooldown
+{
     position: relative;
     top: 15px;
     width: 100%;
     text-align: left;
-    cursor: pointer;
+    
     
     font-size: 14px;
     font-weight: 300;
+    
+}
+
+.login_actions .button_send{
+    cursor: pointer;
     color: var(--modal-primary-color)
+}
+
+.login_actions .button_cooldown{
+    color: var(--modal-gray-color)
 }

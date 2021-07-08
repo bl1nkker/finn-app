@@ -15,7 +15,7 @@ function CoworkersModal({ selectedCoworker, handleCloseCoworkerModal, handleSend
     const [formData, setFormData] = useState(selectedCoworker ? selectedCoworker : 
         { profile_picture: "", full_name: "", phone_number: "", 
         subdivision: "", payment_type: "", pay_rate: "", address_residing: "", 
-        actual_address: "", comment: "", is_foreign: false, 
+        actual_address: "", comment: "", is_foreign: false, post:'',
         is_active: false, date_fired: "", facility: 0})
     return (
         <div className='coworkers_modal_container'>
@@ -85,8 +85,8 @@ function CoworkersModal({ selectedCoworker, handleCloseCoworkerModal, handleSend
 
                 <div className='grid_post'>
                     <LargeField 
-                        // value={formData.actual_address} 
-                        // setValue={(value) => setFormData({...formData, actual_address:value})} 
+                        value={formData.post} 
+                        setValue={(value) => setFormData({...formData, post:value})} 
                         fieldLabel='Должность' inputType='text'/>
                 </div>
 

@@ -33,7 +33,7 @@ export default function Login() {
   const handleCompareCode = (code) =>{
     // Fetch validate code and compare
     const codeToCompare = code.split("").reverse().join("")
-    if (codeToCompare === 'yaspermaglot'){
+    if (codeToCompare === '123456'){
       setAuthState("change")
     }else{
       setCodeValidationError(true)

@@ -32,8 +32,9 @@ function Imports() {
 
   const handleSendImporter = (formData) =>{
     if (modalMethod === "edit") {
-        dispatch(updateImporter(formData, formData.id))
-        console.log(`Editing Importer...:`, formData);
+        const editedData = {...formData, custom_production_type: 'empty'}
+        dispatch(updateImporter(editedData, formData.id))
+        console.log(`Editing Importer...:`, editedData);
     }
     else if (modalMethod === "create") {
         dispatch(createImporter(formData))
@@ -46,7 +47,7 @@ function Imports() {
   }
 
   const handleDeleteImporter = (formData) =>{
-    // dispatch(removeImporter(formData.id))
+    dispatch(removeImporter(formData.id))
     console.log('Deleting Importer...:', formData);
     setSelectedImporter(null)
     setModalMethod('idle')

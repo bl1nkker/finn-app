@@ -3,6 +3,7 @@ import TableCalendar from '../tableCalendar/TableCalendar'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
+import Test from '../popUp/Test';
 
 function RevenueHeader({ handleOpenRevenueModal, handleDownloadInExcel }) {
     const [showTableCalendar, setShowTableCalendar] = useState(false)
@@ -39,9 +40,13 @@ function RevenueHeader({ handleOpenRevenueModal, handleDownloadInExcel }) {
                 <section className='left'>
                     <p  className='title'>Выручка</p>
                     <div className='buttons_container'>
-                        {showTableCalendar && <TableCalendar handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>}
+                        {/* Variant 1 */}
+                        {/* {showTableCalendar && <TableCalendar handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>}
                         <button onClick={() => handleToggleTableCalendar("start")} className="button">{startDate.toDateString()}</button>
-                        <button onClick={() => handleToggleTableCalendar("end")} className="button">{endDate.toDateString()}</button>
+                        <button onClick={() => handleToggleTableCalendar("end")} className="button">{endDate.toDateString()}</button> */}
+
+                        {/* Variant 2 */}
+                        <Test />
                     </div>
                 </section>
                 
