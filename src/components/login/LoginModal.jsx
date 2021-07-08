@@ -3,7 +3,8 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
 import validator from 'validator'
 
-function LoginModal({ setAuthState, handleLogin }) {
+
+function LoginModal({setAuthError, authError, setAuthState, handleLogin }) {
     const [authForm, setAuthForm] = useState({ email:'', password:'' })
     const [isVisible, setIsVisible] = useState(false)
     const [emailValidationError, setEmailValidationError] = useState(false)
@@ -13,7 +14,8 @@ function LoginModal({ setAuthState, handleLogin }) {
         if (!validator.isEmail(authForm.email)){
             setEmailValidationError(true)
             
-        }else if (authForm.password.length < 8){
+        }else if (authForm.password.length < 8 || authError){
+            setAuthError(null)
             setPasswordValidationError(true)
         }
         else{
@@ -50,7 +52,7 @@ function LoginModal({ setAuthState, handleLogin }) {
             </section>
             <section className='login_actions'>
                 <button onClick={handleLoginButton}>Войти</button>
-                <span onClick={() => setAuthState("forgot")}>Забыли пароль?</span>
+                <span className='button_send' onClick={() => setAuthState("forgot")}>Забыли пароль?</span>
             </section>
         </div>
     )

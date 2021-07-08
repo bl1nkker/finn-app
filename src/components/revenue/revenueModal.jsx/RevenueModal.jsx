@@ -6,7 +6,7 @@ import RevenueModalHeader from './RevenueModalHeader'
 function RevenueModal({ selectedRevenue, handleCloseRevenueModal, handleSendRevenue, handleDeleteRevenue, modalMethod }) {
 
     const [formData, setFormData] = useState(selectedRevenue ? selectedRevenue : 
-        {id: undefined, np: 0, cash_income: 0, cash_free_income: 0, contragent: "", added_at: "", added_by: "",category: "",facility: 0})
+        {id: undefined, np: 0, cash_income: 0, cash_free_income: 0, contragent: "", added_at: "", added_by: "",category: "",facility: 1})
 
     return (
         <div className='revenue_modal_container'>

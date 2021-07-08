@@ -16,10 +16,9 @@ function CompanyModal({selectedCompany, modalMethod, handleAddCompany, handleClo
         const updatedLst = formData.listOfOrgs.filter(d => data.id !== d.id)
         setFormData({...formData, listOfOrgs:updatedLst})
     }
-    console.log(formData);
     return (
         <div className='settings_modal_container'>
-            <CompanyModalHeader handleChangeActivity={() => setFormData({...formData, is_active:!formData.is_active})} modalMethod={modalMethod} selectedCompany={formData}/>
+            <CompanyModalHeader handleChangeActivity={() => setFormData({...formData, is_active:!formData.is_active})} modalMethod={modalMethod} staticCompany={selectedCompany} selectedCompany={formData}/>
 
             <section className='settings_modal_content'>
                 <div className='companies_left'>
@@ -50,7 +49,7 @@ function CompanyModal({selectedCompany, modalMethod, handleAddCompany, handleClo
                     <TextAreaField fieldLabel='Комментарий' value={formData.comment} setValue={(value) => setFormData({...formData, comment:value})}/>
                     <section className='modal_actions'>
                         <Button onClickFunc={() => handleCloseCompanyModal()}  buttonName="Закрыть" isBlue={false}/>
-                        <Button onClickFunc={() => handleAddCompany(formData)} buttonName="Сохранить" isBlue={true}/>
+                        <Button onClickFunc={() => handleAddCompany(formData)} buttonName="Добавить" isBlue={true}/>
                     </section>
                 </div>
 

@@ -32,11 +32,11 @@ function Coworkers() {
 
   const handleSendCoworker = (formData) =>{
     if (modalMethod === "edit") {
-        // dispatch(updateCoworker(formData, formData.id))
+        dispatch(updateCoworker(formData, formData.id))
         console.log(`Editing Coworker...:`, formData);
     }
     else if (modalMethod === "create") {
-        // dispatch(createCoworker(formData))
+        dispatch(createCoworker(formData))
         console.log(`Adding Coworker...:`, formData);
     }
     setSelectedCoworker(null)

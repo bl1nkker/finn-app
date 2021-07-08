@@ -70,6 +70,11 @@
     width: 95%;
 }
 
+.accounts_left .modal_actions .modal_action{
+    width: 120px !important;
+    height: 30px !important;
+}
+
 .row_column_left .modal_largefield .input,
 .row_column_right .modal_largefield .input
 {margin: 0px !important;}

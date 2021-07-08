@@ -3,34 +3,34 @@ import { deleteRevenue, getRevenues, postRevenue, putRevenue } from './../../axi
 
 export const fetchRevenues = () => async(dispatch) =>{
     try {
-        // const { data } = await getRevenues()
+        const { data } = await getRevenues()
         // Temp Data
-        const tempRevenues = [
-                { id: 11, cash_income: 1276, cash_free_income: 5435, np: 457, tables: 30, guests: 150, added_at: "2020-03-30", added_by: 0, facility: 0},
-                { id: 12, cash_income: 4324, cash_free_income: 435, np: 4212, tables: 40, guests: 120, added_at: "2020-03-30", added_by: 0, facility: 0},
-                { id: 13, cash_income: 23456, cash_free_income: 12356, np: 656, tables: 50, guests: 200, added_at: "2020-11-31", added_by: 0, facility: 0},
-                { id: 14, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2020-11-31", added_by: 0, facility: 0},
-                { id: 21, cash_income: 1276, cash_free_income: 5435, np: 457, tables: 30, guests: 150, added_at: "2020-11-31", added_by: 0, facility: 0},
-                { id: 22, cash_income: 4324, cash_free_income: 435, np: 4212, tables: 40, guests: 120, added_at: "2020-11-31", added_by: 0, facility: 0},
-                { id: 23, cash_income: 23456, cash_free_income: 12356, np: 656, tables: 50, guests: 200, added_at: "2021-09-19", added_by: 0, facility: 0},
-                { id: 24, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-01-19", added_by: 0, facility: 0},
-                { id: 31, cash_income: 1276, cash_free_income: 5435, np: 457, tables: 30, guests: 150, added_at: "2020-07-08", added_by: 0, facility: 0},
-                { id: 32, cash_income: 4324, cash_free_income: 435, np: 4212, tables: 40, guests: 120, added_at: "2020-07-08", added_by: 0, facility: 0},
-                { id: 33, cash_income: 23456, cash_free_income: 12356, np: 656, tables: 50, guests: 200, added_at: "2020-07-08", added_by: 0, facility: 0},
-                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-12-05", added_by: 0, facility: 0},
-                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-05", added_by: 0, facility: 0},
-                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-04", added_by: 0, facility: 0},
-                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-03", added_by: 0, facility: 0},
-                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-02", added_by: 0, facility: 0},
-                { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-01", added_by: 0, facility: 0},
-          ]
+        // const tempRevenues = [
+        //         { id: 11, cash_income: 1276, cash_free_income: 5435, np: 457, tables: 30, guests: 150, added_at: "2020-03-30", added_by: 0, facility: 0},
+        //         { id: 12, cash_income: 4324, cash_free_income: 435, np: 4212, tables: 40, guests: 120, added_at: "2020-03-30", added_by: 0, facility: 0},
+        //         { id: 13, cash_income: 23456, cash_free_income: 12356, np: 656, tables: 50, guests: 200, added_at: "2020-11-31", added_by: 0, facility: 0},
+        //         { id: 14, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2020-11-31", added_by: 0, facility: 0},
+        //         { id: 21, cash_income: 1276, cash_free_income: 5435, np: 457, tables: 30, guests: 150, added_at: "2020-11-31", added_by: 0, facility: 0},
+        //         { id: 22, cash_income: 4324, cash_free_income: 435, np: 4212, tables: 40, guests: 120, added_at: "2020-11-31", added_by: 0, facility: 0},
+        //         { id: 23, cash_income: 23456, cash_free_income: 12356, np: 656, tables: 50, guests: 200, added_at: "2021-09-19", added_by: 0, facility: 0},
+        //         { id: 24, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-01-19", added_by: 0, facility: 0},
+        //         { id: 31, cash_income: 1276, cash_free_income: 5435, np: 457, tables: 30, guests: 150, added_at: "2020-07-08", added_by: 0, facility: 0},
+        //         { id: 32, cash_income: 4324, cash_free_income: 435, np: 4212, tables: 40, guests: 120, added_at: "2020-07-08", added_by: 0, facility: 0},
+        //         { id: 33, cash_income: 23456, cash_free_income: 12356, np: 656, tables: 50, guests: 200, added_at: "2020-07-08", added_by: 0, facility: 0},
+        //         { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-12-05", added_by: 0, facility: 0},
+        //         { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-05", added_by: 0, facility: 0},
+        //         { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-04", added_by: 0, facility: 0},
+        //         { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-03", added_by: 0, facility: 0},
+        //         { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-02", added_by: 0, facility: 0},
+        //         { id: 34, cash_income: 64565, cash_free_income: 23452, np: 7897, tables: 100, guests: 300, added_at: "2021-07-01", added_by: 0, facility: 0},
+        //   ]
         // Get dates (unic)
-        const tmp = tempRevenues.map(invoice => invoice.added_at)
+        const tmp = data.map(invoice => invoice.added_at)
         const unicDates = tmp.filter((item, pos) => tmp.indexOf(item) === pos)
 
         // Edit data to normal state
         let editedData = unicDates.map(date => {
-          let dateRelatedRevenues = tempRevenues.filter(invoice => invoice.added_at === date)
+          let dateRelatedRevenues = data.filter(invoice => invoice.added_at === date)
 
           // Additional properties
           dateRelatedRevenues = dateRelatedRevenues.map( revenue => ({...revenue, 
@@ -40,7 +40,7 @@ export const fetchRevenues = () => async(dispatch) =>{
           }))
           return {date:date, revenues:dateRelatedRevenues}
         })
-        dispatch({ type: FETCH_REVENUES, payload:{ data:editedData, rawData: tempRevenues } })
+        dispatch({ type: FETCH_REVENUES, payload:{ data:editedData, rawData: data } })
     } catch (error) {
         console.log(error)
         dispatch({ type: FETCH_REVENUES_ERROR, payload:{ error } })

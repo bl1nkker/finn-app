@@ -3,14 +3,16 @@ import Backdrop from '../components/confirmationWindow/Backdrop'
 import './pagesStyles/settings.css'
 import './pagesStyles/settingsModal.css'
 
-// Redux
-import { useSelector, useDispatch } from 'react-redux'
 import SettingsHeader from '../components/settings/SettingsHeader'
 import SettingsTableHeader from '../components/settings/SettingsTableHeader'
 import SettingsContent from '../components/settings/SettingsContent'
-import { fetchAccounts, fetchFacilities } from '../redux/actions/settingsActions'
 import AccountModal from '../components/settings/settingsModals/AccountModal'
 import CompanyModal from '../components/settings/settingsModals/CompanyModal'
+
+// Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { createFacility, fetchAccounts, fetchFacilities, updateFacility } from '../redux/actions/settingsActions'
+
 
 function Settings() {
     const dispatch = useDispatch()
@@ -68,16 +70,17 @@ function Settings() {
 
     const handleAddCompany = (formData) =>{
         if (modalMethod === "edit") {
-            // dispatch(updateBudget(budgetType, formData, formData.id))
+            dispatch(updateFacility(formData, formData.id))
             console.log(`Editing company`, formData);
         }
-        else if (modalMethod === "company") {
-            // dispatch(createBudget(budgetType, formData))
+        else if (modalMethod === "create") {
+            dispatch(createFacility(formData))
             console.log(`Adding account`, formData);
         }
         setSelectedCompany(null)
         setModalMethod("idle")
         setShowAddCompanyModal(false);
+        window.location.reload()
     }
 
     
