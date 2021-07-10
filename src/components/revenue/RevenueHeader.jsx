@@ -22,15 +22,11 @@ function RevenueHeader({ handleOpenRevenueModal, handleDownloadInExcel }) {
     const handleSetDate = (event) => {
         // So if user click on arrow button, then date will be invalid
         // (i'm fucking junior if you don't like my solution, fuck off)
-        if (event.target.title !== ''){
-            const newDate = new Date(event.target.title)
-            if (selectedDayPoint === 'start'){setStartDate(newDate)}
-            else if (selectedDayPoint === 'end'){setEndDate(newDate)}
-            setSelectedDayPoint('')
-            setShowTableCalendar(false)
+        console.log(event)
+        setStartDate(event.value[0])
+        setEndDate(event.value[1])
 
-            // Add API call to filter data by date
-        }
+        // Add API call to filter data by date
     }
 
     return (
@@ -41,12 +37,9 @@ function RevenueHeader({ handleOpenRevenueModal, handleDownloadInExcel }) {
                     <p  className='title'>Выручка</p>
                     <div className='buttons_container'>
                         {/* Variant 1 */}
-                        {/* {showTableCalendar && <TableCalendar handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>}
-                        <button onClick={() => handleToggleTableCalendar("start")} className="button">{startDate.toDateString()}</button>
-                        <button onClick={() => handleToggleTableCalendar("end")} className="button">{endDate.toDateString()}</button> */}
 
                         {/* Variant 2 */}
-                        <Test />
+                        <Test  handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>
                     </div>
                 </section>
                 

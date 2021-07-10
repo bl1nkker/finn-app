@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import TableCalendar from '../tableCalendar/TableCalendar'
+import Test from '../popUp/Test';
 
 function BudgetHeader({ incomeAmount, expenseAmount }) {
     const [showTableCalendar, setShowTableCalendar] = useState(false)
@@ -18,15 +19,11 @@ function BudgetHeader({ incomeAmount, expenseAmount }) {
     const handleSetDate = (event) => {
         // So if user click on arrow button, then date will be invalid
         // (i'm fucking junior if you don't like my solution, fuck off)
-        if (event.target.title !== ''){
-            const newDate = new Date(event.target.title)
-            if (selectedDayPoint === 'start'){setStartDate(newDate)}
-            else if (selectedDayPoint === 'end'){setEndDate(newDate)}
-            setSelectedDayPoint('')
-            setShowTableCalendar(false)
+        console.log(event)
+        setStartDate(event.value[0])
+        setEndDate(event.value[1])
 
-            // Add API call to filter data by date
-        }
+        // Add API call to filter data by date
     }
 
     return (
@@ -36,9 +33,10 @@ function BudgetHeader({ incomeAmount, expenseAmount }) {
                 <section className='left'>
                     <p  className='title'>Бюджет</p>
                     <div className='buttons_container'>
-                        {showTableCalendar && <TableCalendar handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>}
+                        {/* {showTableCalendar && <TableCalendar handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>}
                         <button onClick={() => handleToggleTableCalendar("start")} className="button">{startDate.toDateString()}</button>
-                        <button onClick={() => handleToggleTableCalendar("end")} className="button">{endDate.toDateString()}</button>
+                        <button onClick={() => handleToggleTableCalendar("end")} className="button">{endDate.toDateString()}</button> */}
+                        <Test  handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>
                     </div>
                 </section>
                 
