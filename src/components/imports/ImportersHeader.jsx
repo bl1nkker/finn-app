@@ -3,6 +3,7 @@ import TableCalendar from '../tableCalendar/TableCalendar'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
+import Test from '../popUp/Test';
 
 function ImportersHeader({ handleOpenImporterModal }) {
     const [showTableCalendar, setShowTableCalendar] = useState(false)
@@ -21,15 +22,11 @@ function ImportersHeader({ handleOpenImporterModal }) {
     const handleSetDate = (event) => {
         // So if user click on arrow button, then date will be invalid
         // (i'm fucking junior if you don't like my solution, fuck off)
-        if (event.target.title !== ''){
-            const newDate = new Date(event.target.title)
-            if (selectedDayPoint === 'start'){setStartDate(newDate)}
-            else if (selectedDayPoint === 'end'){setEndDate(newDate)}
-            setSelectedDayPoint('')
-            setShowTableCalendar(false)
+        console.log(event)
+        setStartDate(event.value[0])
+        setEndDate(event.value[1])
 
-            // Add API call to filter data by date
-        }
+        // Add API call to filter data by date
     }
 
     return (
@@ -39,9 +36,10 @@ function ImportersHeader({ handleOpenImporterModal }) {
                 <section className='left'>
                     <p  className='title'>Поставщики</p>
                     <div className='buttons_container'>
-                        {showTableCalendar && <TableCalendar handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>}
+                        {/* {showTableCalendar && <TableCalendar handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>}
                         <button onClick={() => handleToggleTableCalendar("start")} className="button">{startDate.toDateString()}</button>
-                        <button onClick={() => handleToggleTableCalendar("end")} className="button">{endDate.toDateString()}</button>
+                        <button onClick={() => handleToggleTableCalendar("end")} className="button">{endDate.toDateString()}</button> */}
+                        <Test  handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>
                     </div>
                 </section>
                 

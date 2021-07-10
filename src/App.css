@@ -8,6 +8,8 @@
 @import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
 @import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
 
+
+
 :root{
   --registry-header-blue:#3F40F0;
   --registry-header-sky:#7ee0f8;
@@ -44,6 +46,12 @@
   --horizontal-rule-color: rgba(177, 177, 177, 0.726);
 
 }
+
+td.e-selected span.e-day,
+.e-input-group::after,
+.e-input-group::before{background: var(--registry-header-blue) !important;}
+.e-apply{color: var(--registry-header-blue) !important;}
+.e-today .e-day{border: 1px solid var(--registry-header-blue) !important;}
 
 html, input, textarea, select, option, button{
     font-family: 'Roboto' !important;

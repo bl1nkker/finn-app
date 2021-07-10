@@ -4,6 +4,7 @@ import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 import SaveAltTwoToneIcon from '@material-ui/icons/SaveAltTwoTone';
 import { useSelector } from 'react-redux'
 import TableCalendar from '../tableCalendar/TableCalendar';
+import Test from '../popUp/Test';
 
 
 function SalaryHeader({ handleOpenAddEmployeeModal }) {
@@ -23,15 +24,11 @@ function SalaryHeader({ handleOpenAddEmployeeModal }) {
     const handleSetDate = (event) => {
         // So if user click on arrow button, then date will be invalid
         // (i'm fucking junior if you don't like my solution, fuck off)
-        if (event.target.title !== ''){
-            const newDate = new Date(event.target.title)
-            if (selectedDayPoint === 'start'){setStartDate(newDate)}
-            else if (selectedDayPoint === 'end'){setEndDate(newDate)}
-            setSelectedDayPoint('')
-            setShowTableCalendar(false)
+        console.log(event)
+        setStartDate(event.value[0])
+        setEndDate(event.value[1])
 
-            // Add API call to filter data by date
-        }
+        // Add API call to filter data by date
     }
     
     return (
@@ -41,9 +38,10 @@ function SalaryHeader({ handleOpenAddEmployeeModal }) {
                 <section className='left'>
                     <p  className='title'>Зарплата</p>
                     <div className='buttons_container'>
-                    {showTableCalendar && <TableCalendar handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>}
+                    {/* {showTableCalendar && <TableCalendar handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>}
                         <button onClick={() => handleToggleTableCalendar("start")} className="button">{startDate.toDateString()}</button>
-                        <button onClick={() => handleToggleTableCalendar("end")} className="button">{endDate.toDateString()}</button>
+                        <button onClick={() => handleToggleTableCalendar("end")} className="button">{endDate.toDateString()}</button> */}
+                        <Test  handleSetDate={handleSetDate} startDate={startDate} endDate={endDate}/>
                     </div>
                 </section>
                 
