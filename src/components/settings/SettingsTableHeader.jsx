@@ -18,7 +18,7 @@ function SettingsTableHeader({ accounts, companies, handleOpenAccountModal, hand
                 </div>
                 <hr />
                 <div className='table_header__filters'>
-                    <section className='table_header__filters item oversmall'>
+                    <section className='table_header__filters item overmedium'>
                         <span className="item-text bold_text">ФИО</span>          
                         <UnfoldMoreSharpIcon className="icon_unfold"/>      
                     </section>

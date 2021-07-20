@@ -8,10 +8,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { createRevenue, fetchRevenues, removeRevenue, updateRevenue } from './../redux/actions/revenueActions'
 import Backdrop from '../components/confirmationWindow/Backdrop'
 import RevenueModal from '../components/revenue/revenueModal.jsx/RevenueModal'
+import { fetchUsersData } from '../redux/actions/appActions'
 
 function Revenue() {
   const dispatch = useDispatch()
   const revenues = useSelector(state => state.revenues.data)
+  const users = useSelector(state => state.app.users)
 
   const [showRevenueModal, setShowRevenueModal] = useState(false)
   const [selectedRevenue, setSelectedRevenue] = useState(null)
@@ -31,8 +33,8 @@ function Revenue() {
   }
 
   const handleSendRevenue = (formData) =>{
-    const currentUser = localStorage.getItem("username")
-    formData = {...formData, added_by: 1}
+    const currentUser = localStorage.getItem("uid")
+    formData = {...formData, added_by: currentUser}
     if (modalMethod === "edit") {
         dispatch(updateRevenue(formData, formData.id))
         console.log(`Editing revenue...:`, formData);
@@ -62,6 +64,7 @@ function Revenue() {
 
   useEffect(() =>{
     dispatch(fetchRevenues())
+    dispatch(fetchUsersData())
   }, [dispatch])
   return (
     <div className='table_container'>
@@ -75,7 +78,7 @@ function Revenue() {
                 selectedRevenue={selectedRevenue}/>
             </>}
       <RevenueHeader handleDownloadInExcel={handleDownloadInExcel} handleOpenRevenueModal={handleOpenRevenueModal}/>
-      {revenues.map((revenuesByDate, key) => <RevenueDataRow handleOpenRevenueModal={handleOpenRevenueModal} key={key} revenuesByDate={revenuesByDate}/>)}
+      {revenues.map((revenuesByDate, key) => <RevenueDataRow users={users} handleOpenRevenueModal={handleOpenRevenueModal} key={key} revenuesByDate={revenuesByDate}/>)}
     </div>
   )
 }

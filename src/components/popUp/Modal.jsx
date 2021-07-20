@@ -11,9 +11,9 @@ import ToggleSwitch from './ToggleSwitch'
 import { useDispatch } from 'react-redux'
 import { createInvoice, removeInvoice, updateInvoice } from './../../redux/actions/invoicesActions'
 
-function Modal({setOpenPopUp, modalMethod, invoiceToEdit}) {
+function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
     const dispatch = useDispatch()
-    const [formData, setFormData] = useState(invoiceToEdit ? 
+    let [formData, setFormData] = useState(invoiceToEdit ? 
         {...invoiceToEdit, payment_type: invoiceToEdit.payment_type === 'Б' ? "Безналичный расчет" : "Наличный расчет"} 
         : {
         added_at:'2021-11-10',
@@ -30,13 +30,13 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit}) {
     }) 
 
     const paymentOptions = ['Безналичный расчет', "Наличный расчет"]
-    const importersOptions = ['ТОО Магнит', "Астыкжан", "Пятерочка"]
 
     const handleSubmit = () =>{
         if (formData.payment_type === 'Безналичный расчет') formData.payment_type = 'Б'
         else if (formData.payment_type === 'Наличный расчет') formData.payment_type = 'Н'
-        // Temp
-        formData.importer = 1
+
+        const currentUser = localStorage.getItem("uid")
+        formData = {...formData, added_by: currentUser}
 
         if (modalMethod === 'create'){
             dispatch(createInvoice(formData))
@@ -50,7 +50,7 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit}) {
 
     const handleDelete = () =>{
         dispatch(removeInvoice(formData.id))
-        // window.location.reload()
+        window.location.reload()
     }
     
     const handleClose = () =>{
@@ -83,15 +83,17 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit}) {
                     value={formData.payment_type} 
                     setValue={(value) => setFormData({...formData, payment_type:value})}  
                     fieldLabel="Оплата" 
-                    options={paymentOptions}/>
+                    options={paymentOptions}
+                    />
             </section>
             <section className='modal_field'>
                 {/* <LargeField fieldLabel="Поставщик"/> */}
                 <DropDownList 
                     fieldLabel="Поставщик" 
-                    options={importersOptions}
+                    options={importers}
                     value={formData.importer} 
-                    setValue={(value) => setFormData({...formData, importer:value})} />
+                    setValue={(value) => setFormData({...formData, importer:value})}
+                    isFuckedUp={true} />
             </section>
             <section className='modal_field'>
                 <DoubleField

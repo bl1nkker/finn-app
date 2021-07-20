@@ -41,7 +41,7 @@ function Scans() {
         console.log(`Editing scan...:`, formData);
     }
     else if (modalMethod === "create") {
-        // dispatch(createScan(formData))
+        dispatch(createScan(formData))
         console.log(`Adding scan...:`, formData);
     }
     setSelectedScan(null)

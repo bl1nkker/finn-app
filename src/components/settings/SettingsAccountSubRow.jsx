@@ -9,7 +9,7 @@ function SettingsAccountsSubRow({account, handleOpenAccountModal}) {
         onMouseOver={() => setShowCreator(true)} 
         onMouseOut={() => setShowCreator(false)} 
         className={`registry_subrow subrow ${showCreator && 'subrow_checked'}`}>
-                    <section className='subrow_item item oversmall'>
+                    <section className='subrow_item item overmedium'>
                         <span className="item-text">{account.full_name}</span>
                     </section>
                     <hr />

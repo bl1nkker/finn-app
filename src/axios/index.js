@@ -16,6 +16,9 @@ export const postBudget = (budgetType, budgetData) => API.post(`/app/budget/${bu
 export const putBudget = (budgetType, budgetData, budgetId) => API.put(`/app/budget/${budgetType}/${budgetId}`, budgetData)
 export const deleteBudget = (budgetType, budgetId) => API.delete(`/app/budget/${budgetType}/${budgetId}`)
 
+export const getCategories = () => API.get('/app/production-type/')
+export const getUsers = () => API.get('/accounts/users/')
+
 export const getRevenues = () => API.get('/app/revenue')
 export const postRevenue = (revenueData) => API.post('/app/revenue/', revenueData)
 export const putRevenue = (revenueData, revenueId) => API.put(`/app/revenue/${revenueId}`, revenueData)

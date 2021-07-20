@@ -6,7 +6,7 @@ import AccountModalHeader from './AccountModalHeader'
 
 function AccountModal({selectedAccount, modalMethod, handleAddAccount, handleCloseAccountModal, }) {
     const orsOpt = ['', '', '']
-    const subdOpt = ['','', '']
+    const subdivisionOpt = ["Администрация", "Кухня", "Бармены", "Официанты", "Охрана", "Уборка", "Тех. персонал"]
     const [formData, setFormData] = useState(selectedAccount ? {...selectedAccount, listOfOrgs:[{id:1}, {id:2}, {id:3}]} : 
         {full_name: '', phone_number: '', email: "", listOfOrgs:[{id:1}, {id:2}, {id:3}], is_active:true })
     const handleDeleteRow = (data) =>{
@@ -34,7 +34,7 @@ function AccountModal({selectedAccount, modalMethod, handleAddAccount, handleClo
                         <div key={key}>
                             <div className='right_row' >
                                 <div className='row_column_left'><DropDownList options={orsOpt} fieldLabel='Организация'/></div>
-                                <div className='row_column_right'><DropDownList options={subdOpt} fieldLabel='Должность'/></div>
+                                <div className='row_column_right'><DropDownList options={subdivisionOpt} fieldLabel='Должность'/></div>
                             </div>
                             <div className='row_actions'>
                                 <button onClick={() => handleDeleteRow(data)} className='delete_row'>Удалить</button>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BudgetContent from '../components/budget/BudgetContent'
 import BudgetHeader from '../components/budget/BudgetHeader'
 import AddBudgetModal from '../components/budget/addBudget/AddBudgetModal'
@@ -9,7 +9,7 @@ import './pagesStyles/addBudget.css'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { createBudget, updateBudget } from './../redux/actions/budgetActions'
+import { createBudget, fetchBudgets, updateBudget } from './../redux/actions/budgetActions'
 import TableCalendar from '../components/tableCalendar/TableCalendar'
 
 const tempBudgets = [
@@ -67,6 +67,11 @@ function Budget() {
     // create/edit/idle
     const [modalMethod, setModalMethod] = useState('idle')
     const [selectedBudget, setSelectedBudget] = useState(null)
+
+    useEffect(() =>{
+        dispatch(fetchBudgets("income"))
+        dispatch(fetchBudgets("expense"))
+    }, [dispatch])
 
     let incomeAmount = 0
     let expenseAmount = 0

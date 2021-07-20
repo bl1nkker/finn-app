@@ -11,7 +11,7 @@ import CompanyModal from '../components/settings/settingsModals/CompanyModal'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { createFacility, fetchAccounts, fetchFacilities, updateFacility } from '../redux/actions/settingsActions'
+import { createAccount, createFacility, fetchAccounts, fetchFacilities, updateAccount, updateFacility } from '../redux/actions/settingsActions'
 
 
 function Settings() {
@@ -59,9 +59,14 @@ function Settings() {
     const handleAddAccount = (formData) =>{
         if (modalMethod === "edit") {
             console.log(`Editing account`, formData);
+            dispatch(updateAccount(formData, formData.id))
         }
         else if (modalMethod === "create") {
             console.log(`Adding account`, formData);
+            // default password
+            const defaultPassword = 'qwer1234'
+            formData = {...formData, password: defaultPassword}
+            dispatch(createAccount(formData))
         }
         setSelectedAccount(null)
         setModalMethod("idle")
