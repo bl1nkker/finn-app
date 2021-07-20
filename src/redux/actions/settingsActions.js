@@ -1,5 +1,5 @@
 import { CREATE_ACCOUNT, CREATE_ACCOUNT_ERROR, CREATE_FACILITY, CREATE_FACILITY_ERROR, DELETE_ACCOUNT, DELETE_ACCOUNT_ERROR, DELETE_FACILITY, DELETE_FACILITY_ERROR, FETCH_ACCOUNTS, FETCH_ACCOUNTS_ERROR, FETCH_FACILITIES, FETCH_FACILITIES_ERROR, UPDATE_ACCOUNT, UPDATE_ACCOUNT_ERROR, UPDATE_FACILITY, UPDATE_FACILITY_ERROR } from './../types'
-import { deleteAccount, deleteFacility, getAccounts, getFacilities, postFacility, putAccount, putFacility } from './../../axios/index'
+import { deleteAccount, deleteFacility, getAccounts, getFacilities, postAccount, postFacility, putAccount, putFacility } from './../../axios/index'
 
 export const fetchAccounts = () => async(dispatch) =>{
     try {
@@ -14,7 +14,7 @@ export const fetchAccounts = () => async(dispatch) =>{
 
 export const createAccount = (formData) => async(dispatch) =>{
     try {
-        await createAccount(formData)
+        await postAccount(formData)
         // After query, the page will be refreshed
         dispatch({ type:CREATE_ACCOUNT, payload:{created: true} })
     } catch (error) {

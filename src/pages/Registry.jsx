@@ -12,6 +12,7 @@ import './pagesStyles/registryRow.css'
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchInvoices } from './../redux/actions/invoicesActions'
+import { fetchImporters } from '../redux/actions/importersActions';
 
 function Registry() {
   const dispatch = useDispatch()
@@ -24,9 +25,11 @@ function Registry() {
 
   // Fetched data
   const invoices = useSelector(state => state.invoices.data)
+  const importers = useSelector(state => state.importers.data)
 
   useEffect(() =>{
     dispatch(fetchInvoices())
+    dispatch(fetchImporters())
   }, [dispatch])
 
   const handleShowPopUp = (method, invoiceData) =>{
@@ -46,11 +49,11 @@ function Registry() {
       {openPopUp && (
         <>
           <Backdrop />
-          <Modal setOpenPopUp={setOpenPopUp} modalMethod={modalMethod} invoiceToEdit={invoiceToEdit}/>
+          <Modal importers={importers} setOpenPopUp={setOpenPopUp} modalMethod={modalMethod} invoiceToEdit={invoiceToEdit}/>
         </>
       )}
       <RegistryHeader handleDownloadFile={handleDownloadFile} handleShowPopUp={handleShowPopUp} selectAll={selectAll} setSelectAll={setSelectAll}/>
-      {invoices.length !== 0 ? 
+      {invoices ? 
       invoices.map((invoicesByDate, key) => 
         <RegistryDataRow key={key} 
             handleShowPopUp={handleShowPopUp} 

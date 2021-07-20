@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DropDownList({ value, setValue,fieldLabel, options }) {
+function DropDownList({ value, setValue,fieldLabel, options, isFuckedUp }) {
     return (
         <div className='modal_largefield'>
             <label className="label">{fieldLabel}</label>
@@ -8,7 +8,7 @@ function DropDownList({ value, setValue,fieldLabel, options }) {
             value={value} 
             onChange={(event) => setValue(event.target.value)}>
                 {[...options, value].map( (option, key) => (
-                    <option key={key} value={option} className='option' >{option}</option>
+                    <option key={key} value={isFuckedUp ? option.id : option} className='option' >{isFuckedUp ? option.company_name : option}</option>
                 ))}
             </select>
         </div>
