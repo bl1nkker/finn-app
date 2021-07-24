@@ -8,7 +8,7 @@ const initState = {
 const budgetReducer = (state=initState, action) =>{
     switch (action.type) {
         case FETCH_BUDGETS:
-            return {...state, data:action.payload.data}
+            return {...state, data:action.payload.editedData}
         case FETCH_BUDGETS_ERROR:
             return {...state, error:action.payload.error}
         

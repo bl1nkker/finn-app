@@ -9,7 +9,7 @@ import './pagesStyles/addBudget.css'
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { createBudget, fetchBudgets, updateBudget } from './../redux/actions/budgetActions'
+import { createBudget, fetchBudgets, removeBudget, updateBudget } from './../redux/actions/budgetActions'
 import TableCalendar from '../components/tableCalendar/TableCalendar'
 
 const tempBudgets = [
@@ -92,9 +92,10 @@ function Budget() {
     }
 
     const handleAddBudget = (formData) =>{
-        const currentUser = localStorage.getItem("username")
+        const currentUser = localStorage.getItem("uid")
         formData = {...formData, added_by: currentUser}
         if (modalMethod === "edit") {
+            formData = {...formData, contragent: 'Temp contragent'}
             dispatch(updateBudget(budgetType, formData, formData.id))
             console.log(`Editing budget with type ${budgetType}...`, formData);
         }
@@ -106,15 +107,16 @@ function Budget() {
         setModalMethod("idle")
         setShowAddBudgetModal(false);
         setBudgetType('')
-        // window.location.reload()
+        window.location.reload()
     }
 
-    const handleDeleteBudget = (budget) =>{
-        console.log('Deleting', budget);
+    const handleDeleteBudget = (budget, budgetType) =>{
+        dispatch(removeBudget(budgetType, budget.id))
         setSelectedBudget(null)
         setModalMethod("idle")
         setShowAddBudgetModal(false);
         setBudgetType('')
+        window.location.reload()
     }
 
     return (
@@ -126,7 +128,7 @@ function Budget() {
             </>}
             <BudgetHeader incomeAmount={incomeAmount} expenseAmount={expenseAmount}/>
             <BudgetTableHeader incomeAmount={incomeAmount} expenseAmount={expenseAmount} handleOpenBudgetModal={handleOpenBudgetModal}/>
-            <BudgetContent handleOpenBudgetModal={handleOpenBudgetModal} budgets={tempBudgets}/>
+            <BudgetContent handleOpenBudgetModal={handleOpenBudgetModal} budgets={budgets}/>
         </div>
     )
 }

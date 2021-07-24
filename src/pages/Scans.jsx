@@ -59,10 +59,6 @@ function Scans() {
     // window.location.reload()
   }
 
-  const handleAddScan = (scan) =>{
-    console.log('*new scan*', scan);
-  }
-
   const handleCheckAllScans = (unChecked) =>{
     if (unChecked){
       setScansToDownload([])
@@ -83,7 +79,6 @@ function Scans() {
       {showScanModal && <>
                 <Backdrop />
                 <ScanModal 
-                handleAddScan={handleAddScan}
                 handleDeleteScan={handleDeleteScan} 
                 modalMethod={modalMethod} 
                 handleSendScan={handleSendScan} 

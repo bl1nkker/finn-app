@@ -16,7 +16,12 @@ export default function Login() {
   const history = useHistory()
   const dispatch = useDispatch()
   const user = useSelector(state => state.auth.user)
-  const [authError, setAuthError] = useState(useSelector(state => state.auth.error))
+  const error = useSelector(state => state.auth.error)
+  const [authError, setAuthError] = useState('')
+  
+  useEffect(() =>{
+    setAuthError(error)
+  }, [error])
 
   const [authState, setAuthState] = useState('login')
   const [codeValidationError, setCodeValidationError] = useState(false)
