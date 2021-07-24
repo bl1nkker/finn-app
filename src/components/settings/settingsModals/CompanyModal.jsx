@@ -68,7 +68,7 @@ function CompanyModal({selectedCompany, modalMethod, handleAddCompany, handleClo
                         </div>))}
                     </section>
                     <hr />
-                    <button onClick={() => setFormData({...formData, listOfOrgs:[...formData.listOfOrgs, {id:123}]})} className='add_row'>Добавить организацию</button>
+                    <button onClick={() => setFormData({...formData, listOfOrgs:[...formData.listOfOrgs, {id:123}]})} className='add_row'>Добавить работника</button>
                 </div>
             </section>
 

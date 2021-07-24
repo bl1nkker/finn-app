@@ -14,7 +14,7 @@ function AddBudgetModal({handleDeleteBudget, selectedBudget, modalMethod, handle
     const userIsStaff = JSON.parse(localStorage.getItem("isStaff"))
     return (
         <div className='modal_container'>
-            <AddBudgetHeader handleDeleteBudget={() => handleDeleteBudget(formData)} modalMethod={modalMethod} budgetType={budgetType} handleCloseBudgetModal={handleCloseBudgetModal} />
+            <AddBudgetHeader handleDeleteBudget={() => handleDeleteBudget(formData, budgetType)} modalMethod={modalMethod} budgetType={budgetType} handleCloseBudgetModal={handleCloseBudgetModal} />
             <div className='add_budget_form'>
                 <section className='modal_field'>
                     <DoubleField 

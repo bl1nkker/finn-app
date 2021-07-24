@@ -43,7 +43,7 @@ function Imports() {
     setSelectedImporter(null)
     setModalMethod('idle')
     setShowImporterModal(false);
-    window.location.reload()
+    // window.location.reload()
   }
 
   const handleDeleteImporter = (formData) =>{

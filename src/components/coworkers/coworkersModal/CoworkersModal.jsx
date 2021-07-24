@@ -16,13 +16,18 @@ function CoworkersModal({ selectedCoworker, handleCloseCoworkerModal, handleSend
         { profile_picture: "", full_name: "", phone_number: "", 
         subdivision: "", payment_type: "", pay_rate: "", address_residing: "", 
         actual_address: "", comment: "", is_foreign: false, post:'',
-        is_active: false, date_fired: "", facility: 0})
+        is_active: false, date_fired: "", facility: 1})
+
+    const addAvatar = (event) =>{
+        console.log(event.target.files)
+        setFormData({...formData, profile_picture: event.target.files[0]})
+    }
     return (
         <div className='coworkers_modal_container'>
             <CoworkersModalHeader handleDeleteCoworker={handleDeleteCoworker} modalMethod={modalMethod} coworker={formData}/>
             <div className='coworkers_modal_form'>
                 <div className='grid_photo'>
-                    <input type="file" name="photo" id="photo" className="inputphoto" onChange={(event) => setFormData({...formData, profile_picture: event.target.files[0]})}/>
+                    <input type="file" name="photo" id="photo" className="inputphoto" onChange={(event) => addAvatar(event)}/>
                     <label for="photo"><img src={formData.profile_picture ? formData.profile_picture : 'https://i.pinimg.com/originals/a6/e8/1b/a6e81b2bb0685ebab1d7b2f15283b7e4.jpg'} alt='coworker_picture'/></label>  
                 </div>
 
@@ -95,7 +100,7 @@ function CoworkersModal({ selectedCoworker, handleCloseCoworkerModal, handleSend
                 </div>
 
                 <div className='grid_payment_type'>
-                    <DropDownList options={ptOpt} fieldLabel='Тип оплаты'/>
+                    <DropDownList value={formData.payment_type} setValue={(value) => setFormData({...formData, payment_type:value})} options={ptOpt} fieldLabel='Тип оплаты'/>
                 </div>
 
                 <div className='grid_pay_rate'>

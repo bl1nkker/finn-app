@@ -13,13 +13,14 @@ import { createInvoice, removeInvoice, updateInvoice } from './../../redux/actio
 
 function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
     const dispatch = useDispatch()
+    const paymentOptions = ['Безналичный расчет', "Наличный расчет"]
     let [formData, setFormData] = useState(invoiceToEdit ? 
         {...invoiceToEdit, payment_type: invoiceToEdit.payment_type === 'Б' ? "Безналичный расчет" : "Наличный расчет"} 
         : {
         added_at:'2021-11-10',
         invoice_number:0,
-        payment_type: 'Безналичный расчет',
-        importer:"Астыкжан",
+        payment_type: paymentOptions[0],
+        importer:importers[0],
         amount:0.00,
         tax_amount:0.00,
         comment:'',
@@ -29,7 +30,7 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
         facilities:1
     }) 
 
-    const paymentOptions = ['Безналичный расчет', "Наличный расчет"]
+    
 
     const handleSubmit = () =>{
         if (formData.payment_type === 'Безналичный расчет') formData.payment_type = 'Б'
