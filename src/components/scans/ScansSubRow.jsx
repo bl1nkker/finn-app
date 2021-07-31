@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 function ScansSubRow({ setScansToDownload, scansToDownload, scan, handleOpenRevenueModal }) {
     const [isHover, setIsHover] = useState(false)
     const addScanToList = () =>{
-        console.log();
         if (scansToDownload.indexOf(scan) === -1) {
             scansToDownload.push(scan)
         }else{
@@ -18,7 +17,7 @@ function ScansSubRow({ setScansToDownload, scansToDownload, scan, handleOpenReve
             </section>
             <hr />
             <section className='registry_row__item item large'>
-                <span className="item-text">{scan.file}</span>
+                <span className="item-text">{scan.name}</span>
             </section>
             <hr />
             <section className='registry_row__item item semilarge'>
