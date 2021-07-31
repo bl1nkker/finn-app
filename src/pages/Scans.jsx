@@ -34,15 +34,20 @@ function Scans() {
   }
 
   const handleSendScan = (formData) =>{
-    const currentUser = localStorage.getItem("username")
-    formData = {...formData, added_by: currentUser}
+    // const currentUser = localStorage.getItem("username")
+    const _formData = new FormData();
+    _formData.append("file", formData.file);
+    _formData.append("type_scan", formData.type_scan);
+    _formData.append("name", formData.name);
+    _formData.append("facility", formData.facility);
+    // formData = {...formData, added_by: currentUser}
     if (modalMethod === "edit") {
-        // dispatch(updateScan(formData, formData.id))
-        console.log(`Editing scan...:`, formData);
+        dispatch(updateScan(_formData, formData.id))
+        console.log(`Editing scan...:`, _formData);
     }
     else if (modalMethod === "create") {
-        dispatch(createScan(formData))
-        console.log(`Adding scan...:`, formData);
+        dispatch(createScan(_formData))
+        console.log(`Adding scan...:`, _formData);
     }
     setSelectedScan(null)
     setModalMethod('idle')
@@ -51,7 +56,7 @@ function Scans() {
   }
 
   const handleDeleteScan = (formData) =>{
-    // dispatch(removeScan(formData.id))
+    dispatch(removeScan(formData.id))
     console.log('Deleting scan...:', formData);
     setSelectedScan(null)
     setModalMethod('idle')
@@ -77,7 +82,7 @@ function Scans() {
   return (
     <div className='table_container'>
       {showScanModal && <>
-                <Backdrop />
+                {/* <Backdrop /> */}
                 <ScanModal 
                 handleDeleteScan={handleDeleteScan} 
                 modalMethod={modalMethod} 

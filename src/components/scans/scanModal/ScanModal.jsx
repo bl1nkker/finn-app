@@ -9,7 +9,9 @@ function ScanModal({ selectedScan, handleCloseScanModal, handleSendScan, handleD
         {type_scan: "1", name: "", file: "", facility: 1})
 
     const handleSubmitScan = (file) =>{
-        setFormData({...formData, file: file})
+      console.log(file)
+      console.log(formData)
+      setFormData({...formData, file: file})
     }
     return (
         <div className='revenue_modal_container'>
