@@ -46,7 +46,7 @@ function CalendarShared({handleCloseCalendar, employeesList, handleSaveSharedHou
                     {employeesList.map( (employee, key) => 
                         <div key={key} className='content'>
                             <div className='calendar_large_field medium'>
-                            <input className='calendar_input' value={employee.name} maxlength="2"/>
+                            <input className='calendar_input' value={employee.full_name} maxlength="2"/>
                             </div>
                             {daysInTheMonth.map((day, key) => 
                                 <>

@@ -18,137 +18,21 @@ import CalendarPersonal from '../components/salary/calendar/CalendarPersonal';
 import CalendarShared from '../components/salary/calendar/CalendarShared';
 import AddEmployeeModal from '../components/salary/addEmployee/AddEmployeeModal';
 import EmployeeSalaryInfoModal from '../components/salary/salaryInfo/EmployeeSalaryInfoModal';
-
-const tempData = [
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Марк Карлович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Стонкс Стонкович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-  {
-    name:'Иванов Иван Иванович', position:"Admin",bet:145, hours:8, percent:15, surcharge:1000, wage: 41610, 
-    prepayment:11000, wage_:4368, medical:undefined, other:undefined, battle:undefined, form:undefined, 
-    retention:958, penalty:undefined, total: 40652
-  },
-]
+import { addSalary, fetchCoworkers } from '../redux/actions/salariesActions';
 
 function Registry() {
+  const dispatch = useDispatch()
   const [showPersonalCalendar, setShowPersonalCalendar] = useState(false)
   const [showSharedCalendar, setShowSharedCalendar] = useState(false)
   const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false)
   const [showEmployeeSalaryInfo, setShowEmployeeSalaryInfo] = useState(false)
 
   const [selectedEmployee, setSelectedEmployee] = useState({})
+  const coworkersWithSalaries = useSelector(state => state.salaries.data)
+
+  useEffect(() =>{
+    dispatch(fetchCoworkers())
+  }, [dispatch])
 
   // Personal Calendar
   const handleOpenPersonalCalendar = (employee) => {
@@ -198,9 +82,20 @@ function Registry() {
     setShowEmployeeSalaryInfo(false)
     setSelectedEmployee({})
   }
-  const handleSaveEmployeeSalaryInfo = (data) =>{
+  const handleSaveEmployeeSalaryInfo = (deductions) =>{
     setShowEmployeeSalaryInfo(false)
-    console.log('Employee salary info saved!', data);
+    for (let index = 0; index < deductions.length; index++) {
+      if (deductions[index].created){
+        // Create
+        dispatch(addSalary(deductions[index]))
+        console.log('Creating', deductions[index])
+      }else{
+        // Update
+        console.log('Update')
+      }
+      
+    }
+    console.log('Employee salary info saved!', deductions);
   }
   const handlePrintEmployeeSalaryInfo = (data) =>{
     console.log("*print print*");
@@ -234,14 +129,14 @@ function Registry() {
       {/* Shared Calendar */}
       {showSharedCalendar && <>
         <Backdrop />
-        <CalendarShared handleSaveSharedHours={handleSaveSharedHours} employeesList={tempData} handleCloseCalendar={handleCloseSharedCalendar}/>
+        <CalendarShared handleSaveSharedHours={handleSaveSharedHours} employeesList={coworkersWithSalaries} handleCloseCalendar={handleCloseSharedCalendar}/>
       </>}
 
       {/* Header */}
       <SalaryHeader handleOpenAddEmployeeModal={handleOpenAddEmployeeModal}/>
 
       {/* Main content */}
-      {tempData.map((employee, key) => <SalaryDataRow handlePrintEmployeeSalaryInfo={handlePrintEmployeeSalaryInfo} handleOpenEmployeeSalaryInfo={handleOpenEmployeeSalaryInfo} key={key} handleOpenCalendar={handleOpenPersonalCalendar} employee={employee}/>)}
+      {coworkersWithSalaries.map((employee, key) => <SalaryDataRow handlePrintEmployeeSalaryInfo={handlePrintEmployeeSalaryInfo} handleOpenEmployeeSalaryInfo={handleOpenEmployeeSalaryInfo} key={key} handleOpenCalendar={handleOpenPersonalCalendar} employee={employee}/>)}
 
       {/* Bottom Row */}
       <SalaryTotalRow handleOpenCalendar={handleOpenSharedCalendar}/>

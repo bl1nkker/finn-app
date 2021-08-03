@@ -6,7 +6,7 @@ const daysOfTheWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
 
 function CalendarPersonal({handleCloseCalendar, selectedEmployee, handleSavePersonalHours}) {
     const daysInTheMonth = []
-    const selectedMonth = 5
+    const selectedMonth = 7
 
     for (let day = 0; day < 32 - new Date(2021, selectedMonth, 32).getDate(); day++) {
         daysInTheMonth.push(daysOfTheWeek[new Date(2021, selectedMonth, day).getDay()])
@@ -16,7 +16,7 @@ function CalendarPersonal({handleCloseCalendar, selectedEmployee, handleSavePers
         <div className='calendar_container'>
             {/* Calendar header */}
             <section className='calendar_header'>
-                <span>{selectedEmployee.name}</span>
+                <span>{selectedEmployee.full_name}</span>
                 <button onClick={handleCloseCalendar}><CancelOutlinedIcon className='cancel_button' fontSize='small'/></button>
             </section>
             <hr />

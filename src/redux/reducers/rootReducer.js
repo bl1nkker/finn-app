@@ -10,6 +10,7 @@ import importersReducer from './importersReducer'
 import coworkersReducer from './coworkersReducer'
 import settingsReducer from './settingsReducer'
 import appReducer from './appReducer'
+import salariesReducer from './salariesReducer'
 
 const rootReducer = combineReducers({
     invoices:invoicesReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     scans:scansReducer,
     importers: importersReducer,
     coworkers:coworkersReducer,
+    salaries:salariesReducer,
     settings:settingsReducer,
 
     app:appReducer,

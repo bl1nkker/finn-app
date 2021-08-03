@@ -44,10 +44,17 @@ export const postCoworker = (coworkerData) => API.post('/app/employees/', cowork
 export const putCoworker = (coworkerData, coworkerId) => API.put(`/app/employees/${coworkerId}`, coworkerData)
 export const deleteCoworker = (coworkerId) => API.delete(`/app/employees/${coworkerId}`)
 
+export const getCoworkersWithSalaries = () => API.get('/app/salary/')
+export const postSalary = (salaryData) => API.post('/app/salary/deductions/', salaryData)
+export const putSalary = (salaryData, salaryId) => API.put(`/app/salary/deductions/${salaryId}`, salaryData)
+export const deleteSalary = (salaryId) => API.delete(`/app/salary/deductions/${salaryId}`)
+export const postWorkHours = (workHourData) => API.post('/app/salary/deductions/', workHourData)
+export const putWorkHours = (workHourData, workHourId) => API.put(`/app/salary/deductions/${workHourId}`, workHourData)
+export const deleteWorkHours = (workHourId) => API.delete(`/app/salary/deductions/${workHourId}`)
+
 export const getAccounts = () => API.get('/accounts/users/')
 export const postAccount = (accountData) => API.post('/accounts/users/', accountData)
 export const putAccount = (accountData, accountId) => API.put(`/accounts/users/${accountId}`, accountData)
-// No
 export const deleteAccount = (accountId) => API.delete(`/accounts/users/${accountId}`)
 
 export const getFacilities = () => API.get('/app/facilities/')
