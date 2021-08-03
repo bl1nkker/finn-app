@@ -3,13 +3,7 @@ import { deleteCoworker, getCoworkers, postCoworker, putCoworker } from '../../a
 
 export const fetchCoworkers = () => async(dispatch) =>{
     try {
-        // const { data } = await getCoworkers()
-        const data = [
-            { profile_picture: "some_picture", full_name: "Иванов Иван Иванович", phone_number: "88005553535", subdivision: "Администрация", payment_type: "Ставка", pay_rate: 5000, address_residing: "Москва. ул. Валынова 106", actual_address: "Москва. ул. Валынова 106", comment: "Хороший админ и конкурсы интересные", is_foreign: true, is_active: true, date_fired: "2020-02-01", facility: 0},
-            { profile_picture: "some_picture", full_name: "Марков Марк Маркович", phone_number: "87753378824", subdivision: "Модератор", payment_type: "Ставка", pay_rate: 4000, address_residing: "Москва. ул. Валынова 106", actual_address: "Москва. ул. Валынова 106", comment: "Хороший админ и конкурсы интересные", is_foreign: true, is_active: true, date_fired: "2020-02-01", facility: 0},
-            { profile_picture: "some_picture", full_name: "Егоров Егор Егорович", phone_number: "88853828389", subdivision: "Работяга", payment_type: "Ставка", pay_rate: 3000, address_residing: "Москва. ул. Валынова 106", actual_address: "Москва. ул. Валынова 106", comment: "Хороший админ и конкурсы интересные", is_foreign: true, is_active: true, date_fired: "2020-02-01", facility: 0},
-            { profile_picture: "some_picture", full_name: "Павлов Павел Пвалович", phone_number: "87019484929", subdivision: "Администрация", payment_type: "Ставка", pay_rate: 1000, address_residing: "Москва. ул. Валынова 106", actual_address: "Москва. ул. Валынова 106", comment: "Хороший админ и конкурсы интересные", is_foreign: true, is_active: true, date_fired: "2020-02-01", facility: 0},
-        ]
+        const { data } = await getCoworkers()
         dispatch({ type: FETCH_COWORKERS, payload:{ data } })
     } catch (error) {
         console.log(error)
