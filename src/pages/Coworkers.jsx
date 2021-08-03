@@ -31,12 +31,29 @@ function Coworkers() {
   }
 
   const handleSendCoworker = (formData) =>{
+    const _formData = new FormData();
+    _formData.append("profile_picture", formData.profile_picture);
+    _formData.append("full_name", formData.full_name);
+    _formData.append("phone_number", formData.phone_number);
+    _formData.append("subdivision", formData.subdivision);
+    _formData.append("payment_type", formData.payment_type);
+    _formData.append("pay_rate", formData.pay_rate);
+    _formData.append("address_residing", formData.address_residing);
+    _formData.append("actual_address", formData.actual_address);
+    _formData.append("comment", formData.comment);
+    _formData.append("is_foreign", formData.is_foreign);
+    _formData.append("post", formData.post);
+    _formData.append("is_active", formData.is_active);
+    _formData.append("date_fired", formData.date_fired);
+    _formData.append("birth_date", formData.birth_date);
+    // Temp
+    _formData.append("facility", formData.facility);
     if (modalMethod === "edit") {
-        dispatch(updateCoworker(formData, formData.id))
+        dispatch(updateCoworker(_formData, formData.id))
         console.log(`Editing Coworker...:`, formData);
     }
     else if (modalMethod === "create") {
-        dispatch(createCoworker(formData))
+        dispatch(createCoworker(_formData))
         console.log(`Adding Coworker...:`, formData);
     }
     setSelectedCoworker(null)
@@ -46,12 +63,12 @@ function Coworkers() {
   }
 
   const handleDeleteCoworker = (formData) =>{
-    // dispatch(removeCoworker(formData.id))
+    dispatch(removeCoworker(formData.id))
     console.log('Deleting Coworker...:', formData);
     setSelectedCoworker(null)
     setModalMethod('idle')
     setShowCoworkerModal(false);
-    // window.location.reload()
+    window.location.reload()
   }
 
   useEffect(() =>{

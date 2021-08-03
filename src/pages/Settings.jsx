@@ -71,7 +71,7 @@ function Settings() {
         setSelectedAccount(null)
         setModalMethod("idle")
         setShowAddAccountModal(false);
-        // window.location.reload()
+        window.location.reload()
     }
 
     const handleAddCompany = (formData) =>{

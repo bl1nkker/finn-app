@@ -1,6 +1,13 @@
 import React from 'react'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 function CoworkersDataRow({coworker, handleOpenCoworkerModal}) {
+    const subdivisionOpt = [
+        {id:'1', name:'Администрация'},
+        {id:'2', name:'Бар'},
+        {id:'3', name:'Официанты'},
+        {id:'4', name:'Кухня'},
+        {id:'5', name:'Технический Персонал'},
+    ]
     return (
         <div className={`registry_row`}>
                     <section className='registry_row__item item semilarge'>
@@ -12,7 +19,7 @@ function CoworkersDataRow({coworker, handleOpenCoworkerModal}) {
                     </section>
                     <hr />
                     <section className='registry_row__item item semilarge'>
-                        <span className="item-text">{coworker.subdivision}</span>
+                        <span className="item-text">{subdivisionOpt.find(sbd => sbd.id === coworker.subdivision).name}</span>
                     </section>
                     <hr />
                     <section className='registry_row__item item semilarge'>
