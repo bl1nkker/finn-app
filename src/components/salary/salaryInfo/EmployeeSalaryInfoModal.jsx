@@ -6,11 +6,10 @@ import TextAreaField from '../../popUp/TextAreaField';
 import LocalPrintshopOutlinedIcon from '@material-ui/icons/LocalPrintshopOutlined';
 
 function EmployeeSalaryInfoModal({ handleCloseEmployeeSalaryInfoModal, selectedEmployee, handleSaveEmployeeSalaryInfo, handlePrintEmployeeSalaryInfo }) {
-    const [employeeSalaries, setEmployeeSalaries] = useState([{}, {}, {}])
-
+    const [employeeDeductions, setEmployeeDeductions] = useState(selectedEmployee.deductions)
     const handleAddSalaryField = () =>{
-        const newField = {}
-        setEmployeeSalaries([...employeeSalaries, newField])
+        const newField = {type_deduction: "", date: "", amount: 0, commentary: "Some comment", employee: selectedEmployee.id, created: true}
+        setEmployeeDeductions([...employeeDeductions, newField])
     }
 
     return (
@@ -18,7 +17,7 @@ function EmployeeSalaryInfoModal({ handleCloseEmployeeSalaryInfoModal, selectedE
             <EmployeeSalaryInfoHeader handleCloseEmployeeSalaryInfoModal={handleCloseEmployeeSalaryInfoModal} selectedEmployee={selectedEmployee}/>
             
             <section className='salary_info_content'>
-                {employeeSalaries.map((salary, key) => <EmployeeSalaryInfoRow key={key} />)}
+                {employeeDeductions.map((salary, key) => <EmployeeSalaryInfoRow salary={salary} key={key} />)}
                 <hr />
             </section>
 
@@ -40,7 +39,7 @@ function EmployeeSalaryInfoModal({ handleCloseEmployeeSalaryInfoModal, selectedE
 
             <section className='modal_actions'>
                 <Button onClickFunc={handleCloseEmployeeSalaryInfoModal} buttonName="Закрыть" isBlue={false}/>
-                <Button onClickFunc={() => handleSaveEmployeeSalaryInfo("Some data")} buttonName="Сохранить" isBlue={true}/>
+                <Button onClickFunc={() => handleSaveEmployeeSalaryInfo(employeeDeductions)} buttonName="Сохранить" isBlue={true}/>
             </section>
         </div>
     )
