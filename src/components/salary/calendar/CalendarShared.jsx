@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import Button from '../../popUp/Button';
+import CalendarSharedEmployeeRow from './CalendarSharedEmployeeRow';
 
 const daysOfTheWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
 
 function CalendarShared({handleCloseCalendar, employeesList, handleSaveSharedHours}) {
+    const [listOfUpdated, setListOfUpdated] = useState([])
     const daysInTheMonth = []
-    const selectedMonth = 5
+    const selectedMonth = 7
 
     for (let day = 0; day < 32 - new Date(2021, selectedMonth, 32).getDate(); day++) {
         daysInTheMonth.push(daysOfTheWeek[new Date(2021, selectedMonth, day).getDay()])
@@ -44,28 +46,14 @@ function CalendarShared({handleCloseCalendar, employeesList, handleSaveSharedHou
                 {/* Calendar table content */}
                 <div className='calendar_table_content'>
                     {employeesList.map( (employee, key) => 
-                        <div key={key} className='content'>
-                            <div className='calendar_large_field medium'>
-                            <input className='calendar_input' value={employee.full_name} maxlength="2"/>
-                            </div>
-                            {daysInTheMonth.map((day, key) => 
-                                <>
-                                    <div className='calendar_field'>
-                                        <input className='calendar_input' value='-' maxlength="2"/>
-                                    </div>
-                                    <hr />
-                                </>)}
-                                <div className='calendar_field'>
-                                    <span className='calendar_text bold_text'>Итого</span>
-                                </div>
-                        </div>)}
+                        <CalendarSharedEmployeeRow listOfUpdated={listOfUpdated} setListOfUpdated={setListOfUpdated} selectedEmployee={employee} daysInTheMonth={daysInTheMonth} key={key} />)}
                 </div>
                 
             </section>
 
             <hr />
             <section className='calendar_footer'>
-                <Button onClickFunc={() => handleSaveSharedHours("Some data")} buttonName="Сохранить" isBlue={true}/>
+                <Button onClickFunc={() => handleSaveSharedHours(listOfUpdated)} buttonName="Сохранить" isBlue={true}/>
             </section>
         </div>
     )

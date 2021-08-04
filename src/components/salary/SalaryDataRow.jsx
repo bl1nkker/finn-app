@@ -57,7 +57,7 @@ function SalaryDataRow({handlePrintEmployeeSalaryInfo, employee, handleOpenCalen
                     <section className='registry_row__item item extra_small'>
                         <span className="item-text">
                                 <button onClick={() => handleOpenCalendar(employee)} className='hours'>
-                                {employee.work_hours.reduce((acc, curr) => acc += curr.amount, 0)}
+                                {employee.work_hours?.reduce((acc, curr) => acc += curr.amount, 0)}
                                 </button>
                             </span>
                     </section>
@@ -77,42 +77,42 @@ function SalaryDataRow({handlePrintEmployeeSalaryInfo, employee, handleOpenCalen
                     </section>
                     <section className='registry_row__item item semismall'>
                         <span className="item-text">
-                            {employee.deductions.reduce((acc, curr) => acc += curr.type_deduction === '1' ? curr.amount : 0, 0)}
+                            {employee.deductions?.reduce((acc, curr) => acc += curr.type_deduction === '1' ? curr.amount : 0, 0)}
                         </span>              
                     </section>
                     <section className='registry_row__item item small'>
                         <span className="item-text">
-                            {employee.deductions.reduce((acc, curr) => acc += curr.type_deduction === '2' ? curr.amount : 0, 0)}
+                            {employee.deductions?.reduce((acc, curr) => acc += curr.type_deduction === '2' ? curr.amount : 0, 0)}
                         </span>             
                     </section>
                     <section className='registry_row__item item semismall'>
                         <span className="item-text">
-                            {employee.deductions.reduce((acc, curr) => acc += curr.type_deduction === '3' ? curr.amount : 0, 0)}
+                            {employee.deductions?.reduce((acc, curr) => acc += curr.type_deduction === '3' ? curr.amount : 0, 0)}
                         </span>             
                     </section>
                     <section className='registry_row__item item semismall'>
                     <span className="item-text">
-                            {employee.deductions.reduce((acc, curr) => acc += curr.type_deduction === '4' ? curr.amount : 0, 0)}
+                            {employee.deductions?.reduce((acc, curr) => acc += curr.type_deduction === '4' ? curr.amount : 0, 0)}
                         </span>           
                     </section>
                     <section className='registry_row__item item semismall'>
                         <span className="item-text">
-                            {employee.deductions.reduce((acc, curr) => acc += curr.type_deduction === '5' ? curr.amount : 0, 0)}
+                            {employee.deductions?.reduce((acc, curr) => acc += curr.type_deduction === '5' ? curr.amount : 0, 0)}
                         </span>            
                     </section>
                     <section className='registry_row__item item semismall'>
                         <span className="item-text">
-                            {employee.deductions.reduce((acc, curr) => acc += curr.type_deduction === '6' ? curr.amount : 0, 0)}
+                            {employee.deductions?.reduce((acc, curr) => acc += curr.type_deduction === '6' ? curr.amount : 0, 0)}
                         </span>              
                     </section>
                     <section className='registry_row__item item small'>
                         <span className="item-text">
-                            {employee.deductions.reduce((acc, curr) => acc += curr.type_deduction === '7' ? curr.amount : 0, 0)}
+                            {employee.deductions?.reduce((acc, curr) => acc += curr.type_deduction === '7' ? curr.amount : 0, 0)}
                         </span>               
                     </section>
                     <section className='registry_row__item item semismall'>
                         <span className="item-text">
-                            {employee.deductions.reduce((acc, curr) => acc += curr.type_deduction === '9' ? curr.amount : 0, 0)}
+                            {employee.deductions?.reduce((acc, curr) => acc += curr.type_deduction === '9' ? curr.amount : 0, 0)}
                         </span>            
                     </section>
                     <section className='registry_row__item item semismall'>
