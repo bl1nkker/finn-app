@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
 /* Table Calendar styles */
 @import "../node_modules/@syncfusion/ej2-base/styles/material.css";
@@ -8,53 +8,60 @@
 @import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
 @import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
 
-
-
-:root{
-  --registry-header-blue:#3F40F0;
-  --registry-header-sky:#7ee0f8;
-  --registry-header-green:#219653;
-  --registry-header-red:#EB5757;
+:root {
+  --registry-header-blue: #3f40f0;
+  --registry-header-sky: #7ee0f8;
+  --registry-header-green: #219653;
+  --registry-header-red: #eb5757;
 
   --modal-bg-color: rgb(255, 255, 255);
-  --modal-bg-secondary-color: #F3F4F8;
-  --modal-primary-color: #065ac7;;
-  --modal-secondary-color:#EB5757;
+  --modal-bg-secondary-color: #f3f4f8;
+  --modal-primary-color: #065ac7;
+  --modal-secondary-color: #eb5757;
 
   --modal-gray-color: rgb(126, 126, 126);
 
+  --table-field-size-mini: 20px;
+  --table-field-size-extra_small: 50px;
+  --table-field-size-semismall: 70px;
+  --table-field-size-small: 100px;
+  --table-field-size-oversmall: 150px;
+  --table-field-size-medium: 180px;
+  --table-field-size-semimedium: 180px;
+  --table-field-size-overmedium: 200px;
+  --table-field-size-underlarge: 220px;
+  --table-field-size-semilarge: 270px;
+  --table-field-size-large: 390px;
+  --table-field-size-big: 700px;
 
-  --table-field-size-mini:20px;
-  --table-field-size-extra_small:50px;
-  --table-field-size-semismall:70px;
-  --table-field-size-small:100px;
-  --table-field-size-oversmall:150px;
-  --table-field-size-medium:180px;
-  --table-field-size-semimedium:180px;
-  --table-field-size-overmedium:200px;
-  --table-field-size-underlarge:220px;
-  --table-field-size-semilarge:270px;
-  --table-field-size-large:390px;
-  --table-field-size-big:700px;
-
-  --table-field-font-size-small:8px;
-  --table-field-font-size-medium:10px;
-  --table-field-font-size-semimedium:12px;
-  --table-field-font-size-large:17px;
-  --table-field-font-size-big:22px;
+  --table-field-font-size-small: 8px;
+  --table-field-font-size-medium: 10px;
+  --table-field-font-size-semimedium: 12px;
+  --table-field-font-size-large: 17px;
+  --table-field-font-size-big: 22px;
 
   --horizontal-rule-color: rgba(177, 177, 177, 0.726);
-
 }
 
 td.e-selected span.e-day,
 .e-input-group::after,
-.e-input-group::before{background: var(--registry-header-blue) !important;}
-.e-apply{color: var(--registry-header-blue) !important;}
-.e-today .e-day{border: 1px solid var(--registry-header-blue) !important;}
+.e-input-group::before {
+  background: var(--registry-header-blue) !important;
+}
+.e-apply {
+  color: var(--registry-header-blue) !important;
+}
+.e-today .e-day {
+  border: 1px solid var(--registry-header-blue) !important;
+}
 
-html, input, textarea, select, option, button{
-    font-family: 'Roboto' !important;
+html,
+input,
+textarea,
+select,
+option,
+button {
+  font-family: "Roboto" !important;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -68,12 +75,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 /* Firefox */
-input[type=number],
-input[type=date] {
+input[type="number"],
+input[type="date"] {
   -moz-appearance: textfield;
 }
 
-input[type=checkbox]:checked{filter: hue-rotate(240deg);}
+input[type="checkbox"]:checked {
+  filter: hue-rotate(240deg);
+}
 
 /* Common */
-.bold_text{font-weight: 500 !important;}
+.bold_text {
+  font-weight: 500 !important;
+}

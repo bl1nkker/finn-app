@@ -18,7 +18,7 @@ import CalendarPersonal from '../components/salary/calendar/CalendarPersonal';
 import CalendarShared from '../components/salary/calendar/CalendarShared';
 import AddEmployeeModal from '../components/salary/addEmployee/AddEmployeeModal';
 import EmployeeSalaryInfoModal from '../components/salary/salaryInfo/EmployeeSalaryInfoModal';
-import { addSalary, fetchCoworkers } from '../redux/actions/salariesActions';
+import { addSalary, addWorkHours, fetchCoworkers } from '../redux/actions/salariesActions';
 
 function Registry() {
   const dispatch = useDispatch()
@@ -45,7 +45,16 @@ function Registry() {
   }
   const handleSavePersonalHours = (data) =>{
     // Request to backend
-    console.log("Personal hours saved!", data);
+    setShowPersonalCalendar(false)
+    for (let index = 0; index < data.length; index++) {
+      if (data[index].updated){
+        // Create
+        dispatch(addWorkHours(data[index]))
+        console.log('Updating', data[index])
+      }
+      
+    }
+    console.log('Personal work hours saved!', data);
   }
 
   // Shared Calendar
@@ -57,7 +66,12 @@ function Registry() {
   }
   const handleSaveSharedHours = (data) =>{
     // Request to backend
-    console.log("Shared hours saved!", data);
+    setShowSharedCalendar(false)
+    for (let index = 0; index < data.length; index++) {
+        dispatch(addWorkHours(data[index]))
+        console.log('Updating', data[index])
+    }
+    console.log('Shared work hours saved!', data);
   }
 
   // Add employee
