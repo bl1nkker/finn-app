@@ -2,30 +2,17 @@ import React, { useState } from 'react'
 import TableCalendar from '../tableCalendar/TableCalendar'
 import Test from '../popUp/Test';
 
-function BudgetHeader({ incomeAmount, expenseAmount }) {
-    const [showTableCalendar, setShowTableCalendar] = useState(false)
-    // start, end
-    const [selectedDayPoint, setSelectedDayPoint] = useState('')
-    // Select current month (first day and last day)
-    const date = new Date();
-    const [startDate, setStartDate] = useState(new Date(date.getFullYear(), date.getMonth(), 1))
-    const [endDate, setEndDate] = useState(new Date(date.getFullYear(), date.getMonth() + 1, 0))
-
-    const handleToggleTableCalendar = (dayType) =>{
-        setShowTableCalendar(!showTableCalendar)
-        setSelectedDayPoint(dayType)
-    }
-
+function BudgetHeader({ startDate, setStartDate, endDate, setEndDate, incomeAmount, expenseAmount }) {
+    
     const handleSetDate = (event) => {
         // So if user click on arrow button, then date will be invalid
         // (i'm fucking junior if you don't like my solution, fuck off)
-        console.log(event)
-        setStartDate(event.value[0])
-        setEndDate(event.value[1])
-
-        // Add API call to filter data by date
+        if (event.value){
+            setStartDate(new Date(event?.value[0]).toISOString().substring(0, 10))
+            setEndDate(new Date(event?.value[1]).toISOString().substring(0, 10))
+        }
     }
-
+    
     return (
         <section className='table_header'>
             {/* Navigarion + Info */}
@@ -41,7 +28,7 @@ function BudgetHeader({ incomeAmount, expenseAmount }) {
                 </section>
                 
                 <section className='right'>
-                    <span className='budget_text'>{(incomeAmount - expenseAmount).toFixed(2)} ₽</span>
+                    <span className='budget_text'>{(incomeAmount - expenseAmount)?.toFixed(2)} ₽</span>
                 </section>
             </div>
         </section>

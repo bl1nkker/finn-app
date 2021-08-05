@@ -1,21 +1,9 @@
 import { CREATE_SCAN, CREATE_SCAN_ERROR, DELETE_SCAN, DELETE_SCAN_ERROR, FETCH_SCANS, FETCH_SCANS_ERROR, UPDATE_SCAN, UPDATE_SCAN_ERROR } from './../types'
 import { deleteScan, getScans, postScan, putScan } from './../../axios/index'
 
-export const fetchScans = () => async(dispatch) => {
+export const fetchScans = (added_at_after, added_at_before) => async(dispatch) => {
     try {
-        const { data } = await getScans()
-
-        // Temp Data
-        // let tempRevenues = [
-        //     {id: 1, type_scan: "1", added_at: "2021-06-16", name: "File Name", file: "/media/arrow-down-red.svg", facility: 1},
-        //     {id: 2, type_scan: "1", added_at: "2020-02-19", name: "Creative File Name", file: "/media/arrow-down-red.svg", facility: 1},
-        //     {id: 3, type_scan: "1", added_at: "2020-02-19", name: "Great File Name", file: "/media/arrow-down-red.svg", facility: 1},
-        //     {id: 4, type_scan: "1", added_at: "2020-02-19", name: "Next File Name", file: "/media/arrow-down-red.svg", facility: 1},
-        //     {id: 5, type_scan: "1", added_at: "2019-11-30", name: "Some File Name", file: "/media/arrow-down-red.svg", facility: 1},
-        //     {id: 6, type_scan: "1", added_at: "2019-11-30", name: "Old File Name", file: "/media/arrow-down-red.svg", facility: 1},
-        //     {id: 7, type_scan: "1", added_at: "2019-11-30", name: "Anither Old File Name", file: "/media/arrow-down-red.svg", facility: 1},
-        //     {id: 8, type_scan: "1", added_at: "2019-11-30", name: "And another File Name", file: "/media/arrow-down-red.svg", facility: 1},
-        // ]
+        const { data } = await getScans(added_at_after, added_at_before)
         // Get dates (unic)
         const tmp = data.map(invoice => invoice.added_at)
         const unicDates = tmp.filter((item, pos) => tmp.indexOf(item) === pos)

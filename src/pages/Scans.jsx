@@ -20,6 +20,15 @@ function Scans() {
   const [scansToDownload, setScansToDownload] = useState([])
   // create/edit/idle
   const [modalMethod, setModalMethod] = useState('idle')
+  // calendar
+  const date = new Date();
+  // Select current month (first day and last day)
+  const [startDate, setStartDate] = useState(new Date(date.getFullYear(), date.getMonth(), 1).toISOString().substring(0, 10))
+  const [endDate, setEndDate] = useState(new Date(date.getFullYear(), date.getMonth() + 1, 0).toISOString().substring(0, 10))
+
+  useEffect(() =>{
+    dispatch(fetchScans(startDate, endDate))
+  }, [dispatch, startDate, endDate])
 
   const handleCloseScanModal = () =>{
     setSelectedScan(null)
@@ -76,9 +85,7 @@ function Scans() {
     console.log("Downloading", scansToDownload);
   }
 
-  useEffect(() =>{
-    dispatch(fetchScans())
-  }, [dispatch])
+  
   return (
     <div className='table_container'>
       {showScanModal && <>
@@ -90,7 +97,7 @@ function Scans() {
                 handleCloseScanModal={handleCloseScanModal} 
                 selectedScan={selectedScan}/>
             </>}
-      <ScansHeader handleCheckAllScans={handleCheckAllScans} handleDownloadScans={handleDownloadScans} handleOpenScanModal={handleOpenScanModal}/>
+      <ScansHeader startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} handleCheckAllScans={handleCheckAllScans} handleDownloadScans={handleDownloadScans} handleOpenScanModal={handleOpenScanModal}/>
       {scans.map((scansByDate, key) => <ScansDataRow setScansToDownload={setScansToDownload} scansToDownload={scansToDownload} handleOpenRevenueModal={handleOpenScanModal} key={key} scansByDate={scansByDate}/>)}
     </div>
   )

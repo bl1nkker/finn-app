@@ -7,30 +7,18 @@ import TableCalendar from '../tableCalendar/TableCalendar';
 import Test from '../popUp/Test';
 
 
-function RegistryHeader({ handleDownloadFile, selectAll, setSelectAll, handleShowPopUp }) {
+function RegistryHeader({ startDate, setStartDate, endDate, setEndDate, handleDownloadFile, selectAll, setSelectAll, handleShowPopUp }) {
     const total = useSelector(state => state.invoices.total)
     const not_paid = useSelector(state => state.invoices.not_paid)
     const companiesList = useSelector(state => state.invoices.companiesList)
 
-    const [showTableCalendar, setShowTableCalendar] = useState(false)
-    // start, end
-    const [selectedDayPoint, setSelectedDayPoint] = useState('')
-    // Select current month (first day and last day)
-    const date = new Date();
-    const [startDate, setStartDate] = useState(new Date(date.getFullYear(), date.getMonth(), 1))
-    const [endDate, setEndDate] = useState(new Date(date.getFullYear(), date.getMonth() + 1, 0))
-
-    const handleToggleTableCalendar = (dayType) =>{
-        setShowTableCalendar(!showTableCalendar)
-        setSelectedDayPoint(dayType)
-    }
-
     const handleSetDate = (event) => {
         // So if user click on arrow button, then date will be invalid
         // (i'm fucking junior if you don't like my solution, fuck off)
-        console.log(event)
-        setStartDate(event.value[0])
-        setEndDate(event.value[1])
+        if (event.value){
+            setStartDate(new Date(event?.value[0]).toISOString().substring(0, 10))
+            setEndDate(new Date(event?.value[1]).toISOString().substring(0, 10))
+        }
 
         // Add API call to filter data by date
     }

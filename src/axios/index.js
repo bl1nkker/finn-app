@@ -11,7 +11,11 @@ const API = axios.create({ baseURL: 'http://localhost:8000/api' })
 //     return req
 // } )
 
-export const getBudgets = (budgetType) => API.get(`/app/budget/${budgetType}/`)
+export const getBudgets = (budgetType, added_at_after, added_at_before, ordering) => API.get(`/app/budget/${budgetType}/`, { params: {
+    added_at_after,
+    added_at_before,
+    ordering
+  }})
 export const postBudget = (budgetType, budgetData) => API.post(`/app/budget/${budgetType}/`, budgetData)
 export const putBudget = (budgetType, budgetData, budgetId) => API.put(`/app/budget/${budgetType}/${budgetId}`, budgetData)
 export const deleteBudget = (budgetType, budgetId) => API.delete(`/app/budget/${budgetType}/${budgetId}`)
@@ -19,17 +23,26 @@ export const deleteBudget = (budgetType, budgetId) => API.delete(`/app/budget/${
 export const getCategories = () => API.get('/app/production-type/')
 export const getUsers = () => API.get('/accounts/users/')
 
-export const getRevenues = () => API.get('/app/revenue')
+export const getRevenues = (added_at_after, added_at_before) => API.get(`/app/revenue/`,{ params: {
+    added_at_after,
+    added_at_before,
+  }})
 export const postRevenue = (revenueData) => API.post('/app/revenue/', revenueData)
 export const putRevenue = (revenueData, revenueId) => API.put(`/app/revenue/${revenueId}`, revenueData)
 export const deleteRevenue = (revenueId) => API.delete(`/app/revenue/${revenueId}`)
 
-export const getScans = () => API.get('/app/scan')
+export const getScans = (added_at_after, added_at_before) => API.get(`/app/scan/`, { params: {
+    added_at_after,
+    added_at_before,
+  }})
 export const postScan = (scanData) => API.post('/app/scan/', scanData)
 export const putScan = (scanData, scanId) => API.put(`/app/scan/${scanId}`, scanData)
 export const deleteScan = (scanId) => API.delete(`/app/scan/${scanId}`)
 
-export const getInvoices = () => API.get('/app/invoice')
+export const getInvoices = (added_at_after, added_at_before) => API.get(`/app/invoice/`, { params: {
+    added_at_after,
+    added_at_before,
+  }})
 export const postInvoice = (invoiceData) => API.post('/app/invoice/', invoiceData)
 export const putInvoice = (invoiceData, invoiceId) => API.put(`/app/invoice/${invoiceId}`, invoiceData)
 export const deleteInvoice = (invoiceId) => API.delete(`/app/invoice/${invoiceId}`)

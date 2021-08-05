@@ -2,7 +2,11 @@ import React from 'react'
 import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
-function BudgetTableHeader({ handleOpenBudgetModal, expenseAmount, incomeAmount }) {
+function BudgetTableHeader({ ordering, setOrdering, handleOpenBudgetModal, expenseAmount, incomeAmount }) {
+    const handleOnClick = (positive, negative) =>{
+        setOrdering(ordering === positive ? negative : positive)
+    }
+    console.log(ordering)
     return (
         <section className='budget_table_header'>
             {/* Income */}
@@ -13,42 +17,42 @@ function BudgetTableHeader({ handleOpenBudgetModal, expenseAmount, incomeAmount 
                         <button onClick={() => handleOpenBudgetModal("income", 'create', {})} className='income_add'><AddCircleOutlineIcon className='icon_add' fontSize='small'/></button>
                     </div>
                     <div className='right'>
-                        <span className='income_amount'>{incomeAmount.toFixed(2)} ₽</span>
+                        <span className='income_amount'>{incomeAmount?.toFixed(2)} ₽</span>
                     </div>
                 </div>
                 <hr />
                 <div className='table_header__filters'>
                     <section className='table_header__filters item small'>
                         <span className="item-text bold_text">Дата</span>          
-                        <UnfoldMoreSharpIcon className="icon_unfold"/>      
+                        <button name="added_at" onClick={(event) => handleOnClick("added_at", '-added_at')}><UnfoldMoreSharpIcon className="icon_unfold"/></button>
                     </section>
                     <hr />
                     <section className='table_header__filters item small'>
                         <span className="item-text bold_text">Контрагент</span>
-                        <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
+                        <button name="contragent" onClick={(event) => handleOnClick("contragent", '-contragent')} ><UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/> </button>               
                     </section>
                     
                     <hr />
                     <section className='table_header__filters item small'>
                         <span className="item-text bold_text">Сумма</span>
-                        <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
+                        <button name="amount" onClick={(event) => handleOnClick("amount", '-amount')} ><UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/> </button>                  
                     </section>
                     <hr />
                     <section className='table_header__filters item small'>
                         <span className="item-text bold_text">Описание</span>
-                        <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
+                        <button name="description" onClick={(event) => handleOnClick("description", '-description')} ><UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/> </button>                
                     </section>
                     <hr />
                     <section className='table_header__filters item small'>
                         <span className="item-text bold_text">Внес</span>
-                        <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
+                        {/* <button name="added_at" onClick={(event) => handleOnClick("added_at", '-added_at')} ><UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/> </button>                 */}
                     </section>
                     <hr />
                     <section className='table_header__filters item small'>
                         {/* This is neccessary */}
                         {/* <input type='checkbox' /> */}
                         <span className="item-text bold_text">Статус</span>
-                        <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
+                        <button name="is_verified" onClick={(event) => handleOnClick("is_verified", '-is_verified')} ><UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/> </button>                
                     </section>
                 </div>
             </div>
@@ -61,37 +65,36 @@ function BudgetTableHeader({ handleOpenBudgetModal, expenseAmount, incomeAmount 
                         <button onClick={() => handleOpenBudgetModal("expense", 'create', {})} className='expense_add'><AddCircleOutlineIcon className='icon_add' fontSize='small'/></button>
                     </div>
                     <div className='right'>
-                        <span className='expense_amount'>{expenseAmount.toFixed(2)} ₽</span>
+                        <span className='expense_amount'>{expenseAmount?.toFixed(2)} ₽</span>
                     </div>
                 </div>
                 <hr />
                 <div className='table_header__filters'>
                     <section className='table_header__filters item small'>
                         <span className="item-text bold_text">Контрагент</span>          
-                        <UnfoldMoreSharpIcon className="icon_unfold"/>      
-                    </section>
+                        <button name="contragent" onClick={(event) => handleOnClick("contragent", '-contragent')} ><UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/> </button>                              </section>
                     <hr />
                     <section className='table_header__filters item small'>
                         <span className="item-text bold_text">Сумма</span>
-                        <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
+                        <button name="amount" onClick={(event) => handleOnClick("amount", '-amount')} ><UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/> </button>                      
                     </section>
                     
                     <hr />
                     <section className='table_header__filters item semimedium'>
                         <span className="item-text bold_text">Описание</span>
-                        <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
+                        <button name="description" onClick={(event) => handleOnClick("description", '-description')} ><UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/> </button>                      
                     </section>
                     <hr />
                     <section className='table_header__filters item small'>
                         <span className="item-text bold_text">Внес</span>
-                        <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
+                        {/* <button name="added_at" onClick={(event) => handleOnClick("added_at", '-added_at')} ><UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/> </button>                       */}
                     </section>
                     <hr />
                     <section className='table_header__filters item small'>
                         {/* <input type='checkbox' /> */}
                         <span className="item-text bold_text">Статус</span>
-                        <UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/>                
-                    </section>
+                        <button name="is_verified" onClick={(event) => handleOnClick("is_verified", '-is_verified')} ><UnfoldMoreSharpIcon className="icon_unfold" fontSize='small'/> </button>  
+                        </section>
                 </div>
             </div>
         </section>
