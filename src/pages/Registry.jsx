@@ -26,11 +26,16 @@ function Registry() {
   // Fetched data
   const invoices = useSelector(state => state.invoices.data)
   const importers = useSelector(state => state.importers.data)
+  // calendar
+  const date = new Date();
+  // Select current month (first day and last day)
+  const [startDate, setStartDate] = useState(new Date(date.getFullYear(), date.getMonth(), 1).toISOString().substring(0, 10))
+  const [endDate, setEndDate] = useState(new Date(date.getFullYear(), date.getMonth() + 1, 0).toISOString().substring(0, 10))
 
   useEffect(() =>{
-    dispatch(fetchInvoices())
+    dispatch(fetchInvoices(startDate, endDate))
     dispatch(fetchImporters())
-  }, [dispatch])
+  }, [dispatch, startDate, endDate])
 
   const handleShowPopUp = (method, invoiceData) =>{
     // method: create, edit, idle
@@ -52,7 +57,7 @@ function Registry() {
           <Modal importers={importers} setOpenPopUp={setOpenPopUp} modalMethod={modalMethod} invoiceToEdit={invoiceToEdit}/>
         </>
       )}
-      <RegistryHeader handleDownloadFile={handleDownloadFile} handleShowPopUp={handleShowPopUp} selectAll={selectAll} setSelectAll={setSelectAll}/>
+      <RegistryHeader startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} handleDownloadFile={handleDownloadFile} handleShowPopUp={handleShowPopUp} selectAll={selectAll} setSelectAll={setSelectAll}/>
       {invoices ? 
       invoices.map((invoicesByDate, key) => 
         <RegistryDataRow key={key} 

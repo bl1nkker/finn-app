@@ -1,10 +1,10 @@
 import { CREATE_BUDGET, CREATE_BUDGET_ERROR, DELETE_BUDGET, DELETE_BUDGET_ERROR, FETCH_BUDGETS, FETCH_BUDGETS_ERROR, UPDATE_BUDGET, UPDATE_BUDGET_ERROR } from './../types'
 import { deleteBudget, getBudgets, postBudget, putBudget } from './../../axios/index'
 
-export const fetchBudgets = (budgetType) => async(dispatch) =>{
+export const fetchBudgets = (budgetType, added_at_after, added_at_before, ordering) => async(dispatch) =>{
     try {
-        const incomes = await getBudgets('income')
-        const expenses = await getBudgets('expense')
+        const incomes = await getBudgets('income', added_at_after, added_at_before, ordering)
+        const expenses = await getBudgets('expense', added_at_after, added_at_before, ordering)
         // Get dates (unic)
         const tmpIncomes = incomes.data.map(income => income.added_at)
         const tmpExpenses = expenses.data.map(expense => expense.added_at)

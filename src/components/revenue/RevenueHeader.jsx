@@ -5,26 +5,15 @@ import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 import Test from '../popUp/Test';
 
-function RevenueHeader({ handleOpenRevenueModal, handleDownloadInExcel }) {
-    const [showTableCalendar, setShowTableCalendar] = useState(false)
-    // start, end
-    const [selectedDayPoint, setSelectedDayPoint] = useState('')
-    // Select current month (first day and last day)
-    const date = new Date();
-    const [startDate, setStartDate] = useState(new Date(date.getFullYear(), date.getMonth(), 1))
-    const [endDate, setEndDate] = useState(new Date(date.getFullYear(), date.getMonth() + 1, 0))
-
-    const handleToggleTableCalendar = (dayType) =>{
-        setShowTableCalendar(!showTableCalendar)
-        setSelectedDayPoint(dayType)
-    }
+function RevenueHeader({ startDate, setStartDate, endDate, setEndDate, handleOpenRevenueModal, handleDownloadInExcel }) {
 
     const handleSetDate = (event) => {
         // So if user click on arrow button, then date will be invalid
         // (i'm fucking junior if you don't like my solution, fuck off)
-        console.log(event)
-        setStartDate(event.value[0])
-        setEndDate(event.value[1])
+        if (event.value){
+            setStartDate(new Date(event?.value[0]).toISOString().substring(0, 10))
+            setEndDate(new Date(event?.value[1]).toISOString().substring(0, 10))
+        }
 
         // Add API call to filter data by date
     }

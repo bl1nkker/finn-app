@@ -10,51 +10,6 @@ import './pagesStyles/addBudget.css'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { createBudget, fetchBudgets, removeBudget, updateBudget } from './../redux/actions/budgetActions'
-import TableCalendar from '../components/tableCalendar/TableCalendar'
-
-const tempBudgets = [
-    {
-        added_at: '2020-10-10',
-        expenses:[
-            {id: 1, amount: 21305, description: "Default expense", is_verified: false, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 2, amount: 21305, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 3, amount: 21305, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 4, amount: 21305, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 5, amount: 21305, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
-        ],
-        incomes:[
-            {id: 6, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 7, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 8, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-10-10", added_by: "Washington DC",category: 1,facility: 0},
-        ]
-  
-    },
-    {
-        added_at: '2020-01-30',
-        expenses:[
-            {id: 9, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-01-30", added_by: "Washington DC",category: 1,facility: 0},
-        ],
-        incomes:[
-            {id: 10, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-01-30", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 11, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-01-30", added_by: "Washington DC",category: 1,facility: 0},
-        ]
-  
-    },
-    {
-        added_at: '2020-11-29',
-        expenses:[
-            {id: 101, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 12, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 13, amount: 0, description: "Default expense", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
-        ],
-        incomes:[
-            {id: 14, amount: 1, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 15, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
-            {id: 16, amount: 0, description: "Default income", is_verified: true, contragent: "Contragent name", added_at: "2020-11-29", added_by: "Washington DC",category: 1,facility: 0},
-        ]
-  
-    },
-]
 
 function Budget() {
     const dispatch = useDispatch()
@@ -67,16 +22,22 @@ function Budget() {
     // create/edit/idle
     const [modalMethod, setModalMethod] = useState('idle')
     const [selectedBudget, setSelectedBudget] = useState(null)
+    // calendar
+    const date = new Date();
+    // Select current month (first day and last day)
+    const [startDate, setStartDate] = useState(new Date(date.getFullYear(), date.getMonth(), 2).toISOString().substring(0, 10))
+    const [endDate, setEndDate] = useState(new Date(date.getFullYear(), date.getMonth() + 1, 1).toISOString().substring(0, 10))
+    const [ordering, setOrdering] = useState('amount')
 
     useEffect(() =>{
-        dispatch(fetchBudgets("income"))
-        dispatch(fetchBudgets("expense"))
-    }, [dispatch])
+        dispatch(fetchBudgets("income", startDate, endDate, ordering))
+        dispatch(fetchBudgets("expense", startDate, endDate, ordering))
+    }, [dispatch, startDate, endDate, ordering])
 
     let incomeAmount = 0
     let expenseAmount = 0
-    tempBudgets.map( budget => budget.incomes.map(income => incomeAmount += income.amount) )
-    tempBudgets.map( budget => budget.expenses.map(expense => expenseAmount += expense.amount) )
+    budgets.map( budget => budget.incomes.map(income => incomeAmount += income.amount) )
+    budgets.map( budget => budget.expenses.map(expense => expenseAmount += expense.amount) )
     
     const handleOpenBudgetModal = (type, method, budget) =>{
         setSelectedBudget(budget)
@@ -118,7 +79,6 @@ function Budget() {
         setBudgetType('')
         window.location.reload()
     }
-
     return (
         <div className='table_container'>
             
@@ -126,8 +86,8 @@ function Budget() {
                 <Backdrop />
                 <AddBudgetModal handleDeleteBudget={handleDeleteBudget} selectedBudget={selectedBudget} modalMethod={modalMethod} budgetType={budgetType} handleAddBudget={handleAddBudget} handleCloseBudgetModal={handleCloseBudgetModal}/>
             </>}
-            <BudgetHeader incomeAmount={incomeAmount} expenseAmount={expenseAmount}/>
-            <BudgetTableHeader incomeAmount={incomeAmount} expenseAmount={expenseAmount} handleOpenBudgetModal={handleOpenBudgetModal}/>
+            <BudgetHeader startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} incomeAmount={incomeAmount} expenseAmount={expenseAmount}/>
+            <BudgetTableHeader ordering={ordering} setOrdering={setOrdering} incomeAmount={incomeAmount} expenseAmount={expenseAmount} handleOpenBudgetModal={handleOpenBudgetModal}/>
             <BudgetContent handleOpenBudgetModal={handleOpenBudgetModal} budgets={budgets}/>
         </div>
     )

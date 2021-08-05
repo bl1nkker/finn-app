@@ -1,10 +1,10 @@
 import { CREATE_INVOICE, CREATE_INVOICE_ERROR, DELETE_INVOICE, DELETE_INVOICE_ERROR, FETCH_INVOICES, FETCH_INVOICES_ERROR, UPDATE_INVOICE, UPDATE_INVOICE_ERROR } from '../types'
 import { deleteInvoice, getInvoices, postInvoice, putInvoice } from './../../axios/index'
 
-export const fetchInvoices = () => async(dispatch) => {
+export const fetchInvoices = (added_at_after, added_at_before) => async(dispatch) => {
     try {
         // Fetch data
-        const { data } = await getInvoices()
+        const { data } = await getInvoices(added_at_after, added_at_before)
 
         // Get dates (unic)
         const tmp = data.map(invoice => invoice.added_at)
