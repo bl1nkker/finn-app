@@ -18,7 +18,7 @@ import CalendarPersonal from '../components/salary/calendar/CalendarPersonal';
 import CalendarShared from '../components/salary/calendar/CalendarShared';
 import AddEmployeeModal from '../components/salary/addEmployee/AddEmployeeModal';
 import EmployeeSalaryInfoModal from '../components/salary/salaryInfo/EmployeeSalaryInfoModal';
-import { addSalary, addWorkHours, fetchCoworkers } from '../redux/actions/salariesActions';
+import { addSalary, addWorkHours, fetchCoworkers, updateSalary, updateWorkHours } from '../redux/actions/salariesActions';
 
 function Registry() {
   const dispatch = useDispatch()
@@ -48,9 +48,16 @@ function Registry() {
     setShowPersonalCalendar(false)
     for (let index = 0; index < data.length; index++) {
       if (data[index].updated){
+        // Update
+        if (data[index].id){
+          dispatch(updateWorkHours(data[index], data[index].id))
+          console.log("Updating", data[index])
+        }
         // Create
-        dispatch(addWorkHours(data[index]))
-        console.log('Updating', data[index])
+        else{
+          dispatch(addWorkHours(data[index]))
+          console.log('Creating', data[index])
+        }
       }
       
     }
@@ -68,8 +75,15 @@ function Registry() {
     // Request to backend
     setShowSharedCalendar(false)
     for (let index = 0; index < data.length; index++) {
+      if (data[index].id){
+        dispatch(updateWorkHours(data[index], data[index].id))
+        console.log("Updating", data[index])
+      }
+      // Create
+      else{
         dispatch(addWorkHours(data[index]))
-        console.log('Updating', data[index])
+        console.log('Creating', data[index])
+      }
     }
     console.log('Shared work hours saved!', data);
   }
@@ -105,7 +119,8 @@ function Registry() {
         console.log('Creating', deductions[index])
       }else{
         // Update
-        console.log('Update')
+        dispatch(updateSalary(deductions[index], deductions[index].id))
+        console.log('Update', deductions[index])
       }
       
     }

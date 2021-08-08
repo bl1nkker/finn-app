@@ -62,8 +62,8 @@ export const postSalary = (salaryData) => API.post('/app/salary/deductions/', sa
 export const putSalary = (salaryData, salaryId) => API.put(`/app/salary/deductions/${salaryId}`, salaryData)
 export const deleteSalary = (salaryId) => API.delete(`/app/salary/deductions/${salaryId}`)
 export const postWorkHours = (workHourData) => API.post('/app/salary/work-hours/', workHourData)
-export const putWorkHours = (workHourData, workHourId) => API.put(`/app/salary/deductions/${workHourId}`, workHourData)
-export const deleteWorkHours = (workHourId) => API.delete(`/app/salary/deductions/${workHourId}`)
+export const putWorkHours = (workHourData, workHourId) => API.put(`/app/salary/work-hours/${workHourId}`, workHourData)
+export const deleteWorkHours = (workHourId) => API.delete(`/app/salary/work-hours/${workHourId}`)
 
 export const getAccounts = () => API.get('/accounts/users/')
 export const postAccount = (accountData) => API.post('/accounts/users/', accountData)
