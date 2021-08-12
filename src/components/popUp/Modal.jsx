@@ -20,7 +20,7 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
         added_at:'2021-11-10',
         invoice_number:0,
         payment_type: paymentOptions[0],
-        importer:importers[0],
+        importer:importers[0].id,
         amount:0.00,
         tax_amount:0.00,
         comment:'',
@@ -40,12 +40,14 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
         formData = {...formData, added_by: currentUser}
 
         if (modalMethod === 'create'){
+            console.log('Adding', formData)
             dispatch(createInvoice(formData))
         }else if (modalMethod === 'edit'){
+            console.log('Editing', formData)
             dispatch(updateInvoice(formData, formData.id))
             
         }
-        window.location.reload()
+        // window.location.reload()
         setOpenPopUp(false)
     }
 
@@ -88,13 +90,16 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
                     />
             </section>
             <section className='modal_field'>
-                {/* <LargeField fieldLabel="Поставщик"/> */}
-                <DropDownList 
-                    fieldLabel="Поставщик" 
-                    options={importers}
-                    value={formData.importer} 
-                    setValue={(value) => setFormData({...formData, importer:value})}
-                    isFuckedUp={true} />
+                    <div className='modal_largefield'>
+                        <label className="label">Поставщик fuck</label>
+                        <select className="input select"
+                        onChange={(event) => setFormData({...formData, importer:event.target.value})}
+                        placeholder='Введите значение...'>
+                            {importers.map( (opt, key) => (
+                                <option key={key} value={opt.id} className='option' >{opt.company_name}</option>
+                            ))}
+                    </select>
+                    </div>
             </section>
             <section className='modal_field'>
                 <DoubleField
