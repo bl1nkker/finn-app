@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import AddBudgetHeader from './AddBudgetHeader'
 import DoubleField from './../../popUp/DoubleField'
-import LargeField from './../../popUp/LargeField'
-import DropDownList from '../../popUp/DropDownList'
 import ToggleSwitch from '../../popUp/ToggleSwitch'
 import Button from '../../popUp/Button'
 import TextAreaField from '../../popUp/TextAreaField'
@@ -10,7 +8,44 @@ import TextAreaField from '../../popUp/TextAreaField'
 function AddBudgetModal({handleDeleteBudget, selectedBudget, modalMethod, handleAddBudget, handleCloseBudgetModal, budgetType}) {
     const [formData, setFormData] = useState(selectedBudget ? selectedBudget : 
         {id: undefined,amount: 0, description: "", is_verified: false, contragent: "", added_at: "", added_by: "",category: "",facility: 0})
-    const categories = ["Машины", "Овощи",'Хозтовары']
+    const categories = [
+        {
+            "value": "1",
+            "display_name": "Аванс"
+        },
+        {
+            "value": "2",
+            "display_name": "Продукты"
+        },
+        {
+            "value": "3",
+            "display_name": "Хозтовары"
+        },
+        {
+            "value": "4",
+            "display_name": "Посуда"
+        },
+        {
+            "value": "5",
+            "display_name": "Инкассация"
+        },
+        {
+            "value": "6",
+            "display_name": "Под отчёт"
+        },
+        {
+            "value": "7",
+            "display_name": "Реклама"
+        },
+        {
+            "value": "8",
+            "display_name": "Ремонтные работы"
+        },
+        {
+            "value": "9",
+            "display_name": "Другое"
+        }
+    ]
     const userIsStaff = JSON.parse(localStorage.getItem("isStaff"))
     return (
         <div className='modal_container'>
@@ -28,12 +63,16 @@ function AddBudgetModal({handleDeleteBudget, selectedBudget, modalMethod, handle
                         setValue_2={(value) => setFormData({...formData, amount: value})}/>
                 </section>
                 <section className='modal_field'>
-                    {/* <LargeField fieldLabel="Поставщик"/> */}
-                    <DropDownList 
-                        fieldLabel="Категория" 
-                        value={formData.category}
-                        options={categories}
-                        setValue={(value) => setFormData({...formData, category:value})}  />
+                        <div className='modal_largefield'>
+                            <label className="label">Категория</label>
+                            <select className="input select"
+                            onChange={(event) => setFormData({...formData, category:event.target.value})}
+                            placeholder='Введите значение...'>
+                                {categories.map( (opt, key) => (
+                                    <option key={key} value={opt.value} className='option' >{opt.display_name}</option>
+                                ))}
+                        </select>
+                    </div>
                 </section>
                 <section className='modal_field'>
                 <TextAreaField 
