@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import React from 'react'
 
-function SalaryTotalRow({handleOpenCalendar}) {
+function SalaryTotalRow({ choosenCoworkers, handleOpenCalendar}) {
     return (
         <div className={`registry_row salary_total`}>
                     <section className='registry_row__item left_align item semimedium'>
@@ -11,7 +10,11 @@ function SalaryTotalRow({handleOpenCalendar}) {
                         <span className="item-text"></span>
                     </section>
                     <section className='registry_row__item item extra_small'>
-                    <span className="item-text"><button onClick={handleOpenCalendar} className='hours'>2000</button></span>
+                    <span className="item-text">
+                        <button onClick={handleOpenCalendar} className='hours'>
+                            {choosenCoworkers.reduce((acc, curr) => acc += curr.work_hours.reduce((acc2, curr) => acc2 += curr.amount, 0), 0)}
+                        </button>
+                        </span>
                     </section>
                     <section className='registry_row__item item semismall'>
                         <span className="item-text"></span>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 function SalaryDataRow({handlePrintEmployeeSalaryInfo, employee, handleOpenCalendar, handleOpenEmployeeSalaryInfo}) {
     const subdivisionOpt = [

@@ -10,7 +10,6 @@ import './pagesStyles/addEmployee.css'
 import './pagesStyles/salaryInfo.css'
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchInvoices } from './../redux/actions/invoicesActions'
 import SalaryDataRow from '../components/salary/SalaryDataRow';
 import SalaryTotalRow from '../components/salary/SalaryTotalRow';
 import Backdrop from '../components/confirmationWindow/Backdrop'
@@ -29,6 +28,8 @@ function Registry() {
 
   const [selectedEmployee, setSelectedEmployee] = useState({})
   const coworkersWithSalaries = useSelector(state => state.salaries.data)
+
+  const [choosenCoworkers, setChoosenCoworkers] = useState([]) 
 
   useEffect(() =>{
     dispatch(fetchCoworkers())
@@ -97,6 +98,7 @@ function Registry() {
   }
   const handleAddEmployee = (employee) =>{
     // Request to backend
+    setChoosenCoworkers(prevState => [...prevState, employee])
     console.log('Employee added!', employee);
   }
 
@@ -136,7 +138,7 @@ function Registry() {
       {/* Add employee modal */}
       {showAddEmployeeModal && <>
         <Backdrop />
-        <AddEmployeeModal handleAddEmployee={handleAddEmployee} selectedEmployee={selectedEmployee} handleCloseAddEmployeeModal={handleCloseAddEmployeeModal}/>
+        <AddEmployeeModal choosenCoworkers={choosenCoworkers} coworkersWithSalaries={coworkersWithSalaries} handleAddEmployee={handleAddEmployee} selectedEmployee={selectedEmployee} handleCloseAddEmployeeModal={handleCloseAddEmployeeModal}/>
       </>}
 
       {/* Add employee modal */}
@@ -165,10 +167,10 @@ function Registry() {
       <SalaryHeader handleOpenAddEmployeeModal={handleOpenAddEmployeeModal}/>
 
       {/* Main content */}
-      {coworkersWithSalaries.map((employee, key) => <SalaryDataRow handlePrintEmployeeSalaryInfo={handlePrintEmployeeSalaryInfo} handleOpenEmployeeSalaryInfo={handleOpenEmployeeSalaryInfo} key={key} handleOpenCalendar={handleOpenPersonalCalendar} employee={employee}/>)}
+      {choosenCoworkers.map((employee, key) => <SalaryDataRow handlePrintEmployeeSalaryInfo={handlePrintEmployeeSalaryInfo} handleOpenEmployeeSalaryInfo={handleOpenEmployeeSalaryInfo} key={key} handleOpenCalendar={handleOpenPersonalCalendar} employee={employee}/>)}
 
       {/* Bottom Row */}
-      <SalaryTotalRow handleOpenCalendar={handleOpenSharedCalendar}/>
+      <SalaryTotalRow choosenCoworkers={choosenCoworkers} handleOpenCalendar={handleOpenSharedCalendar}/>
     </div>
   );
 }
