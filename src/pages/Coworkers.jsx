@@ -71,7 +71,7 @@ function Coworkers() {
       setSelectedCoworker(null)
       setModalMethod('idle')
       setShowCoworkerModal(false);
-      // window.location.reload()
+      window.location.reload()
     }
   }
 

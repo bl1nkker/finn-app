@@ -19,6 +19,7 @@ function Revenue() {
   const [selectedRevenue, setSelectedRevenue] = useState(null)
   // create/edit/idle
   const [modalMethod, setModalMethod] = useState('idle')
+  const [formError, setFormError] = useState(false)
   // calendar
   const date = new Date();
   // Select current month (first day and last day)
@@ -34,6 +35,7 @@ function Revenue() {
     setSelectedRevenue(null)
     setModalMethod('idle')
     setShowRevenueModal(false);
+    setFormError(false)
   }
 
   const handleOpenRevenueModal = (method, revenue) =>{
@@ -45,18 +47,26 @@ function Revenue() {
   const handleSendRevenue = (formData) =>{
     const currentUser = localStorage.getItem("uid")
     formData = {...formData, added_by: currentUser}
-    if (modalMethod === "edit") {
-        dispatch(updateRevenue(formData, formData.id))
-        console.log(`Editing revenue...:`, formData);
+    // {id: undefined, np: 0, cash_income: 0, cash_free_income: 0,
+    //  contragent: "", added_at: "", added_by: "",category: "",facility: 1}
+    if (!formData.np || !formData.cash_income || !formData.cash_free_income  ||
+    !formData.added_at || !formData.added_by || !formData.facility)
+    {console.log(formData)
+      setFormError(true)}
+    else{
+      if (modalMethod === "edit") {
+          dispatch(updateRevenue(formData, formData.id))
+          console.log(`Editing revenue...:`, formData);
+      }
+      else if (modalMethod === "create") {
+          dispatch(createRevenue(formData))
+          console.log(`Adding revenue...:`, formData);
+      }
+      setSelectedRevenue(null)
+      setModalMethod('idle')
+      setShowRevenueModal(false);
+      window.location.reload()
     }
-    else if (modalMethod === "create") {
-        dispatch(createRevenue(formData))
-        console.log(`Adding revenue...:`, formData);
-    }
-    setSelectedRevenue(null)
-    setModalMethod('idle')
-    setShowRevenueModal(false);
-    window.location.reload()
   }
 
   const handleDeleteRevenue = (formData) =>{
@@ -78,6 +88,7 @@ function Revenue() {
       {showRevenueModal && <>
                 <Backdrop />
                 <RevenueModal 
+                formError={formError}
                 handleDeleteRevenue={handleDeleteRevenue} 
                 modalMethod={modalMethod} 
                 handleSendRevenue={handleSendRevenue} 

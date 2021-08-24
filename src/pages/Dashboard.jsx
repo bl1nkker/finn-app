@@ -43,7 +43,7 @@ function Dashboard() {
     (new Date(revenue.added_at).getTime() > new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1).getTime())
     && (new Date(revenue.added_at).getTime() < today.getTime()))
   const revenueForToday = revenuesForToday.reduce((accumulator, current) => accumulator + current.cash_income + current.cash_free_income , 0);
-
+  console.log(revenueForFiveDays)
   return (
     <div style={{ textAlign: "center"}}>
       {/* Confirmation Window (perm) */}

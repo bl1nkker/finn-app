@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux'
 import { createInvoice, removeInvoice, updateInvoice } from './../../redux/actions/invoicesActions'
 
 function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
+    const [formError, setFormError] = useState(false)
     const dispatch = useDispatch()
     const paymentOptions = ['Безналичный расчет', "Наличный расчет"]
     let [formData, setFormData] = useState(invoiceToEdit ? 
@@ -30,25 +31,29 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
         facilities:1
     }) 
 
-    
-
     const handleSubmit = () =>{
         if (formData.payment_type === 'Безналичный расчет') formData.payment_type = 'Б'
         else if (formData.payment_type === 'Наличный расчет') formData.payment_type = 'Н'
 
         const currentUser = localStorage.getItem("uid")
         formData = {...formData, added_by: currentUser}
-
-        if (modalMethod === 'create'){
-            console.log('Adding', formData)
-            dispatch(createInvoice(formData))
-        }else if (modalMethod === 'edit'){
-            console.log('Editing', formData)
-            dispatch(updateInvoice(formData, formData.id))
-            
+        // added_at:'2021-11-10', invoice_number:0, payment_type: paymentOptions[0], importer:importers[0].id,
+        // amount:0.00, tax_amount:0.00, comment:'', is_confirmed:false
+        if (!formData.added_at || !formData.invoice_number || !formData.payment_type ||
+            !formData.importer || !formData.amount || !formData.tax_amount || !formData.comment)
+            setFormError(true)
+        else{
+            if (modalMethod === 'create'){
+                console.log('Adding', formData)
+                dispatch(createInvoice(formData))
+            }else if (modalMethod === 'edit'){
+                console.log('Editing', formData)
+                dispatch(updateInvoice(formData, formData.id))
+                
+            }
+            // window.location.reload()
+            setOpenPopUp(false)
         }
-        // window.location.reload()
-        setOpenPopUp(false)
     }
 
     const handleDelete = () =>{
@@ -58,6 +63,7 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
     
     const handleClose = () =>{
         setOpenPopUp(false)
+        setFormError(false)
     }
     return (
         <div className='modal_container'>
@@ -91,7 +97,7 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
             </section>
             <section className='modal_field'>
                     <div className='modal_largefield'>
-                        <label className="label">Поставщик fuck</label>
+                        <label className="label">Поставщик</label>
                         <select className="input select"
                         onChange={(event) => setFormData({...formData, importer:event.target.value})}
                         placeholder='Введите значение...'>
@@ -120,6 +126,7 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
             </section>
             <section className='modal_field switch_field'>
                 {/* Send request to update is_confirmed prop of the invoice */}
+                {formError && <div style={{ top: 0 }} className="error_message">Fill in all the fields on this form</div>}
                 <ToggleSwitch 
                     value={formData.is_confirmed} 
                     setValue={() => setFormData({...formData, is_confirmed:!formData.is_confirmed})}/>

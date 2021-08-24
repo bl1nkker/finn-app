@@ -20,6 +20,7 @@ function Scans() {
   const [scansToDownload, setScansToDownload] = useState([])
   // create/edit/idle
   const [modalMethod, setModalMethod] = useState('idle')
+  const [formError, setFormError] = useState(false)
   // calendar
   const date = new Date();
   // Select current month (first day and last day)
@@ -34,6 +35,7 @@ function Scans() {
     setSelectedScan(null)
     setModalMethod('idle')
     setShowScanModal(false);
+    setFormError(false)
   }
 
   const handleOpenScanModal = (method, revenue) =>{
@@ -50,18 +52,22 @@ function Scans() {
     _formData.append("name", formData.name);
     _formData.append("facility", formData.facility);
     // formData = {...formData, added_by: currentUser}
-    if (modalMethod === "edit") {
-        dispatch(updateScan(_formData, formData.id))
-        console.log(`Editing scan...:`, _formData);
+    if (!formData.file || !formData.type_scan || !formData.name || !formData.facility)
+      setFormError(true)
+    else{
+      if (modalMethod === "edit") {
+          dispatch(updateScan(_formData, formData.id))
+          console.log(`Editing scan...:`, _formData);
+      }
+      else if (modalMethod === "create") {
+          dispatch(createScan(_formData))
+          console.log(`Adding scan...:`, _formData);
+      }
+      setSelectedScan(null)
+      setModalMethod('idle')
+      setShowScanModal(false);
+      window.location.reload()
     }
-    else if (modalMethod === "create") {
-        dispatch(createScan(_formData))
-        console.log(`Adding scan...:`, _formData);
-    }
-    setSelectedScan(null)
-    setModalMethod('idle')
-    setShowScanModal(false);
-    // window.location.reload()
   }
 
   const handleDeleteScan = (formData) =>{
@@ -89,8 +95,9 @@ function Scans() {
   return (
     <div className='table_container'>
       {showScanModal && <>
-                {/* <Backdrop /> */}
+                <Backdrop />
                 <ScanModal 
+                formError={formError}
                 handleDeleteScan={handleDeleteScan} 
                 modalMethod={modalMethod} 
                 handleSendScan={handleSendScan} 

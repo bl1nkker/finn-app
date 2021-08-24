@@ -3,7 +3,7 @@ import DoubleField from './../../popUp/DoubleField'
 import Button from '../../popUp/Button'
 import RevenueModalHeader from './RevenueModalHeader'
 
-function RevenueModal({ selectedRevenue, handleCloseRevenueModal, handleSendRevenue, handleDeleteRevenue, modalMethod }) {
+function RevenueModal({ formError, selectedRevenue, handleCloseRevenueModal, handleSendRevenue, handleDeleteRevenue, modalMethod }) {
 
     const [formData, setFormData] = useState(selectedRevenue ? selectedRevenue : 
         {id: undefined, np: 0, cash_income: 0, cash_free_income: 0, contragent: "", added_at: "", added_by: "",category: "",facility: 1})
@@ -49,6 +49,7 @@ function RevenueModal({ selectedRevenue, handleCloseRevenueModal, handleSendReve
                         />
                 </section>
                 <section className='modal_actions'>
+                {formError && <div style={{ top:0 }} className="error_message">Fill in all the fields on this side</div>}
                     <Button 
                     onClickFunc={handleCloseRevenueModal} 
                     buttonName="Закрыть" isBlue={false}/>
