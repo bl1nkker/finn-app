@@ -49,6 +49,7 @@ function LoginModal({setAuthError, authError, setAuthState, handleLogin }) {
                     </div>
                 </div>
 
+                {authError && <div className='error_message'>Something goes wrong</div>}
             </section>
             <section className='login_actions'>
                 <button onClick={handleLoginButton}>Войти</button>

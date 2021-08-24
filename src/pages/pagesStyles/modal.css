@@ -91,6 +91,7 @@
 }
 
 .modal_actions {
+  position: relative;
   display: flex;
   justify-content: flex-end;
   margin-bottom: 10px;

@@ -6,7 +6,7 @@ import CompanyModalHeader from './CompanyModalHeader'
 import DoubleField from '../../popUp/DoubleField'
 import TextAreaField from '../../popUp/TextAreaField'
 
-function CompanyModal({selectedCompany, modalMethod, handleAddCompany, handleCloseCompanyModal }) {
+function CompanyModal({ formError, selectedCompany, modalMethod, handleAddCompany, handleCloseCompanyModal }) {
     const subdOpt = ['','', '']
     const [formData, setFormData] = useState(selectedCompany ? {...selectedCompany, listOfOrgs:[{id:1}, {id:2}, {id:3}]} : 
         {name: '', bank_name: '', inn: "", bik:'', 
@@ -48,6 +48,7 @@ function CompanyModal({selectedCompany, modalMethod, handleAddCompany, handleClo
                          />
                     <TextAreaField fieldLabel='Комментарий' value={formData.comment} setValue={(value) => setFormData({...formData, comment:value})}/>
                     <section className='modal_actions'>
+                        {formError && <div className="error_message">Fill in all the fields on this side</div>}
                         <Button onClickFunc={() => handleCloseCompanyModal()}  buttonName="Закрыть" isBlue={false}/>
                         <Button onClickFunc={() => handleAddCompany(formData)} buttonName="Добавить" isBlue={true}/>
                     </section>
