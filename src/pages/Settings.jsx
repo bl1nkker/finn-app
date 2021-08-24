@@ -27,6 +27,7 @@ function Settings() {
     const [modalMethod, setModalMethod] = useState('idle')
     const [selectedAccount, setSelectedAccount] = useState(null)
     const [selectedCompany, setSelectedCompany] = useState(null)
+    const [formError, setFormError] = useState(false)
 
     useEffect(() => {
       dispatch(fetchAccounts())
@@ -43,6 +44,7 @@ function Settings() {
         setSelectedAccount(null)
         setModalMethod("idle")
         setShowAddAccountModal(false);
+        setFormError(false)
     }
 
     const handleOpenCompanyModal = ( method, company) =>{
@@ -54,39 +56,52 @@ function Settings() {
         setSelectedCompany(null)
         setModalMethod("idle")
         setShowAddCompanyModal(false);
+        setFormError(false)
     }
 
     const handleAddAccount = (formData) =>{
-        if (modalMethod === "edit") {
-            console.log(`Editing account`, formData);
-            dispatch(updateAccount(formData, formData.id))
+        // {full_name: '', phone_number: '', email: "",}
+        if (!formData.full_name || !formData.phone_number || !formData.email)
+            setFormError(true)
+        else{
+            if (modalMethod === "edit") {
+                console.log(`Editing account`, formData);
+                dispatch(updateAccount(formData, formData.id))
+            }
+            else if (modalMethod === "create") {
+                console.log(`Adding account`, formData);
+                // default password
+                const defaultPassword = 'qwer1234'
+                formData = {...formData, password: defaultPassword}
+                dispatch(createAccount(formData))
+            }
+            setSelectedAccount(null)
+            setModalMethod("idle")
+            setShowAddAccountModal(false);
+            window.location.reload()
         }
-        else if (modalMethod === "create") {
-            console.log(`Adding account`, formData);
-            // default password
-            const defaultPassword = 'qwer1234'
-            formData = {...formData, password: defaultPassword}
-            dispatch(createAccount(formData))
-        }
-        setSelectedAccount(null)
-        setModalMethod("idle")
-        setShowAddAccountModal(false);
-        window.location.reload()
     }
 
     const handleAddCompany = (formData) =>{
-        if (modalMethod === "edit") {
-            dispatch(updateFacility(formData, formData.id))
-            console.log(`Editing company`, formData);
-        }
-        else if (modalMethod === "create") {
-            dispatch(createFacility(formData))
-            console.log(`Adding account`, formData);
-        }
-        setSelectedCompany(null)
-        setModalMethod("idle")
-        setShowAddCompanyModal(false);
-        window.location.reload()
+        // {name: '', bank_name: '', inn: "", bik:'', correspondent_account:"", expense_account:"", 
+        // comment:"", is_active:true, listOfOrgs:[{id:1}, {id:2}, {id:3}] }
+        if (!formData.name || !formData.bank_name || !formData.inn ||
+            !formData.bik ||!formData.correspondent_account ||!formData.expense_account ||!formData.comment)
+            setFormError(true)
+        else{
+            if (modalMethod === "edit") {
+                dispatch(updateFacility(formData, formData.id))
+                console.log(`Editing company`, formData);
+            }
+            else if (modalMethod === "create") {
+                dispatch(createFacility(formData))
+                console.log(`Adding account`, formData);
+            }
+            setSelectedCompany(null)
+            setModalMethod("idle")
+            setShowAddCompanyModal(false);
+            window.location.reload()
+            }
     }
 
     
@@ -96,11 +111,11 @@ function Settings() {
             
             {showAddAccountModal && <>
                 <Backdrop />
-                <AccountModal selectedAccount={selectedAccount} modalMethod={modalMethod} handleAddAccount={handleAddAccount} handleCloseAccountModal={handleCloseAccountModal}/>
+                <AccountModal formError={formError}  selectedAccount={selectedAccount} modalMethod={modalMethod} handleAddAccount={handleAddAccount} handleCloseAccountModal={handleCloseAccountModal}/>
             </>}
             {showAddCompanyModal && <>
                 <Backdrop />
-                <CompanyModal selectedCompany={selectedCompany} modalMethod={modalMethod} handleAddCompany={handleAddCompany} handleCloseCompanyModal={handleCloseCompanyModal}/>
+                <CompanyModal formError={formError} selectedCompany={selectedCompany} modalMethod={modalMethod} handleAddCompany={handleAddCompany} handleCloseCompanyModal={handleCloseCompanyModal}/>
             </>}
             <SettingsHeader />
             <SettingsTableHeader accounts={accounts} companies={companies} handleOpenCompanyModal={handleOpenCompanyModal} handleOpenAccountModal={handleOpenAccountModal}/>

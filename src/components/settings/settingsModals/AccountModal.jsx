@@ -4,7 +4,7 @@ import DropDownList from '../../popUp/DropDownList'
 import Button from '../../popUp/Button'
 import AccountModalHeader from './AccountModalHeader'
 
-function AccountModal({selectedAccount, modalMethod, handleAddAccount, handleCloseAccountModal, }) {
+function AccountModal({ formError, selectedAccount, modalMethod, handleAddAccount, handleCloseAccountModal, }) {
     const orsOpt = ['', '', '']
     const subdivisionOpt = ["Администрация", "Кухня", "Бармены", "Официанты", "Охрана", "Уборка", "Тех. персонал"]
     const [formData, setFormData] = useState(selectedAccount ? {...selectedAccount, listOfOrgs:[{id:1}, {id:2}, {id:3}]} : 
@@ -23,6 +23,7 @@ function AccountModal({selectedAccount, modalMethod, handleAddAccount, handleClo
                     <LargeField value={formData.phone_number} setValue={(value) => setFormData({...formData, phone_number:value})} fieldLabel='Номер телефона'/>
                     <LargeField value={formData.email} setValue={(value) => setFormData({...formData, email:value})} fieldLabel='Почта/логин'/>
                     <section className='modal_actions'>
+                    {formError && <div className="error_message">Fill in all the fields on this side</div>}
                         <Button onClickFunc={() => handleCloseAccountModal()}  buttonName="Закрыть" isBlue={false}/>
                         <Button onClickFunc={() => handleAddAccount(formData)} buttonName="Сохранить" isBlue={true}/>
                     </section>

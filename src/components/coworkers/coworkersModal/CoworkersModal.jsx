@@ -3,11 +3,11 @@ import Button from '../../popUp/Button'
 import LargeField from '../../popUp/LargeField'
 import TextAreaField from '../../popUp/TextAreaField'
 import ToggleSwitch from '../../popUp/ToggleSwitch'
-import DropDownList from '../../popUp/DropDownList'
 import CoworkersModalHeader from './CoworkersModalHeader'
 import DocsField from '../../popUp/DocsField'
+// import FileBase from 'react-file-base64'
 
-function CoworkersModal({ selectedCoworker, handleCloseCoworkerModal, handleSendCoworker, handleDeleteCoworker, modalMethod }) {
+function CoworkersModal({ formError, selectedCoworker, handleCloseCoworkerModal, handleSendCoworker, handleDeleteCoworker, modalMethod }) {
     const subdivisionOpt = [
         {id:'1', name:'Администрация'},
         {id:'2', name:'Бар'},
@@ -143,6 +143,7 @@ function CoworkersModal({ selectedCoworker, handleCloseCoworkerModal, handleSend
                         value={formData.is_foreign} 
                         setValue={() => setFormData({...formData, is_foreign:!formData.is_foreign})}/> 
                     <span className='with_toggle'>Иностранец</span>
+                {formError && <div className="error_message">Fill in all the fields on this form</div>}
                 </div>
 
                 <div className='grid_actions'>
