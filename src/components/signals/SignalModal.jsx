@@ -11,7 +11,7 @@ function SignalModal({ setShowSignalModal, selectedSignal }) {
             </section>
             <hr />
             <section className='signal_modal_content'>
-                <p className='content_paragraph'>{selectedSignal.content}</p>
+                <p className='content_paragraph'>{selectedSignal.message}</p>
             </section>
         </div>
     )

@@ -11,6 +11,8 @@ const API = axios.create({ baseURL: 'http://127.0.0.1:8000/api' })
 //     return req
 // } )
 
+export const getSignals = () => API.get(`/app/signals/`)
+
 export const getBudgets = (budgetType, added_at_after, added_at_before, ordering) => API.get(`/app/budget/${budgetType}/`, { params: {
     added_at_after,
     added_at_before,
