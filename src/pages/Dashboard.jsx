@@ -61,7 +61,7 @@ function Dashboard() {
               {signals.map((signal, id) =>
                 <div key={id} className="home__warning-card">
                   <div className="warning__card-title">Внимание!<button onClick={() => handleOpenSignalModal(signal)} className='more_button'>Подробнее</button></div>
-                  <div className="warning__card-content">{signal.nutshell}</div>
+                  <div className="warning__card-content">{signal.message}</div>
                 </div>)}
             </div>
         </div>

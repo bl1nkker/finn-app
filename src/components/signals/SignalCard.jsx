@@ -15,7 +15,7 @@ function SignalCard({ signal, handleDeleteCard, handleOpenSignalModal }) {
             </section>
             <hr />
             <section className="signal_card_content">
-                <p className='content_text'>{signal.content}</p>
+                <p className='content_text'>{signal.message}</p>
             </section>
         </div>
     )
