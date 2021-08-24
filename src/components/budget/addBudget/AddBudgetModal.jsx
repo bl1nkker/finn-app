@@ -5,7 +5,7 @@ import ToggleSwitch from '../../popUp/ToggleSwitch'
 import Button from '../../popUp/Button'
 import TextAreaField from '../../popUp/TextAreaField'
 
-function AddBudgetModal({handleDeleteBudget, selectedBudget, modalMethod, handleAddBudget, handleCloseBudgetModal, budgetType}) {
+function AddBudgetModal({ formError, handleDeleteBudget, selectedBudget, modalMethod, handleAddBudget, handleCloseBudgetModal, budgetType}) {
     const [formData, setFormData] = useState(selectedBudget ? selectedBudget : 
         {id: undefined,amount: 0, description: "", is_verified: false, contragent: "", added_at: "", added_by: "",category: "",facility: 0})
     const categories = [
@@ -90,6 +90,7 @@ function AddBudgetModal({handleDeleteBudget, selectedBudget, modalMethod, handle
                 </section>}
                 
                 <section className='modal_actions'>
+                {formError && <div className="error_message">Fill in all the fields on this side</div>}
                     <Button onClickFunc={handleCloseBudgetModal} buttonName="Закрыть" isBlue={false}/>
                     <Button onClickFunc={() => handleAddBudget(formData)} buttonName="Добавить" isBlue={true}/>
                 </section>

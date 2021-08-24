@@ -144,6 +144,7 @@
 }
 
 .switch_field {
+  position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -191,6 +192,10 @@
 .switch_input:checked + .switch_slider:before {
   transform: translate(29px);
   background-color: var(--modal-primary-color);
+}
+
+.modal_field {
+  position: relative;
 }
 
 .modal_field .button {

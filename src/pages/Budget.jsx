@@ -22,6 +22,7 @@ function Budget() {
     // create/edit/idle
     const [modalMethod, setModalMethod] = useState('idle')
     const [selectedBudget, setSelectedBudget] = useState(null)
+    const [formError, setFormError] = useState(false)
     // calendar
     const date = new Date();
     // Select current month (first day and last day)
@@ -55,20 +56,26 @@ function Budget() {
     const handleAddBudget = (formData) =>{
         const currentUser = localStorage.getItem("uid")
         formData = {...formData, added_by: currentUser}
-        if (modalMethod === "edit") {
-            formData = {...formData, contragent: 'Temp contragent'}
-            dispatch(updateBudget(budgetType, formData, formData.id))
-            console.log(`Editing budget with type ${budgetType}...`, formData);
+        // {id: undefined, amount: 0, description: "", is_verified: false, contragent: "", 
+        // added_at: "", added_by: "",category: "",facility: 0}
+        if (!formData.amount || !formData.description || !formData.added_at)
+        setFormError(true)
+        else{
+            if (modalMethod === "edit") {
+                formData = {...formData, contragent: 'Temp contragent'}
+                dispatch(updateBudget(budgetType, formData, formData.id))
+                console.log(`Editing budget with type ${budgetType}...`, formData);
+            }
+            else if (modalMethod === "create") {
+                dispatch(createBudget(budgetType, formData))
+                console.log(`Adding budget with type ${budgetType}...`, formData);
+            }
+            setSelectedBudget(null)
+            setModalMethod("idle")
+            setShowAddBudgetModal(false);
+            setBudgetType('')
+            window.location.reload()
         }
-        else if (modalMethod === "create") {
-            dispatch(createBudget(budgetType, formData))
-            console.log(`Adding budget with type ${budgetType}...`, formData);
-        }
-        setSelectedBudget(null)
-        setModalMethod("idle")
-        setShowAddBudgetModal(false);
-        setBudgetType('')
-        window.location.reload()
     }
 
     const handleDeleteBudget = (budget, budgetType) =>{
@@ -84,7 +91,7 @@ function Budget() {
             
             {showAddBudgetModal && <>
                 <Backdrop />
-                <AddBudgetModal handleDeleteBudget={handleDeleteBudget} selectedBudget={selectedBudget} modalMethod={modalMethod} budgetType={budgetType} handleAddBudget={handleAddBudget} handleCloseBudgetModal={handleCloseBudgetModal}/>
+                <AddBudgetModal formError={formError} handleDeleteBudget={handleDeleteBudget} selectedBudget={selectedBudget} modalMethod={modalMethod} budgetType={budgetType} handleAddBudget={handleAddBudget} handleCloseBudgetModal={handleCloseBudgetModal}/>
             </>}
             <BudgetHeader startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} incomeAmount={incomeAmount} expenseAmount={expenseAmount}/>
             <BudgetTableHeader ordering={ordering} setOrdering={setOrdering} incomeAmount={incomeAmount} expenseAmount={expenseAmount} handleOpenBudgetModal={handleOpenBudgetModal}/>

@@ -6,7 +6,7 @@ import DropDownList from '../../popUp/DropDownList'
 import TextAreaField from '../../popUp/TextAreaField'
 import LargeField from '../../popUp/LargeField'
 
-function ImporterModal({ selectedImporter, handleCloseImporterModal, handleSendImporter, handleDeleteImporter, modalMethod }) {
+function ImporterModal({ formError, selectedImporter, handleCloseImporterModal, handleSendImporter, handleDeleteImporter, modalMethod }) {
     const productTypes = ['Овощи', 'Машины', 'Другое']
     const [formData, setFormData] = useState(selectedImporter ? selectedImporter : 
         { company_name: "", bank_name: "", correspondent_account: "", 
@@ -73,6 +73,7 @@ function ImporterModal({ selectedImporter, handleCloseImporterModal, handleSendI
                     setValue={(value) => setFormData({...formData, comment:value})}/>
                 </section>
                 <section className='modal_actions'>
+                {formError && <div className="error_message">Fill in all the fields on this side</div>}
                     <Button 
                     onClickFunc={handleCloseImporterModal} 
                     buttonName="Закрыть" isBlue={false}/>

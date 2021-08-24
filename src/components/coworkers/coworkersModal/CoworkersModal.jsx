@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Button from '../../popUp/Button'
 import LargeField from '../../popUp/LargeField'
 import TextAreaField from '../../popUp/TextAreaField'
@@ -30,14 +30,34 @@ function CoworkersModal({ formError, selectedCoworker, handleCloseCoworkerModal,
         actual_address: "", comment: "", is_foreign: false, post:'',
         is_active: true, date_fired: "", facility: 1, birth_date: ""})
 
-    console.log(formData)
+    const [preview, setPreview] = useState();
+    const fileInputRef = useRef();
+    useEffect(() => {
+        if (!selectedCoworker){
+            // Fetch file from back
+            console.log(formData.profile_picture)
+            if (formData.profile_picture) {
+              const reader = new FileReader();
+              reader.onloadend = () => {
+                setPreview(reader.result);
+              };
+              reader.readAsDataURL(formData.profile_picture);
+            } else {
+              setPreview(null);
+            }
+        }
+      }, [formData.profile_picture]);
     return (
         <div className='coworkers_modal_container'>
             <CoworkersModalHeader handleDeleteCoworker={handleDeleteCoworker} modalMethod={modalMethod} coworker={formData}/>
             <div className='coworkers_modal_form'>
                 <div className='grid_photo'>
-                    <input type="file" name="photo" id="photo" className="inputphoto" onChange={(event) => setFormData({...formData, profile_picture: event.target.files[0]})}/>
-                    <label for="photo"><img src={'https://lh3.googleusercontent.com/proxy/qCVyUedAKfQwI_9b6BbORUgd786hZBkNYrC2AqZJUgJKy34VzaNf3YPnaBmwWT0_jdPI8i5mRXISyxYUdvSLSifsQ0QohtiZROWYCT6d'} alt='coworker_picture'/></label>  
+                    
+                    <input ref={fileInputRef} 
+                    accept="image/*" type="file" 
+                    name="photo" id="photo" className="inputphoto" 
+                    onChange={(event) => setFormData({...formData, profile_picture: event.target.files[0]})}/>
+                    <label for="photo"><img src={preview ? preview : 'https://iconarchive.com/download/i91958/icons8/windows-8/Users-Administrator-2.ico'} alt='coworker_picture'/></label>  
                 </div>
 
                 <div className='grid_full_name'>
