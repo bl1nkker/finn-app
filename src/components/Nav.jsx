@@ -12,6 +12,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 // Custom styles
 import './../pages/pagesStyles/Dashboard.css'
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -75,6 +76,10 @@ export default function Nav() {
   const classes = useStyles();
   const currentUser = localStorage.getItem("username")
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const facilities = useSelector(state => state.settings.companies)
+  const userIsStaff = localStorage.getItem("isStaff")
+  const [currentFacility, setCurrentFacility] = React.useState(facilities[0])
   // const [value, setValue] = React.useState(0);
 
   const activeLinkStyle = {
@@ -87,7 +92,8 @@ export default function Nav() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleChangeFacility = (facility) => {
+    setCurrentFacility(facility)
     setAnchorEl(null);
   };
 
@@ -103,7 +109,7 @@ export default function Nav() {
           >
             <Grid item xs={2} className={classes.nav_menu}>
               <Typography aria-controls="simple-menu" aria-haspopup="true" className={classes.nav_title}>
-                258: Покровка 10 (p10 Мск)
+                {currentFacility?.name ? currentFacility.name : "Не выбрано"}
               </Typography>
               <ArrowDropDownIcon onClick={handleClick}/>
               <Menu
@@ -111,7 +117,7 @@ export default function Nav() {
                 anchorEl={anchorEl}
                 keepMounted
                 open={Boolean(anchorEl)}
-                onClose={handleClose}
+                onClose={handleChangeFacility}
                 anchorOrigin={{
                   vertical: 'bottom',
                   horizontal: 'right',
@@ -121,7 +127,7 @@ export default function Nav() {
                   horizontal: 'left',
                 }}
               >
-                <MenuItem onClick={handleClose}>Другие Предприятия</MenuItem>
+                {facilities.map(facility =>(<MenuItem onClick={() => handleChangeFacility(facility)}>{facility.name}</MenuItem>))}
               </Menu>
             </Grid>
             <Grid className={classes.links_container} item xs={8}>
@@ -134,10 +140,10 @@ export default function Nav() {
               <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/coworkers">Сотрудники</NavLink>
               <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/salary">Заплата</NavLink>
               <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/signals">Сигналы</NavLink>
-              <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/settings">Настройки</NavLink>
+              {userIsStaff && <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/settings">Настройки</NavLink>}
             </Grid>
             <Grid item xs={1} className={classes.user_container}>
-              <img className={classes.user_avatar} src='https://i.pinimg.com/originals/56/17/3c/56173c889e69e1d0235f788fbbaa9d9f.jpg' alt='user_avatar'/>
+              <img className={classes.user_avatar} src='https://iconarchive.com/download/i91959/icons8/windows-8/Users-Administrator.ico' alt='user_avatar'/>
               <div>
                 <Typography component="p" className={classes.user_info}>{currentUser}</Typography>
                 <Typography component="p"className={classes.user_info}>Менеджер</Typography>

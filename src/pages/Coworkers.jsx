@@ -41,7 +41,8 @@ function Coworkers() {
       !formData.subdivision || !formData.payment_type || !formData.pay_rate ||
       !formData.address_residing || !formData.actual_address || !formData.comment ||
       !formData.post || !formData.date_fired || !formData.birth_date)
-            setFormError(true)
+            {setFormError(true)
+            console.log(formData)}
     else{
       const _formData = new FormData();
       _formData.append("profile_picture", formData.profile_picture);
@@ -71,7 +72,7 @@ function Coworkers() {
       setSelectedCoworker(null)
       setModalMethod('idle')
       setShowCoworkerModal(false);
-      window.location.reload()
+      // window.location.reload()
     }
   }
 
