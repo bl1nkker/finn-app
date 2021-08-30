@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 'http://137.184.15.87/api' })
+const API = axios.create({ baseURL: 'https://finapp.rcbxd.dev/' })
 // const API = axios.create({ baseURL: 'http://127.0.0.1:8000/api' })
 
 // This adds a headers to each request. It happens before all functions below
