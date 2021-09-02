@@ -9,6 +9,7 @@ import { createRevenue, fetchRevenues, removeRevenue, updateRevenue } from './..
 import Backdrop from '../components/confirmationWindow/Backdrop'
 import RevenueModal from '../components/revenue/revenueModal.jsx/RevenueModal'
 import { fetchUsersData } from '../redux/actions/appActions'
+import { downloadRevenues } from './../axios/index'
 
 function Revenue() {
   const dispatch = useDispatch()
@@ -78,8 +79,11 @@ function Revenue() {
     window.location.reload()
   }
 
-  const handleDownloadInExcel = () =>{
-    console.log('Downloading excel file...');
+  const handleDownloadInExcel = async() =>{
+    // 0 is optional
+    const { data } = await downloadRevenues(0, new Date(2021, 1, 1).toISOString().substring(0, 10), new Date(2022, 1, 1).toISOString().substring(0, 10))
+
+    console.log('Downloading excel file...', data);
   }
 
   
