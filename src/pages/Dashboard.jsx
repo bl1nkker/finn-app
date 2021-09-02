@@ -37,6 +37,11 @@ function Dashboard() {
     (new Date(revenue.added_at).getTime() > new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7).getTime())
     && (new Date(revenue.added_at).getTime() < today.getTime()))
   const revenueForFiveDays = revenueListForFiveDays.reduce((accumulator, current) => accumulator + current.cash_income + current.cash_free_income , 0);
+
+  // Get revenue for week
+  const revenueListForWeek = revenues.filter(revenue => 
+    (new Date(revenue.added_at).getTime() > new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7).getTime())
+    && (new Date(revenue.added_at).getTime() < today.getTime()))
   
   // Get revenues for today
   const revenuesForToday = revenues.filter(revenue => 
@@ -71,15 +76,14 @@ function Dashboard() {
           <div className="info">
             <Bar
               data={{
-                labels: ['January', 'February', 'March',
-                         'April', 'May'],
+                labels: revenueListForWeek.map(revenue => revenue.added_at),
                 datasets: [
                   {
-                    label: 'Rainfall',
-                    backgroundColor: 'rgba(75,192,192,1)',
-                    borderColor: 'rgba(0,0,0,1)',
-                    borderWidth: 2,
-                    data: [65, 59, 80, 81, 56]
+                    label: 'Недельная выручка',
+                    backgroundColor: 'rgba(63, 64, 240, 0.5)',
+                    borderColor: 'rgba(63, 64, 240, 0.5)',
+                    borderWidth: 1,
+                    data: revenueListForWeek.map(revenue => revenue.cash_income)
                   }
                 ]
               }}

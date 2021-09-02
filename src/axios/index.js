@@ -13,6 +13,7 @@ const API = axios.create({ baseURL: 'https://finapp.rcbxd.dev/api' })
 // } )
 
 export const getSignals = () => API.get(`/app/signals/`)
+export const downloadRevenues = (facility, added_at_after, added_at_before) => API.get(`/app/revenue-download/`, { params: {facility, added_at_after, added_at_before}})
 
 export const getBudgets = (budgetType, added_at_after, added_at_before, ordering) => API.get(`/app/budget/${budgetType}/`, { params: {
     added_at_after,
