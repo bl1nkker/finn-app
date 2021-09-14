@@ -12,7 +12,7 @@ import { loginAction } from './../redux/actions/authActions'
 import { useHistory } from "react-router-dom";
 
 
-export default function Login({ setIsAuthorized }) {
+export default function Login() {
   const history = useHistory()
   const dispatch = useDispatch()
   const user = useSelector(state => state.auth.user)
@@ -27,7 +27,6 @@ export default function Login({ setIsAuthorized }) {
   const [codeValidationError, setCodeValidationError] = useState(false)
 
   const handleLogin = (authData) =>{
-    setIsAuthorized(true)
     dispatch(loginAction(authData.email, authData.password, history))
   }
 
