@@ -1,12 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import './App.css'
 
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Nav from "./components/Nav";
+import PrivateRoute from "./components/PrivateRoute";
 
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Importers from "./pages/Importers";
 import Coworkers from "./pages/Coworkers";
 import Scans from "./pages/Scans";
@@ -54,15 +55,15 @@ function App() {
               <Route exact path="/">
                 <Login />
               </Route>
-              <Route path="/home" component={Dashboard} />
-              <Route path="/scans" component={Scans} />
-              <Route path="/imports" component={Importers} />
-              <Route path="/revenue" component={Revenue} />
-              <Route path="/coworkers" component={Coworkers} />
-              <Route path="/budget" component={Budget} />
-              <Route path="/registry" component={Registry} />
-              <Route path="/salary" component={Salary} />
-              <Route path="/settings" component={Settings} />
+              <PrivateRoute path="/home" component={Dashboard} />
+              <PrivateRoute path="/scans" component={Scans} />
+              <PrivateRoute path="/imports" component={Importers} />
+              <PrivateRoute path="/revenue" component={Revenue} />
+              <PrivateRoute path="/coworkers" component={Coworkers} />
+              <PrivateRoute path="/budget" component={Budget} />
+              <PrivateRoute path="/registry" component={Registry} />
+              <PrivateRoute path="/salary" component={Salary} />
+              <PrivateRoute path="/settings" component={Settings} />
               <Route path="/signals">
                 <Nav />
                 <Signals />
