@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import './App.css'
 
@@ -46,17 +46,14 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  const [isAuthorized, setIsAuthorized] = useState(false)
   return (
     <div style={{ background: theme.palette.background.main, minHeight: "100vh", zIndex: -100, position: "absolute", minWidth: "100vw" }}>
       <Router>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <ThemeProvider theme={theme}>
-            {!isAuthorized ? <Login setIsAuthorized={setIsAuthorized}/>
-            :
             <Switch>
               <Route exact path="/">
-                <Login setIsAuthorized={setIsAuthorized}/>
+                <Login />
               </Route>
               <PrivateRoute path="/home" component={Dashboard} />
               <PrivateRoute path="/scans" component={Scans} />
@@ -72,7 +69,6 @@ function App() {
                 <Signals />
               </Route>
             </Switch>
-           }
           </ThemeProvider>
         </MuiPickersUtilsProvider>
       </Router >
