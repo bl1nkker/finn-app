@@ -15,37 +15,51 @@ function AddBudgetModal({ formError, handleDeleteBudget, selectedBudget, modalMe
         },
         {
             "value": "2",
-            "display_name": "Продукты"
+            "display_name": "Довнесение"
         },
         {
             "value": "3",
-            "display_name": "Хозтовары"
-        },
-        {
-            "value": "4",
-            "display_name": "Посуда"
-        },
-        {
-            "value": "5",
-            "display_name": "Инкассация"
-        },
-        {
-            "value": "6",
-            "display_name": "Под отчёт"
-        },
-        {
-            "value": "7",
-            "display_name": "Реклама"
-        },
-        {
-            "value": "8",
-            "display_name": "Ремонтные работы"
-        },
-        {
-            "value": "9",
             "display_name": "Другое"
         }
     ]
+    // const categories = [
+    //     {
+    //         "value": "1",
+    //         "display_name": "Аванс"
+    //     },
+    //     {
+    //         "value": "2",
+    //         "display_name": "Продукты"
+    //     },
+    //     {
+    //         "value": "3",
+    //         "display_name": "Хозтовары"
+    //     },
+    //     {
+    //         "value": "4",
+    //         "display_name": "Посуда"
+    //     },
+    //     {
+    //         "value": "5",
+    //         "display_name": "Инкассация"
+    //     },
+    //     {
+    //         "value": "6",
+    //         "display_name": "Под отчёт"
+    //     },
+    //     {
+    //         "value": "7",
+    //         "display_name": "Реклама"
+    //     },
+    //     {
+    //         "value": "8",
+    //         "display_name": "Ремонтные работы"
+    //     },
+    //     {
+    //         "value": "9",
+    //         "display_name": "Другое"
+    //     }
+    // ]
     const userIsStaff = JSON.parse(localStorage.getItem("isStaff"))
     return (
         <div className='modal_container'>

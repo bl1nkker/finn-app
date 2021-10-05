@@ -138,7 +138,7 @@ export default function Nav() {
               <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/registry">Реестр Накладных</NavLink>
               <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/imports">Поставщики</NavLink>
               <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/coworkers">Сотрудники</NavLink>
-              <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/salary">Заплата</NavLink>
+              <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/salary">Зарплата</NavLink>
               <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/signals">Сигналы</NavLink>
               {userIsStaff && <NavLink activeStyle={activeLinkStyle} className={classes.nav_link} to="/settings">Настройки</NavLink>}
             </Grid>

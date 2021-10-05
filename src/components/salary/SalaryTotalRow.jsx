@@ -12,7 +12,7 @@ function SalaryTotalRow({ choosenCoworkers, handleOpenCalendar}) {
                     <section className='registry_row__item item extra_small'>
                     <span className="item-text">
                         <button onClick={handleOpenCalendar} className='hours'>
-                            {choosenCoworkers.reduce((acc, curr) => acc += curr.work_hours.reduce((acc2, curr) => acc2 += curr.amount, 0), 0)}
+                            {choosenCoworkers.reduce((acc, curr) => acc += curr.work_hours?.reduce((acc2, curr) => acc2 += curr.amount, 0), 0)}
                         </button>
                         </span>
                     </section>

@@ -51,7 +51,7 @@ function Modal({setOpenPopUp, modalMethod, invoiceToEdit, importers}) {
                 dispatch(updateInvoice(formData, formData.id))
                 
             }
-            // window.location.reload()
+            window.location.reload()
             setOpenPopUp(false)
         }
     }

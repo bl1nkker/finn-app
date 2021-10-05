@@ -72,7 +72,7 @@ function Coworkers() {
       setSelectedCoworker(null)
       setModalMethod('idle')
       setShowCoworkerModal(false);
-      // window.location.reload()
+      setTimeout(function(){ window.location.reload()}, 2000);
     }
   }
 

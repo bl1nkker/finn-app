@@ -66,7 +66,7 @@ function Scans() {
       setSelectedScan(null)
       setModalMethod('idle')
       setShowScanModal(false);
-      window.location.reload()
+      // window.location.reload()
     }
   }
 
